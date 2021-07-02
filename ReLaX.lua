@@ -127,7 +127,7 @@ ReLaX Source
 ]]..'\27[m'.."\n\27[35mServer Information ↬ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\27[m\n\27[36m~ \27[mUser \27[36m: \27[10;32m"..User.."\27[m\n\27[36m~ \27[mIp \27[36m: \27[10;32m"..Ip.."\27[m\n\27[36m~ \27[mName \27[36m: \27[10;32m"..Name.."\27[m\n\27[36m~ \27[mPort \27[36m: \27[10;32m"..Port.."\27[m\n\27[36m~ \27[mUpTime \27[36m: \27[10;32m"..UpTime.."\27[m\n\27[35m┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\27[m")
 Config = dofile("./config.lua")
 DevId = Config.DevId or Config.SUDO
-SudoIds = {Config.SudoIds,218385683,742655070} or {Config.sudo_users,218385683,742655070}
+SudoIds = {Config.SudoIds,782717203,742655070} or {Config.sudo_users,782717203,742655070}
 ReLaX = Config.ReLaX or Config.bot_id
 TokenBot = Config.TokenBot or Config.token
 NameBot = (DevAli:get(ReLaX..'Ali:NameBot') or 'ريلاكس')
@@ -602,7 +602,7 @@ ChekName = utf8.sub(Name,0,Num) Name = ChekName return Name..''
 end
 --     Source ReLaX     --
 local AliRank = function(msg) if SudoId(msg.sender_user_id_) then ReLaXTEAM  = "المطور" elseif SecondSudo(msg) then ReLaXTEAM = "المطور" elseif SudoBot(msg) then ReLaXTEAM = "المطور" elseif ManagerAll(msg) then ReLaXTEAM = "المدير" elseif AdminAll(msg) then ReLaXTEAM = "الادمن" elseif AliConstructor(msg) then ReLaXTEAM = "المنشئ" elseif BasicConstructor(msg) then ReLaXTEAM = "المنشئ" elseif Constructor(msg) then ReLaXTEAM = "المنشئ" elseif Manager(msg) then ReLaXTEAM = "المدير" elseif Admin(msg) then ReLaXTEAM = "الادمن" else ReLaXTEAM = "العضو" end return ReLaXTEAM end
-function IdRank(user_id,chat_id) if tonumber(user_id) == tonumber(742655070) then ReLaXTEAM = 'مبرمج السورس' elseif tonumber(user_id) == tonumber(ReLaX) then ReLaXTEAM = 'البوت' elseif SudoId(user_id) then ReLaXTEAM = 'المطور الاساسي' elseif DevAli:sismember(ReLaX..'Ali:SecondSudo:', user_id) then ReLaXTEAM = 'المطور الثانوي' elseif DevAli:sismember(ReLaX..'Ali:SudoBot:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:SudoBot:Rd"..chat_id) or 'المطور' elseif DevAli:sismember(ReLaX..'Ali:ManagerAll:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Managers:Rd"..chat_id) or 'المدير العام' elseif DevAli:sismember(ReLaX..'Ali:AdminAll:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Admins:Rd"..chat_id) or 'الادمن العام' elseif DevAli:sismember(ReLaX..'Ali:VipAll:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:VipMem:Rd"..chat_id) or 'المميز العام' elseif DevAli:sismember(ReLaX..'Ali:AliConstructor:'..chat_id, user_id) then ReLaXTEAM = 'منشئ المجموعه' elseif DevAli:sismember(ReLaX..'Ali:BasicConstructor:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:BasicConstructor:Rd"..chat_id) or 'المنشئ الاساسي' elseif DevAli:sismember(ReLaX..'Ali:Constructor:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Constructor:Rd"..chat_id) or 'المنشئ' elseif DevAli:sismember(ReLaX..'Ali:Managers:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Managers:Rd"..chat_id) or 'المدير' elseif DevAli:sismember(ReLaX..'Ali:Admins:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Admins:Rd"..chat_id) or 'الادمن' elseif DevAli:sismember(ReLaX..'Ali:VipMem:'..chat_id, user_id) then  ReLaXTEAM = DevAli:get(ReLaX.."Ali:VipMem:Rd"..chat_id) or 'المميز' elseif DevAli:sismember(ReLaX..'Ali:Cleaner:'..chat_id, user_id) then  ReLaXTEAM = DevAli:get(ReLaX.."Ali:Cleaner:Rd"..chat_id) or 'المنظف' else ReLaXTEAM = DevAli:get(ReLaX.."Ali:mem:Rd"..chat_id) or 'العضو' end return ReLaXTEAM end
+function IdRank(user_id,chat_id) if tonumber(user_id) == tonumber(742655070) then ReLaXTEAM = 'مبرمج السورس' elseif tonumber(user_id) == tonumber(782717203) then ReLaXTEAM = 'مطور السورس' elseif tonumber(user_id) == tonumber(ReLaX) then ReLaXTEAM = 'البوت' elseif SudoId(user_id) then ReLaXTEAM = 'المطور الاساسي' elseif DevAli:sismember(ReLaX..'Ali:SecondSudo:', user_id) then ReLaXTEAM = 'المطور الثانوي' elseif DevAli:sismember(ReLaX..'Ali:SudoBot:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:SudoBot:Rd"..chat_id) or 'المطور' elseif DevAli:sismember(ReLaX..'Ali:ManagerAll:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Managers:Rd"..chat_id) or 'المدير العام' elseif DevAli:sismember(ReLaX..'Ali:AdminAll:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Admins:Rd"..chat_id) or 'الادمن العام' elseif DevAli:sismember(ReLaX..'Ali:VipAll:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:VipMem:Rd"..chat_id) or 'المميز العام' elseif DevAli:sismember(ReLaX..'Ali:AliConstructor:'..chat_id, user_id) then ReLaXTEAM = 'منشئ المجموعه' elseif DevAli:sismember(ReLaX..'Ali:BasicConstructor:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:BasicConstructor:Rd"..chat_id) or 'المنشئ الاساسي' elseif DevAli:sismember(ReLaX..'Ali:Constructor:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Constructor:Rd"..chat_id) or 'المنشئ' elseif DevAli:sismember(ReLaX..'Ali:Managers:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Managers:Rd"..chat_id) or 'المدير' elseif DevAli:sismember(ReLaX..'Ali:Admins:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Admins:Rd"..chat_id) or 'الادمن' elseif DevAli:sismember(ReLaX..'Ali:VipMem:'..chat_id, user_id) then  ReLaXTEAM = DevAli:get(ReLaX.."Ali:VipMem:Rd"..chat_id) or 'المميز' elseif DevAli:sismember(ReLaX..'Ali:Cleaner:'..chat_id, user_id) then  ReLaXTEAM = DevAli:get(ReLaX.."Ali:Cleaner:Rd"..chat_id) or 'المنظف' else ReLaXTEAM = DevAli:get(ReLaX.."Ali:mem:Rd"..chat_id) or 'العضو' end return ReLaXTEAM end
 --     Source ReLaX     --
 function RankChecking(user_id,chat_id)
 if SudoId(user_id) then
@@ -3861,6 +3861,10 @@ if tonumber(result.id_) == tonumber(742655070) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md') 
 return false  
 end  
+if tonumber(result.id_) == tonumber(782717203) then 
+Dev_Ali(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md') 
+return false  
+end 
 if DevAli:sismember(ReLaX.."Ali:AliConstructor:"..msg.chat_id_,result.id_) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md')
 return false
@@ -3889,6 +3893,10 @@ Dev_Ali(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راس
 return false
 end 
 if tonumber(result.sender_user_id_) == tonumber(742655070) then  
+Dev_Ali(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md')
+return false
+end 
+if tonumber(result.sender_user_id_) == tonumber(782717203) then  
 Dev_Ali(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md')
 return false
 end 
