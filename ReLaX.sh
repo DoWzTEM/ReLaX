@@ -3,7 +3,7 @@ THIS_DIR=$(cd $(dirname $0); pwd)
 Version=`lsb_release -rs | cut -f1 -d"."`
 install() {
 echo -e "\033[0;36m"
-echo -e "~ Welcome To Source Relax - اهلا بك في سورس ريلاكس ~"
+echo -e "~ Welcome To Source DevProx - اهلا بك في سورس ريلاكس ~"
 echo -e "     ~ { Setting Up Offices - جاري رفع المكاتب } ~"
 echo -e "\033[0m"
 sudo apt-get update -y
