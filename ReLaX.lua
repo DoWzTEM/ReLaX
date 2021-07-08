@@ -7890,6 +7890,26 @@ local txt = {string.match(text, "^(كول) (.*)$")}
 Dev_Ali(msg.chat_id_,0, 1, txt[2], 1, 'md')
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
+if text == "تفعيل انطق" and Manager(msg) and ChCheck(msg) then
+local ReLaXTeam = '↯︙اهلا عزيزي ↫ '..AliRank(msg)..' \n↯︙تم تفعيل ميزة انطق'
+Alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTeam, 14, string.len(msg.sender_user_id_))
+DevAli:del(ReLaX..'Ali:Antk:Ali'..msg.chat_id_) 
+end
+if text == "تعطيل انطق" and Manager(msg) and ChCheck(msg) then
+local ReLaXTeam = '↯︙اهلا عزيزي ↫ '..AliRank(msg)..' \n↯︙تم تعطيل ميزة انطق'
+Alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTeam, 14, string.len(msg.sender_user_id_))
+DevAli:set(ReLaX..'Ali:Antk:Ali'..msg.chat_id_,true)  
+end
+if text and text:match("^انطق (.*)$") and not DevAli:get(ReLaX..'Ali:Antk:Ali'..msg.chat_id_) then
+local UrlAntk = https.request('https://apiabs.ml/Antk.php?abs='..URL.escape(text:match("^انطق (.*)$")))
+Antk = JSON.decode(UrlAntk)
+if UrlAntk.ok ~= false then
+download_to_file("https://translate"..Antk.result.google..Antk.result.code.."UTF-8"..Antk.result.utf..Antk.result.translate.."&tl=ar-IN",Antk.result.translate..'.mp3') 
+sendAudio(msg.chat_id_, msg.id_, 0, 1,nil, './'..Antk.result.translate..'.mp3')  
+os.execute('rm -rf ./'..Antk.result.translate..'.mp3')
+
+end
+end
 --     Source ReLaX     --
 if DevAli:get(ReLaX..'Ali:setrules'..msg.chat_id_..':'..msg.sender_user_id_) then 
 if text == 'الغاء' then 
