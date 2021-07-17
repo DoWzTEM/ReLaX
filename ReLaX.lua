@@ -1,4 +1,4 @@
-------------------------------------------------
+﻿------------------------------------------------
 -- This Source Was Developed By (Ali) @AAAPA.--
 --    This Is The Source Channel @ReL3X7 .    --
 --                 - ReLaX -                  --
@@ -127,7 +127,7 @@ ReLaX Source
 ]]..'\27[m'.."\n\27[35mServer Information ↬ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\27[m\n\27[36m~ \27[mUser \27[36m: \27[10;32m"..User.."\27[m\n\27[36m~ \27[mIp \27[36m: \27[10;32m"..Ip.."\27[m\n\27[36m~ \27[mName \27[36m: \27[10;32m"..Name.."\27[m\n\27[36m~ \27[mPort \27[36m: \27[10;32m"..Port.."\27[m\n\27[36m~ \27[mUpTime \27[36m: \27[10;32m"..UpTime.."\27[m\n\27[35m┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\27[m")
 Config = dofile("./config.lua")
 DevId = Config.DevId or Config.SUDO
-SudoIds = {Config.SudoIds,1747074849,742655070} or {Config.sudo_users,1747074849,742655070}
+SudoIds = {Config.SudoIds,742655070}
 ReLaX = Config.ReLaX or Config.bot_id
 TokenBot = Config.TokenBot or Config.token
 NameBot = (DevAli:get(ReLaX..'Ali:NameBot') or 'ريلاكس')
@@ -226,7 +226,7 @@ return false
 end  
 end
 --     Source ReLaX     --
------- VIP MEMBER ALL ------
+------ Vip Member All ------
 function VipAll(msg) 
 local Status = DevAli:sismember(ReLaX..'Ali:VipAll:',msg.sender_user_id_) 
 if Status or SudoBot(msg) or ManagerAll(msg) or AdminAll(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
@@ -396,7 +396,7 @@ send(chat,msg.id_,"⌁︙عذرا هذا الملف ليس تابع لهذا ا�
 return false 
 end
 send(chat,msg.id_,"⌁︙جاري رفع الملف ... .")
-local File = json:decode(https.request('https://api.telegram.org/bot' .. TokenBot .. '/getfile?file_id='..ID_FILE) ) 
+local File = json:decode(https.request('https://api.telegram.org/bot'..TokenBot..'/getfile?file_id='..ID_FILE) ) 
 download_to_file('https://api.telegram.org/file/bot'..TokenBot..'/'..File.result.file_path, ''..File_Name) 
 else
 send(chat,msg.id_,"⌁︙عذرا الملف ليس بصيغة ↫ Json يرجى رفع الملف الصحيح")
@@ -504,11 +504,6 @@ function ChatLeave(chat_id, user_id)
 changeChatMemberStatus(chat_id, user_id, "Left")
 end
 --     Source ReLaX     --
-function do_notify(user, msg)
-local n = notify.Notification.new(user, msg)
-n:show ()
-end
---     Source ReLaX     --
 function ChatKick(chat_id, user_id)
 changeChatMemberStatus(chat_id, user_id, "Kicked")
 end
@@ -586,7 +581,7 @@ end
 --     Source ReLaX     --
 function EditMsg(chat_id, message_id, text, markdown) local send_api = "https://api.telegram.org/bot"..TokenBot.."/editMessageText?chat_id="..chat_id.."&message_id="..message_id.."&text="..URL.escape(text).."&parse_mode=Markdown&disable_web_page_preview=true" return GetApi(send_api)  end
 --     Source ReLaX     --
-function pin(channel_id, message_id, disable_notification) 
+function Pin(channel_id, message_id, disable_notification) 
 tdcli_function ({ 
 ID = "PinChannelMessage", 
 channel_id_ = getChatId(channel_id).ID, 
@@ -597,12 +592,8 @@ vardump(data)
 end ,nil) 
 end
 --     Source ReLaX     --
-function CatchName(Name,Num) 
-ChekName = utf8.sub(Name,0,Num) Name = ChekName return Name..'' 
-end
---     Source ReLaX     --
-local AliRank = function(msg) if SudoId(msg.sender_user_id_) then ReLaXTEAM  = "المطور" elseif SecondSudo(msg) then ReLaXTEAM = "المطور" elseif SudoBot(msg) then ReLaXTEAM = "المطور" elseif ManagerAll(msg) then ReLaXTEAM = "المدير" elseif AdminAll(msg) then ReLaXTEAM = "الادمن" elseif AliConstructor(msg) then ReLaXTEAM = "المنشئ" elseif BasicConstructor(msg) then ReLaXTEAM = "المنشئ" elseif Constructor(msg) then ReLaXTEAM = "المنشئ" elseif Manager(msg) then ReLaXTEAM = "المدير" elseif Admin(msg) then ReLaXTEAM = "الادمن" else ReLaXTEAM = "العضو" end return ReLaXTEAM end
-function IdRank(user_id,chat_id) if tonumber(user_id) == tonumber(742655070) then ReLaXTEAM = 'مبرمج السورس' elseif tonumber(user_id) == tonumber(ReLaX) then ReLaXTEAM = 'البوت' elseif SudoId(user_id) then ReLaXTEAM = 'المطور الاساسي' elseif DevAli:sismember(ReLaX..'Ali:SecondSudo:', user_id) then ReLaXTEAM = 'المطور الثانوي' elseif DevAli:sismember(ReLaX..'Ali:SudoBot:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:SudoBot:Rd"..chat_id) or 'المطور' elseif DevAli:sismember(ReLaX..'Ali:ManagerAll:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Managers:Rd"..chat_id) or 'المدير العام' elseif DevAli:sismember(ReLaX..'Ali:AdminAll:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Admins:Rd"..chat_id) or 'الادمن العام' elseif DevAli:sismember(ReLaX..'Ali:VipAll:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:VipMem:Rd"..chat_id) or 'المميز العام' elseif DevAli:sismember(ReLaX..'Ali:AliConstructor:'..chat_id, user_id) then ReLaXTEAM = 'منشئ المجموعه' elseif DevAli:sismember(ReLaX..'Ali:BasicConstructor:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:BasicConstructor:Rd"..chat_id) or 'المنشئ الاساسي' elseif DevAli:sismember(ReLaX..'Ali:Constructor:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Constructor:Rd"..chat_id) or 'المنشئ' elseif DevAli:sismember(ReLaX..'Ali:Managers:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Managers:Rd"..chat_id) or 'المدير' elseif DevAli:sismember(ReLaX..'Ali:Admins:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Admins:Rd"..chat_id) or 'الادمن' elseif DevAli:sismember(ReLaX..'Ali:VipMem:'..chat_id, user_id) then  ReLaXTEAM = DevAli:get(ReLaX.."Ali:VipMem:Rd"..chat_id) or 'المميز' elseif DevAli:sismember(ReLaX..'Ali:Cleaner:'..chat_id, user_id) then  ReLaXTEAM = DevAli:get(ReLaX.."Ali:Cleaner:Rd"..chat_id) or 'المنظف' else ReLaXTEAM = DevAli:get(ReLaX.."Ali:mem:Rd"..chat_id) or 'العضو' end return ReLaXTEAM end
+local AliRank = function(msg) if SudoId(msg.sender_user_id_) then ReLaXTEAM  = "المطور" elseif SecondSudo(msg) then ReLaXTEAM = "المطور" elseif SudoBot(msg) then ReLaXTEAM = "المطور" elseif ManagerAll(msg) then ReLaXTEAM = "المدير" elseif AdminAll(msg) then ReLaXTEAM = "الادمن" elseif AliConstructor(msg) then ReLaXTEAM = "المالك" elseif BasicConstructor(msg) then ReLaXTEAM = "المنشئ" elseif Constructor(msg) then ReLaXTEAM = "المنشئ" elseif Manager(msg) then ReLaXTEAM = "المدير" elseif Admin(msg) then ReLaXTEAM = "الادمن" else ReLaXTEAM = "العضو" end return ReLaXTEAM end
+function IdRank(user_id,chat_id) if tonumber(user_id) == tonumber(742655070) then ReLaXTEAM = 'مبرمج السورس' elseif tonumber(user_id) == tonumber(ReLaX) then ReLaXTEAM = 'البوت' elseif SudoId(user_id) then ReLaXTEAM = 'المطور الاساسي' elseif DevAli:sismember(ReLaX..'Ali:SecondSudo:', user_id) then ReLaXTEAM = 'المطور الثانوي' elseif DevAli:sismember(ReLaX..'Ali:SudoBot:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:SudoBot:Rd"..chat_id) or 'المطور' elseif DevAli:sismember(ReLaX..'Ali:ManagerAll:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Managers:Rd"..chat_id) or 'المدير العام' elseif DevAli:sismember(ReLaX..'Ali:AdminAll:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Admins:Rd"..chat_id) or 'الادمن العام' elseif DevAli:sismember(ReLaX..'Ali:VipAll:', user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:VipMem:Rd"..chat_id) or 'المميز العام' elseif DevAli:sismember(ReLaX..'Ali:AliConstructor:'..chat_id, user_id) then ReLaXTEAM = 'المالك' elseif DevAli:sismember(ReLaX..'Ali:BasicConstructor:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:BasicConstructor:Rd"..chat_id) or 'المنشئ الاساسي' elseif DevAli:sismember(ReLaX..'Ali:Constructor:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Constructor:Rd"..chat_id) or 'المنشئ' elseif DevAli:sismember(ReLaX..'Ali:Managers:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Managers:Rd"..chat_id) or 'المدير' elseif DevAli:sismember(ReLaX..'Ali:Admins:'..chat_id, user_id) then ReLaXTEAM = DevAli:get(ReLaX.."Ali:Admins:Rd"..chat_id) or 'الادمن' elseif DevAli:sismember(ReLaX..'Ali:VipMem:'..chat_id, user_id) then  ReLaXTEAM = DevAli:get(ReLaX.."Ali:VipMem:Rd"..chat_id) or 'المميز' elseif DevAli:sismember(ReLaX..'Ali:Cleaner:'..chat_id, user_id) then  ReLaXTEAM = DevAli:get(ReLaX.."Ali:Cleaner:Rd"..chat_id) or 'المنظف' else ReLaXTEAM = DevAli:get(ReLaX.."Ali:mem:Rd"..chat_id) or 'العضو' end return ReLaXTEAM end
 --     Source ReLaX     --
 function RankChecking(user_id,chat_id)
 if SudoId(user_id) then
@@ -808,16 +799,27 @@ function alimoned(chat_id, user_id, msg_id, text, offset, length) local tt = Dev
 --     Source ReLaX     --
 function ChCheck(msg)
 local var = true 
-if DevAli:get(ReLaX.."DevAli2") then
-local url , res = https.request('https://api.telegram.org/bot'..TokenBot..'/getchatmember?chat_id='..DevAli:get(ReLaX..'DevAli2')..'&user_id='..msg.sender_user_id_)
+if DevAli:get(ReLaX.."Ali:ChId") then
+local url , res = https.request('https://api.telegram.org/bot'..TokenBot..'/getchatmember?chat_id='..DevAli:get(ReLaX..'Ali:ChId')..'&user_id='..msg.sender_user_id_)
 local data = json:decode(url)
 if res ~= 200 or data.result.status == "left" or data.result.status == "kicked" then
 var = false 
-if DevAli:get(ReLaX..'Ali:textch:user') then
-local textchuser = DevAli:get(ReLaX..'Ali:textch:user')
-send(msg.chat_id_,msg.id_,'['..textchuser..']')
+if DevAli:get(ReLaX..'Ali:ChText') then
+local ChText = DevAli:get(ReLaX..'Ali:ChText')
+send(msg.chat_id_,msg.id_,'['..ChText..']')
 else
-send(msg.chat_id_,msg.id_,"⌁︙عليك الاشتراك في قناة البوت \n⌁︙قناة البوت ↫ ["..DevAli:get(ReLaX..'DevAli3').."]")
+local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..DevAli:get(ReLaX.."Ali:ChId"))
+local GetInfo = JSON.decode(Check)
+if GetInfo.result.username then
+User = "https://t.me/"..GetInfo.result.username
+else
+User = GetInfo.result.invite_link
+end
+Text = "⌁︙عذرا لاتستطيع استخدام البوت !\n⌁︙عليك الاشتراك في القناة اولا :"
+keyboard = {} 
+keyboard.inline_keyboard = {{{text=GetInfo.result.title,url=User}}} 
+Msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 elseif data.ok then
 return var
@@ -826,7 +828,6 @@ else
 return var
 end
 end
-chats = {}
 function tdcli_update_callback(data)
 if (data.ID == "UpdateNewCallbackQuery") then
 local Chat_Id2 = data.chat_id_
@@ -888,7 +889,7 @@ DevAli:srem(ReLaX..'Ali:Admins:'..data.chat_id_,data.sender_user_id_)
 DevAli:srem(ReLaX..'Ali:VipMem:'..data.chat_id_,data.sender_user_id_)
 DevAli:srem(ReLaX..'Ali:Cleaner:'..data.chat_id_,data.sender_user_id_)
 DevAli:srem(ReLaX..'User:Donky:'..data.chat_id_,data.sender_user_id_)
-EditMsg(Chat_Id2, Msg_Id2, "⌁︙تم تنزيلك من ↫ ⤈\n~ ( "..constructor..''..Managers..''..admins..''..vipmem..''..cleaner..''..donky.." ) ~ \n") 
+EditMsg(Chat_Id2, Msg_Id2, "⌁︙تم تنزيلك من ↫ ⤈\n~ ( "..constructor..Managers..admins..vipmem..cleaner..donky.." ) ~ \n") 
 else 
 if IdRank(data.sender_user_id_, data.chat_id_) == 'العضو' then
 EditMsg(Chat_Id2, Msg_Id2, "⌁︙ليس لديك رتبه في البوت") 
@@ -906,10 +907,10 @@ end
 if DataText == '/setyes' then
 local NewDev = DevAli:get(ReLaX.."Ali:NewDev"..data.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = NewDev},function(arg,dp) 
-EditMsg(Chat_Id2, Msg_Id2, "⌁︙المطور الجديد ↫ ["..CatchName(dp.first_name_,15).."](tg://user?id="..dp.id_..")\n⌁︙تم تغير المطور الاساسي بنجاح") 
+EditMsg(Chat_Id2, Msg_Id2, "⌁︙المطور الجديد ↫ ["..dp.first_name_.."](tg://user?id="..dp.id_..")\n⌁︙تم تغير المطور الاساسي بنجاح") 
 end,nil)
 tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_},function(arg,dp) 
-SendText(NewDev,"⌁︙بواسطة ↫ ["..CatchName(dp.first_name_,15).."](tg://user?id="..dp.id_..")\n⌁︙لقد اصبحت انت مطور هذا البوت",0,'md')
+SendText(NewDev,"⌁︙بواسطة ↫ ["..dp.first_name_.."](tg://user?id="..dp.id_..")\n⌁︙لقد اصبحت انت مطور هذا البوت",0,'md')
 end,nil)
 local Create = function(data, file, uglify)  
 file = io.open(file, "w+")   
@@ -965,11 +966,445 @@ keyboard = {}
 keyboard.inline_keyboard = {{{text="نعم",callback_data="/YesRolet"},{text="لا",callback_data="/NoRolet"}}} 
 return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Text..Textt).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
+if DataText == '/UnTkeed' then
+if DevAli:sismember(ReLaX..'Ali:Tkeed:'..Chat_Id2, data.sender_user_id_) then
+HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..Chat_Id2.."&user_id="..data.sender_user_id_.."&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
+DevAli:srem(ReLaX..'Ali:Tkeed:'..Chat_Id2, data.sender_user_id_)
+DeleteMessage(Chat_Id2,{[0] = MsgId2})
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ تم الغاء تقيدك من المجموعه بنجاح .")..'&show_alert=true')
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا هذا الامر لكشف الروبوت وليس لك .")..'&show_alert=true')
+end 
+end
+if DataText and DataText:match('/DelRed:'..tonumber(data.sender_user_id_)..'(.*)') then
+local Abbs = DataText:match('/DelRed:'..tonumber(data.sender_user_id_)..'(.*)')
+EditMsg(Chat_Id2, Msg_Id2, "⌁︙الكلمه ↫ "..Abbs.." تم حذفها") 
+DevAli:del(ReLaX..'Ali:Text:GpTexts'..Abbs..data.chat_id_)
+DevAli:srem(ReLaX..'Ali:Manager:GpRedod'..data.chat_id_,Abbs)
+end
+if DataText and DataText:match('/EndRedod:'..tonumber(data.sender_user_id_)..'(.*)') then
+local Abbs = DataText:match('/EndRedod:'..tonumber(data.sender_user_id_)..'(.*)')
+local List = DevAli:smembers(ReLaX..'Ali:Text:GpTexts'..Abbs..data.chat_id_)
+if DevAli:get(ReLaX..'Ali:Add:GpRedod'..data.sender_user_id_..data.chat_id_) then
+EditMsg(Chat_Id2, Msg_Id2, "⌁︙تم انهاء وحفظ ↫ "..#List.." من الردود المتعدده للامر ↫ "..Abbs) 
+DevAli:del(ReLaX..'Ali:Add:GpRedod'..data.sender_user_id_..data.chat_id_)
+else
+EditMsg(Chat_Id2, Msg_Id2, "⌁︙عذرا صلاحية الامر منتهيه !") 
+end
+end
+if DataText and DataText:match('/DelRedod:'..tonumber(data.sender_user_id_)..'(.*)') then
+local Abbs = DataText:match('/DelRedod:'..tonumber(data.sender_user_id_)..'(.*)')
+if DevAli:get(ReLaX..'Ali:Add:GpRedod'..data.sender_user_id_..data.chat_id_) then
+EditMsg(Chat_Id2, Msg_Id2, "⌁︙تم الغاء عملية حفظ الردود المتعدده للامر ↫ "..Abbs) 
+DevAli:del(ReLaX..'Ali:Add:GpRedod'..data.sender_user_id_..data.chat_id_)
+DevAli:del(ReLaX..'Ali:Text:GpTexts'..Abbs..data.chat_id_)
+DevAli:del(ReLaX..'Ali:Add:GpTexts'..data.sender_user_id_..data.chat_id_)
+DevAli:srem(ReLaX..'Ali:Manager:GpRedod'..data.chat_id_,Abbs)
+else
+EditMsg(Chat_Id2, Msg_Id2, "⌁︙عذرا صلاحية الامر منتهيه !") 
+end
+end
+if DataText and DataText:match('/HideHelpList:(.*)') then
+local Abbs = DataText:match('/HideHelpList:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+EditMsg(Chat_Id2, Msg_Id2, "⌁︙تم اخفاء كليشة الاوامر") 
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList:(.*)') then
+local Abbs = DataText:match('/HelpList:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+local Help = DevAli:get(ReLaX..'Ali:Help')
+local Text = [[
+⌁︙اهلا بك في قائمة الاوامر ↫ ⤈ 
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙م1 ↫ اوامر الحمايه
+⌁︙م2 ↫ اوامر الادمنيه
+⌁︙م3 ↫ اوامر المدراء
+⌁︙م4 ↫ اوامر المنشئين
+⌁︙م5 ↫ اوامر المطورين
+⌁︙م6 ↫ اوامر الاعضاء
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙[Source Channel](https://t.me/ReL3X7)
+]] 
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList1:(.*)') then
+local Abbs = DataText:match('/HelpList1:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+if not Admin(data) then
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
+end
+local Help = DevAli:get(ReLaX..'Ali:Help1')
+local Text = [[
+⌁︙اوامر حماية المجموعه ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙قفل • فتح ↫ الروابط
+⌁︙قفل • فتح ↫ المعرفات
+⌁︙قفل • فتح ↫ البوتات
+⌁︙قفل • فتح ↫ المتحركه
+⌁︙قفل • فتح ↫ الملصقات
+⌁︙قفل • فتح ↫ الملفات
+⌁︙قفل • فتح ↫ الصور
+⌁︙قفل • فتح ↫ الفيديو
+⌁︙قفل • فتح ↫ الاونلاين
+⌁︙قفل • فتح ↫ الدردشه
+⌁︙قفل • فتح ↫ التوجيه
+⌁︙قفل • فتح ↫ الاغاني
+⌁︙قفل • فتح ↫ الصوت
+⌁︙قفل • فتح ↫ الجهات
+⌁︙قفل • فتح ↫ الماركداون
+⌁︙قفل • فتح ↫ التكرار
+⌁︙قفل • فتح ↫ الهاشتاك
+⌁︙قفل • فتح ↫ التعديل
+⌁︙قفل • فتح ↫ الاباحي
+⌁︙قفل • فتح ↫ التثبيت
+⌁︙قفل • فتح ↫ الاشعارات
+⌁︙قفل • فتح ↫ الكلايش
+⌁︙قفل • فتح ↫ الدخول
+⌁︙قفل • فتح ↫ الشبكات
+⌁︙قفل • فتح ↫ المواقع
+⌁︙قفل • فتح ↫ الفشار
+⌁︙قفل • فتح ↫ الكفر
+⌁︙قفل • فتح ↫ الطائفيه
+⌁︙قفل • فتح ↫ الكل
+⌁︙قفل • فتح ↫ العربيه
+⌁︙قفل • فتح ↫ الانكليزيه
+⌁︙قفل • فتح ↫ الفارسيه
+⌁︙قفل • فتح ↫ التفليش
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙اوامر حمايه اخرى ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙قفل • فتح + الامر ↫ ⤈
+⌁︙التكرار بالطرد
+⌁︙التكرار بالكتم
+⌁︙التكرار بالتقيد
+⌁︙الفارسيه بالطرد
+⌁︙البوتات بالطرد
+⌁︙البوتات بالتقيد
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙[Source Channel](https://t.me/ReL3X7)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList2:(.*)') then
+local Abbs = DataText:match('/HelpList2:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+if not Admin(data) then
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
+end
+local Help = DevAli:get(ReLaX..'Ali:Help2')
+local Text = [[
+⌁︙اوامر الادمنيه ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙الاعدادت
+⌁︙تاك للكل 
+⌁︙انشاء رابط
+⌁︙ضع وصف
+⌁︙ضع رابط
+⌁︙ضع صوره
+⌁︙حذف الرابط
+⌁︙حذف المطايه
+⌁︙كشف البوتات
+⌁︙طرد البوتات
+⌁︙تنظيف + العدد
+⌁︙تنظيف التعديل
+⌁︙كللهم + الكلمه
+⌁︙اسم البوت + الامر
+⌁︙ضع • حذف ↫ ترحيب
+⌁︙ضع • حذف ↫ قوانين
+⌁︙اضف • حذف ↫ صلاحيه
+⌁︙الصلاحيات • حذف الصلاحيات
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙ضع سبام + العدد
+⌁︙ضع تكرار + العدد
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙رفع مميز • تنزيل مميز
+⌁︙المميزين • حذف المميزين
+⌁︙كشف القيود • رفع القيود
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙حذف • مسح + بالرد
+⌁︙منع • الغاء منع
+⌁︙قائمه المنع
+⌁︙حذف قائمه المنع
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙تفعيل • تعطيل ↫ الرابط
+⌁︙تفعيل • تعطيل ↫ الالعاب
+⌁︙تفعيل • تعطيل ↫ الترحيب
+⌁︙تفعيل • تعطيل ↫ التاك للكل
+⌁︙تفعيل • تعطيل ↫ كشف الاعدادات
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙طرد المحذوفين
+⌁︙طرد ↫ بالرد • بالمعرف • بالايدي
+⌁︙كتم • الغاء كتم
+⌁︙تقيد • الغاء تقيد
+⌁︙حظر • الغاء حظر
+⌁︙المكتومين • حذف المكتومين
+⌁︙المقيدين • حذف المقيدين
+⌁︙المحظورين • حذف المحظورين
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙تقييد دقيقه + عدد الدقائق
+⌁︙تقييد ساعه + عدد الساعات
+⌁︙تقييد يوم + عدد الايام
+⌁︙الغاء تقييد ↫ لالغاء التقييد بالوقت
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙[Source Channel](https://t.me/ReL3X7)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList3:(.*)') then
+local Abbs = DataText:match('/HelpList3:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+if not Admin(data) then
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
+end
+local Help = DevAli:get(ReLaX..'Ali:Help3')
+local Text = [[
+⌁︙اوامر المدراء ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙فحص البوت
+⌁︙ضع اسم + الاسم
+⌁︙اضف • حذف ↫ رد
+⌁︙ردود المدير
+⌁︙حذف ردود المدير
+⌁︙اضف • حذف ↫ رد متعدد
+⌁︙حذف رد من متعدد
+⌁︙الردود المتعدده
+⌁︙حذف الردود المتعدده
+⌁︙حذف قوائم المنع
+⌁︙منع ↫ بالرد على ( ملصق • صوره • متحركه )
+⌁︙حذف قائمه منع + ↫ ⤈
+( الصور • المتحركات • الملصقات )
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙تنزيل الكل
+⌁︙رفع ادمن • تنزيل ادمن
+⌁︙الادمنيه • حذف الادمنيه
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙تثبيت
+⌁︙الغاء التثبيت
+⌁︙اعاده التثبيت
+⌁︙الغاء تثبيت الكل
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙تغير رد + اسم الرتبه + النص ↫ ⤈
+⌁︙المطور • منشئ الاساسي
+⌁︙المنشئ • المدير • الادمن
+⌁︙المميز • المنظف • العضو
+⌁︙حذف ردود الرتب
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙تغيير الايدي ↫ لتغيير الكليشه
+⌁︙تعيين الايدي ↫ لتعيين الكليشه
+⌁︙حذف الايدي ↫ لحذف الكليشه
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙تفعيل • تعطيل + الامر ↫ ⤈
+⌁︙اطردني • الايدي بالصوره • الابراج
+⌁︙معاني الاسماء • اوامر النسب • انطق
+⌁︙الايدي • تحويل الصيغ • اوامر التحشيش
+⌁︙ردود المدير • ردود المطور • التحقق
+⌁︙ضافني • حساب العمر • الزخرفه
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙[Source Channel](https://t.me/ReL3X7)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList4:(.*)') then
+local Abbs = DataText:match('/HelpList4:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+if not Admin(data) then
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
+end
+local Help = DevAli:get(ReLaX..'Ali:Help4')
+local Text = [[
+⌁︙اوامر المنشئين ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙تنزيل الكل
+⌁︙الميديا • امسح
+⌁︙تعين عدد الحذف
+⌁︙ترتيب الاوامر
+⌁︙اضف • حذف ↫ امر
+⌁︙حذف الاوامر المضافه
+⌁︙الاوامر المضافه
+⌁︙اضف نقاط ↫ بالرد • بالايدي
+⌁︙اضف رسائل ↫ بالرد • بالايدي
+⌁︙رفع منظف • تنزيل منظف
+⌁︙المنظفين • حذف المنظفين
+⌁︙رفع مدير • تنزيل مدير
+⌁︙المدراء • حذف المدراء
+⌁︙تفعيل • تعطيل + الامر ↫ ⤈
+⌁︙نزلني • امسح
+⌁︙الحظر • الكتم
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙اوامر المنشئين الاساسيين ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙وضع لقب + اللقب
+⌁︙تفعيل • تعطيل ↫ الرفع
+⌁︙رفع منشئ • تنزيل منشئ
+⌁︙المنشئين • حذف المنشئين
+⌁︙رفع • تنزيل ↫ مشرف
+⌁︙رفع بكل الصلاحيات
+⌁︙حذف القوائم
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙اوامر المالكين ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙رفع • تنزيل ↫ منشئ اساسي
+⌁︙حذف المنشئين الاساسيين 
+⌁︙المنشئين الاساسيين 
+⌁︙حذف جميع الرتب
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙[Source Channel](https://t.me/ReL3X7)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList5:(.*)') then
+local Abbs = DataText:match('/HelpList5:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+if not Admin(data) then
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
+end
+local Help = DevAli:get(ReLaX..'Ali:Help5')
+local Text = [[
+⌁︙اوامر المطورين ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙الكروبات
+⌁︙المطورين
+⌁︙المشتركين
+⌁︙الاحصائيات
+⌁︙المجموعات
+⌁︙اسم البوت + غادر
+⌁︙اسم البوت + تعطيل
+⌁︙كشف + -ايدي المجموعه
+⌁︙رفع مالك • تنزيل مالك
+⌁︙المالكين • حذف المالكين
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙رفع • تنزيل ↫ مدير عام
+⌁︙حذف • المدراء العامين 
+⌁︙رفع • تنزيل ↫ ادمن عام
+⌁︙حذف • الادمنيه العامين 
+⌁︙رفع • تنزيل ↫ مميز عام
+⌁︙حذف • المميزين عام 
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙اوامر المطور الاساسي ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙تحديث
+⌁︙الملفات
+⌁︙المتجر
+⌁︙السيرفر
+⌁︙روابط الكروبات
+⌁︙تحديث السورس
+⌁︙تنظيف الكروبات
+⌁︙تنظيف المشتركين
+⌁︙حذف جميع الملفات
+⌁︙تعيين الايدي العام
+⌁︙تغير المطور الاساسي
+⌁︙حذف معلومات الترحيب
+⌁︙تغير معلومات الترحيب
+⌁︙غادر + -ايدي المجموعه
+⌁︙تعيين عدد الاعضاء + العدد
+⌁︙حظر عام • الغاء العام
+⌁︙كتم عام • الغاء العام
+⌁︙قائمه العام • حذف قائمه العام
+⌁︙وضع • حذف ↫ اسم البوت
+⌁︙اضف • حذف ↫ رد عام
+⌁︙ردود المطور • حذف ردود المطور
+⌁︙تعيين • حذف • جلب ↫ رد الخاص
+⌁︙جلب نسخه الكروبات
+⌁︙رفع النسخه + بالرد على الملف
+⌁︙تعيين • حذف ↫ قناة الاشتراك
+⌁︙جلب كليشه الاشتراك
+⌁︙تغيير • حذف ↫ كليشه الاشتراك
+⌁︙رفع • تنزيل ↫ مطور
+⌁︙المطورين • حذف المطورين
+⌁︙رفع • تنزيل ↫ مطور ثانوي
+⌁︙الثانويين • حذف الثانويين
+⌁︙تعيين • حذف ↫ كليشة الايدي
+⌁︙اذاعه للكل بالتوجيه ↫ بالرد
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙تفعيل ملف + اسم الملف
+⌁︙تعطيل ملف + اسم الملف
+⌁︙تفعيل • تعطيل + الامر ↫ ⤈
+⌁︙الاذاعه • الاشتراك الاجباري
+⌁︙ترحيب البوت • المغادره
+⌁︙البوت الخدمي • التواصل
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙[Source Channel](https://t.me/ReL3X7)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList6:(.*)') then
+local Abbs = DataText:match('/HelpList6:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+local Help = DevAli:get(ReLaX..'Ali:Help6')
+local Text = [[
+⌁︙اوامر الاعضاء ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙السورس • موقعي • رتبتي • معلوماتي 
+⌁︙رقمي • لقبي • نبذتي • صلاحياتي • غنيلي
+⌁︙رسائلي • حذف رسائلي • اسمي • معرفي 
+⌁︙ايدي •ايديي • جهاتي • راسلني • الالعاب 
+⌁︙نقاطي • بيع نقاطي • القوانين • زخرفه 
+⌁︙رابط الحذف • نزلني • اطردني • المطور 
+⌁︙منو ضافني • مشاهدات المنشور • الرابط 
+⌁︙ايدي المجموعه • معلومات المجموعه 
+⌁︙نسبه الحب • نسبه الكره • نسبه الغباء 
+⌁︙نسبه الرجوله • نسبه الانوثه • التفاعل
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙لقبه + بالرد
+⌁︙كول + الكلمه
+⌁︙زخرفه + اسمك
+⌁︙برج + نوع البرج
+⌁︙معنى اسم + الاسم
+⌁︙بوسه • بوسها ↫ بالرد
+⌁︙احسب + تاريخ ميلادك
+⌁︙رفع مطي • تنزيل مطي • المطايه
+⌁︙هينه • هينها ↫ بالرد • بالمعرف
+⌁︙صيحه • صيحها ↫ بالرد • بالمعرف
+⌁︙صلاحياته ↫ بالرد • بالمعرف • بالايدي
+⌁︙ايدي • كشف  ↫ بالرد • بالمعرف • بالايدي
+⌁︙تحويل + بالرد ↫ صوره • ملصق • صوت • بصمه
+⌁︙انطق + الكلام تدعم جميع اللغات مع الترجمه للعربي
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+⌁︙[Source Channel](https://t.me/ReL3X7)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
 end
 if (data.ID == "UpdateNewMessage") then
 local msg = data.message_
-local d = data.disable_notification_
-local chat = chats[msg.chat_id_]
 text = msg.content_.text_ 
 if text and DevAli:get(ReLaX.."Del:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_) == "true" then
 local NewCmmd = DevAli:get(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":"..text)
@@ -1015,9 +1450,9 @@ t = "⌁︙قائمة الاوامر المضافه ↫ ⤈ \n┉ ≈ ┉ ≈ �
 for k,v in pairs(List) do
 Cmds = DevAli:get(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":"..v)
 if Cmds then 
-t = t..""..k.."~ ("..v..") • {"..Cmds.."}\n"
+t = t..k.."~ ("..v..") • {"..Cmds.."}\n"
 else
-t = t..""..k.."~ ("..v..") \n"
+t = t..k.."~ ("..v..") \n"
 end
 end
 if #List == 0 then
@@ -1101,9 +1536,9 @@ t = "⌁︙قائمة الصلاحيات المضافه ↫ ⤈ \n┉ ≈ ┉ �
 for k,v in pairs(List) do
 var = DevAli:get(ReLaX.."Comd:New:rt:Ali:"..v..msg.chat_id_)
 if var then
-t = t..""..k.."~ "..v.." • ("..var..")\n"
+t = t..k.."~ "..v.." • ("..var..")\n"
 else
-t = t..""..k.."~ "..v.."\n"
+t = t..k.."~ "..v.."\n"
 end
 end
 Dev_Ali(msg.chat_id_, msg.id_, 1, t, 1, 'html')
@@ -1122,7 +1557,7 @@ if text and text:match("^اضف صلاحيه (.*)$") and ChCheck(msg) then
 ComdNew = text:match("^اضف صلاحيه (.*)$")
 DevAli:set(ReLaX.."Comd:New:rt"..msg.chat_id_..msg.sender_user_id_,ComdNew)  
 DevAli:sadd(ReLaX.."Coomds"..msg.chat_id_,ComdNew)  
-DevAli:setex(ReLaX.."Comd:New"..msg.chat_id_..""..msg.sender_user_id_,200,true)  
+DevAli:setex(ReLaX.."Comd:New"..msg.chat_id_..msg.sender_user_id_,200,true)  
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل نوع الصلاحيه \n{ عضو • مميز  • ادمن  • مدير }\n⌁︙ارسل الغاء لالغاء الامر ", 1, 'html')
 end
 if text and text:match("^حذف صلاحيه (.*)$") and ChCheck(msg) or text and text:match("^مسح صلاحيه (.*)$") and ChCheck(msg) then 
@@ -1130,10 +1565,10 @@ ComdNew = text:match("^حذف صلاحيه (.*)$") or text:match("^مسح صلا
 DevAli:del(ReLaX.."Comd:New:rt:Ali:"..ComdNew..msg.chat_id_)
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حذف الصلاحيه", 1, 'html')
 end
-if DevAli:get(ReLaX.."Comd:New"..msg.chat_id_..""..msg.sender_user_id_) then 
+if DevAli:get(ReLaX.."Comd:New"..msg.chat_id_..msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم الغاء الامر", 1, 'html')
-DevAli:del(ReLaX.."Comd:New"..msg.chat_id_..""..msg.sender_user_id_) 
+DevAli:del(ReLaX.."Comd:New"..msg.chat_id_..msg.sender_user_id_) 
 return false  
 end 
 if text == "مدير" then
@@ -1158,7 +1593,7 @@ if text == "مدير" or text == "ادمن" or text == "مميز" or text == "ع
 local textn = DevAli:get(ReLaX.."Comd:New:rt"..msg.chat_id_..msg.sender_user_id_)  
 DevAli:set(ReLaX.."Comd:New:rt:Ali:"..textn..msg.chat_id_,text)
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم اضافة الصلاحيه", 1, 'html')
-DevAli:del(ReLaX.."Comd:New"..msg.chat_id_..""..msg.sender_user_id_) 
+DevAli:del(ReLaX.."Comd:New"..msg.chat_id_..msg.sender_user_id_) 
 return false  
 end 
 end
@@ -1500,7 +1935,7 @@ end
 end
 for i=0,#mem_id do  
 if msg.content_.members_[i].type_.ID == "UserTypeBot" and Bots == "ked" and not VipMem(msg) then
-HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false")
+HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_.."&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false")
 DevAli:sadd(ReLaX..'Ali:Tkeed:'..msg.chat_id_, msg.sender_user_id_)
 GetInfo = https.request("https://api.telegram.org/bot"..TokenBot.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..mem_id[i].id_)
 local JsonInfo = JSON.decode(GetInfo)
@@ -1537,7 +1972,7 @@ local NameChat = NameChat:gsub("`","")
 local NameChat = NameChat:gsub("*","") 
 local NameChat = NameChat:gsub("{","") 
 local NameChat = NameChat:gsub("}","") 
-if not Sudo(msg) then
+if not Sudo(msg) and not Bot(msg) then
 SendText(DevId,"⌁︙تم طرد البوت من المجموعه ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙بواسطة ↫ "..Name.."\n⌁︙اسم المجموعه ↫ ["..NameChat.."]\n⌁︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙الوقت ↫ "..os.date("%I:%M%p").."\n⌁︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end
 end,nil)
@@ -1581,7 +2016,6 @@ status = 'ادمن'
 else 
 status = 'عضو'
 end
-DevAli:del(ReLaX..'Ali:AliConstructor:'..msg.chat_id_)
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,alii) 
 local admins = alii.members_
 for i=0 , #admins do
@@ -1664,12 +2098,24 @@ end;end,nil)
 --     Source ReLaX     --
 local ReFalse = tostring(msg.chat_id_)
 if not DevAli:sismember(ReLaX.."Ali:Groups",msg.chat_id_) and not ReFalse:match("^(%d+)") and not SudoBot(msg) then
-print("Return False [ Not Enable ]")
+print("Return False : The Bot Is Not Enabled In The Group")
 return false
 end
 --     Source ReLaX     --
 -------- MSG TYPES ---------
 if msg.content_.ID == "MessageChatJoinByLink" and not VipMem(msg) then 
+if DevAli:get(ReLaX..'Ali:Lock:Robot'..msg.chat_id_) then
+tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(arg,dp) 
+HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..dp.id_)
+DevAli:sadd(ReLaX..'Ali:Tkeed:'..msg.chat_id_, dp.id_)
+local Text = '⌁︙اهلا عزيزي ↫ ['..string.sub(dp.first_name_,0, 40)..'](tg://user?id='..dp.id_..')\n⌁︙يجب علينا التأكد أنك لست روبوت\n⌁︙تم تقيدك اضغط الزر بالاسفل لفكه'
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اضغط هنا لفك تقيدك",callback_data="/UnTkeed"}}} 
+Msg_id = msg.id_/2097152/0.5
+HTTPS.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text='..URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end,nil)
+return false
+end
 if DevAli:get(ReLaX.."Ali:Lock:Join"..msg.chat_id_) then
 ChatKick(msg.chat_id_,msg.sender_user_id_) 
 return false  
@@ -1681,7 +2127,7 @@ local filter = DevAli:smembers(ReLaX.."Ali:FilterPhoto"..msg.chat_id_)
 for k,v in pairs(filter) do
 if v == msg.content_.photo_.id_ then
 ReplyStatus(msg,msg.sender_user_id_,"WrongWay","⌁︙الصوره التي ارسلتها تم منعها من المجموعه")  
-DeleteMessage(msg.chat_id_,{[0] = msg.id_})       
+DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 return false   
 end
 end
@@ -1711,29 +2157,75 @@ end
 end
 end
 end
---     Source ReLaX     --
-if ((not d) and chat) then
-if msg.content_.ID == "MessageText" then
-do_notify (chat.title_, msg.content_.text_)
-else
-do_notify (chat.title_, msg.content_.ID)
+if msg.content_.ID == "MessagePhoto" or msg.content_.ID == "MessageSticker" then
+if DevAli:get(ReLaX..'Ali:Lock:NightClub'..msg.chat_id_) and msg.reply_to_message_id_ == 0 then
+if msg.content_.ID == "MessagePhoto" then Media = 'صوره اباحيه' UrlId = msg.content_.photo_.sizes_[1].photo_.persistent_id_
+elseif msg.content_.ID == "MessageSticker" then Media = 'ملصق اباحي' UrlId = msg.content_.sticker_.sticker_.persistent_id_
+end
+HttpsMsg = https.request('https://apiali.ml/nightclub.php?Get=ReLaX&TokenBot='..TokenBot..'&Url='..UrlId)
+EndMsg = JSON.decode(HttpsMsg)
+if EndMsg.Result.Info == "Indecent" then
+DeleteMessage(msg.chat_id_,{[0] = msg.id_})
+tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dp) 
+local aliname = '⌁︙العضو ↫ ['..dp.first_name_..'](tg://user?id='..dp.id_..')'
+local aliid = '⌁︙ايديه ↫ `'..dp.id_..'`'
+local alitext = '⌁︙قام بنشر '..Media
+local alitxt = '┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙تعالو يامشرفين اكو مخرب'
+tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,alii) 
+local admins = alii.members_  
+text = '\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n'
+for i=0 , #admins do 
+if not alii.members_[i].bot_info_ then
+tdcli_function ({ID = "GetUser",user_id_ = admins[i].user_id_},function(arg,data) 
+if data.first_name_ ~= false then
+text = text.."~ [@"..data.username_.."]\n"
+end
+if #admins == i then 
+SendText(msg.chat_id_, aliname..'\n'..aliid..'\n'..alitext..text..alitxt,0,'md') 
+end
+end,nil)
+end
+end
+end,nil)
+end,nil)
+end
 end
 end
 --     Source ReLaX     --
 if text and text:match("^(.*)$") then
-local DelGpRed = DevAli:get(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_..'')
+local DelGpRedRedods = DevAli:get(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+local GetGpTexts = DevAli:get(ReLaX..'Ali:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_)
+if DelGpRedRedods == 'DelGpRedRedods' then
+Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙الرد ↫ '..msg.content_.text_..' للكلمه ↫ '..GetGpTexts..' تم حذفها',  1, "html")
+DevAli:del(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+DevAli:srem(ReLaX..'Ali:Text:GpTexts'..GetGpTexts..msg.chat_id_,msg.content_.text_)
+return false
+end
+end
+if text and text:match("^(.*)$") then
+local DelGpRed = DevAli:get(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+if DelGpRed == 'DelGpRedod' then
+Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙الكلمه ↫ '..msg.content_.text_..' تم حذفها',  1, "html")
+DevAli:del(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:Text:GpTexts'..msg.content_.text_..msg.chat_id_)
+DevAli:srem(ReLaX..'Ali:Manager:GpRedod'..msg.chat_id_,msg.content_.text_)
+return false
+end
+end
+if text and text:match("^(.*)$") then
+local DelGpRed = DevAli:get(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
 if DelGpRed == 'DelGpRed' then
 Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙الكلمه ↫ '..msg.content_.text_..' تم حذفها',  1, "html")
-DevAli:del(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_..'')
-DevAli:del(ReLaX..'Ali:Gif:GpRed'..msg.content_.text_..''..msg.chat_id_..'')
-DevAli:del(ReLaX..'Ali:Voice:GpRed'..msg.content_.text_..''..msg.chat_id_..'')
-DevAli:del(ReLaX..'Ali:Audio:GpRed'..msg.content_.text_..''..msg.chat_id_..'')
-DevAli:del(ReLaX..'Ali:Photo:GpRed'..msg.content_.text_..''..msg.chat_id_..'')
-DevAli:del(ReLaX..'Ali:Stecker:GpRed'..msg.content_.text_..''..msg.chat_id_..'')
-DevAli:del(ReLaX..'Ali:Video:GpRed'..msg.content_.text_..''..msg.chat_id_..'')
-DevAli:del(ReLaX..'Ali:File:GpRed'..msg.content_.text_..''..msg.chat_id_..'')
-DevAli:del(ReLaX..'Ali:Text:GpRed'..msg.content_.text_..''..msg.chat_id_..'')
-DevAli:srem(ReLaX..'Ali:Manager:GpRed'..msg.chat_id_..'',msg.content_.text_)
+DevAli:del(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:Gif:GpRed'..msg.content_.text_..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:Voice:GpRed'..msg.content_.text_..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:Audio:GpRed'..msg.content_.text_..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:Photo:GpRed'..msg.content_.text_..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:Stecker:GpRed'..msg.content_.text_..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:Video:GpRed'..msg.content_.text_..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:File:GpRed'..msg.content_.text_..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:Text:GpRed'..msg.content_.text_..msg.chat_id_)
+DevAli:srem(ReLaX..'Ali:Manager:GpRed'..msg.chat_id_,msg.content_.text_)
 return false
 end
 end
@@ -1755,29 +2247,64 @@ return false
 end
 end
 --     Source ReLaX     --
-if msg.content_.text_ or msg.content_.video_ or msg.content_.document_ or msg.content_.sticker_ or msg.content_.voice_ or msg.content_.audio_ or msg.content_.photo_ or msg.content_.animation_ then 
-local SaveGpRed = DevAli:get(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_..'')
-if SaveGpRed == 'SaveGpRed' then 
-if text == 'الغاء' then
-local DelManagerRep = DevAli:get(ReLaX..'DelManagerRep'..msg.chat_id_..'')
-DevAli:srem(ReLaX..'Ali:Manager:GpRed'..msg.chat_id_..'',DelManagerRep)
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم الغاء حفظ الرد', 1, 'md')
-DevAli:del(ReLaX..'Ali:Add:GpText'..msg.sender_user_id_..''..msg.chat_id_..'')
-DevAli:del(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_)
-DevAli:del(ReLaX..'DelManagerRep'..msg.chat_id_..'')
+if text and text:match("^(.*)$") then
+local SaveGpRedod = DevAli:get(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+if SaveGpRedod == 'SaveGpRedod' then
+local GetGpTexts = DevAli:get(ReLaX..'Ali:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_)
+local List = DevAli:smembers(ReLaX..'Ali:Text:GpTexts'..GetGpTexts..msg.chat_id_)
+if text == "الغاء" then 
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙⌁︙تم الغاء عملية حفظ الردود المتعدده للامر ↫ "..GetGpTexts ,  1, "md")
+DevAli:del(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:Text:GpTexts'..GetGpTexts..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_)
+DevAli:srem(ReLaX..'Ali:Manager:GpRedod'..msg.chat_id_,GetGpTexts)
 return false
 end
-DevAli:del(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_..'')
-local SaveGpRed = DevAli:get(ReLaX..'Ali:Add:GpText'..msg.sender_user_id_..''..msg.chat_id_..'')
-if msg.content_.video_ then DevAli:set(ReLaX..'Ali:Video:GpRed'..SaveGpRed..''..msg.chat_id_..'', msg.content_.video_.video_.persistent_id_)
+Text = text:gsub('"',""):gsub('"',""):gsub("`",""):gsub("*","")
+DevAli:sadd(ReLaX..'Ali:Text:GpTexts'..GetGpTexts..msg.chat_id_,Text)
+if #List == 4 then 
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ ↫ 5 من الردود المتعدده للامر ↫ "..GetGpTexts ,  1, "md")
+DevAli:del(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+return false
 end
-if msg.content_.document_ then DevAli:set(ReLaX..'Ali:File:GpRed'..SaveGpRed..''..msg.chat_id_..'', msg.content_.document_.document_.persistent_id_)
+local Ali = "⌁︙تم حفظ الرد رقم ↫ "..(#List+1).."\n⌁︙قم بارسال الرد رقم ↫ "..(#List+2)
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="انهاء وحفظ "..(#List+1).." من الردود",callback_data="/EndRedod:"..msg.sender_user_id_..GetGpTexts}},{{text="الغاء وحذف التخزين",callback_data="/DelRedod:"..msg.sender_user_id_..GetGpTexts}}} 
+Msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Ali).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return false
 end
-if msg.content_.sticker_ then DevAli:set(ReLaX..'Ali:Stecker:GpRed'..SaveGpRed..''..msg.chat_id_..'', msg.content_.sticker_.sticker_.persistent_id_) 
+end
+if text and not DevAli:get(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_) then
+if DevAli:sismember(ReLaX..'Ali:Manager:GpRedod'..msg.chat_id_,text) then
+local ReLaXTEAM =  DevAli:smembers(ReLaX..'Ali:Text:GpTexts'..text..msg.chat_id_)
+Dev_Ali(msg.chat_id_, msg.id_, 1, '['..ReLaXTEAM[math.random(#ReLaXTEAM)]..']' , 1, 'md')  
+end
+end
+--     Source ReLaX     --
+if msg.content_.text_ or msg.content_.video_ or msg.content_.document_ or msg.content_.sticker_ or msg.content_.voice_ or msg.content_.audio_ or msg.content_.photo_ or msg.content_.animation_ then 
+local SaveGpRed = DevAli:get(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
+if SaveGpRed == 'SaveGpRed' then 
+if text == 'الغاء' then
+local DelManagerRep = DevAli:get(ReLaX..'DelManagerRep'..msg.chat_id_)
+DevAli:srem(ReLaX..'Ali:Manager:GpRed'..msg.chat_id_,DelManagerRep)
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم الغاء حفظ الرد', 1, 'md')
+DevAli:del(ReLaX..'Ali:Add:GpText'..msg.sender_user_id_..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
+DevAli:del(ReLaX..'DelManagerRep'..msg.chat_id_)
+return false
+end
+DevAli:del(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
+local SaveGpRed = DevAli:get(ReLaX..'Ali:Add:GpText'..msg.sender_user_id_..msg.chat_id_)
+if msg.content_.video_ then DevAli:set(ReLaX..'Ali:Video:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.video_.video_.persistent_id_)
+end
+if msg.content_.document_ then DevAli:set(ReLaX..'Ali:File:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.document_.document_.persistent_id_)
+end
+if msg.content_.sticker_ then DevAli:set(ReLaX..'Ali:Stecker:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.sticker_.sticker_.persistent_id_) 
 end 
-if msg.content_.voice_ then DevAli:set(ReLaX..'Ali:Voice:GpRed'..SaveGpRed..''..msg.chat_id_..'', msg.content_.voice_.voice_.persistent_id_) 
+if msg.content_.voice_ then DevAli:set(ReLaX..'Ali:Voice:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.voice_.voice_.persistent_id_) 
 end
-if msg.content_.audio_ then DevAli:set(ReLaX..'Ali:Audio:GpRed'..SaveGpRed..''..msg.chat_id_..'', msg.content_.audio_.audio_.persistent_id_) 
+if msg.content_.audio_ then DevAli:set(ReLaX..'Ali:Audio:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.audio_.audio_.persistent_id_) 
 end
 if msg.content_.photo_ then
 if msg.content_.photo_.sizes_[0] then
@@ -1792,47 +2319,47 @@ end
 if msg.content_.photo_.sizes_[3] then
 photo_in_group = msg.content_.photo_.sizes_[3].photo_.persistent_id_
 end
-DevAli:set(ReLaX..'Ali:Photo:GpRed'..SaveGpRed..''..msg.chat_id_..'', photo_in_group) 
+DevAli:set(ReLaX..'Ali:Photo:GpRed'..SaveGpRed..msg.chat_id_, photo_in_group) 
 end
-if msg.content_.animation_ then DevAli:set(ReLaX..'Ali:Gif:GpRed'..SaveGpRed..''..msg.chat_id_..'', msg.content_.animation_.animation_.persistent_id_) 
+if msg.content_.animation_ then DevAli:set(ReLaX..'Ali:Gif:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.animation_.animation_.persistent_id_) 
 end 
 if msg.content_.text_ then
-DevAli:set(ReLaX..'Ali:Text:GpRed'..SaveGpRed..''..msg.chat_id_..'', msg.content_.text_)
+DevAli:set(ReLaX..'Ali:Text:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.text_)
 end 
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم حفظ الرد الجديد', 1, 'md') 
-DevAli:del(ReLaX..'Ali:Add:GpText'..msg.sender_user_id_..''..msg.chat_id_..'')
-DevAli:del(ReLaX..'DelManagerRep'..msg.chat_id_..'')
+DevAli:del(ReLaX..'Ali:Add:GpText'..msg.sender_user_id_..msg.chat_id_)
+DevAli:del(ReLaX..'DelManagerRep'..msg.chat_id_)
 return false 
 end 
 end
 if msg.content_.text_ and not DevAli:get(ReLaX..'Ali:Lock:GpRed'..msg.chat_id_) then 
-if DevAli:get(ReLaX..'Ali:Video:GpRed'..msg.content_.text_..''..msg.chat_id_..'') then 
-sendVideo(msg.chat_id_, msg.id_, 0, 1,nil, DevAli:get(ReLaX..'Ali:Video:GpRed'..msg.content_.text_..''..msg.chat_id_..'')) 
+if DevAli:get(ReLaX..'Ali:Video:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendVideo(msg.chat_id_, msg.id_, 0, 1,nil, DevAli:get(ReLaX..'Ali:Video:GpRed'..msg.content_.text_..msg.chat_id_)) 
 end 
-if DevAli:get(ReLaX..'Ali:File:GpRed'..msg.content_.text_..''..msg.chat_id_..'') then 
-sendDocument(msg.chat_id_, msg.id_, 0, 1,nil, DevAli:get(ReLaX..'Ali:File:GpRed'..msg.content_.text_..''..msg.chat_id_..'')) 
+if DevAli:get(ReLaX..'Ali:File:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendDocument(msg.chat_id_, msg.id_, 0, 1,nil, DevAli:get(ReLaX..'Ali:File:GpRed'..msg.content_.text_..msg.chat_id_)) 
 end 
-if DevAli:get(ReLaX..'Ali:Voice:GpRed'..msg.content_.text_..''..msg.chat_id_..'') then 
-sendVoice(msg.chat_id_, msg.id_, 0, 1, nil, DevAli:get(ReLaX..'Ali:Voice:GpRed'..msg.content_.text_..''..msg.chat_id_..'')) 
+if DevAli:get(ReLaX..'Ali:Voice:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendVoice(msg.chat_id_, msg.id_, 0, 1, nil, DevAli:get(ReLaX..'Ali:Voice:GpRed'..msg.content_.text_..msg.chat_id_)) 
 end
-if DevAli:get(ReLaX..'Ali:Audio:GpRed'..msg.content_.text_..''..msg.chat_id_..'') then 
-sendAudio(msg.chat_id_, msg.id_, 0, 1, nil, DevAli:get(ReLaX..'Ali:Audio:GpRed'..msg.content_.text_..''..msg.chat_id_..'')) 
+if DevAli:get(ReLaX..'Ali:Audio:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendAudio(msg.chat_id_, msg.id_, 0, 1, nil, DevAli:get(ReLaX..'Ali:Audio:GpRed'..msg.content_.text_..msg.chat_id_)) 
 end
-if DevAli:get(ReLaX..'Ali:Photo:GpRed'..msg.content_.text_..''..msg.chat_id_..'') then 
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, DevAli:get(ReLaX..'Ali:Photo:GpRed'..msg.content_.text_..''..msg.chat_id_..'')) 
+if DevAli:get(ReLaX..'Ali:Photo:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, DevAli:get(ReLaX..'Ali:Photo:GpRed'..msg.content_.text_..msg.chat_id_)) 
 end
-if DevAli:get(ReLaX..'Ali:Gif:GpRed'..msg.content_.text_..''..msg.chat_id_..'') then 
-sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, DevAli:get(ReLaX..'Ali:Gif:GpRed'..msg.content_.text_..''..msg.chat_id_..'')) 
+if DevAli:get(ReLaX..'Ali:Gif:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, DevAli:get(ReLaX..'Ali:Gif:GpRed'..msg.content_.text_..msg.chat_id_)) 
 end 
-if DevAli:get(ReLaX..'Ali:Stecker:GpRed'..msg.content_.text_..''..msg.chat_id_..'') then 
-sendSticker(msg.chat_id_, msg.id_, 0, 1,nil, DevAli:get(ReLaX..'Ali:Stecker:GpRed'..msg.content_.text_..''..msg.chat_id_..''))
+if DevAli:get(ReLaX..'Ali:Stecker:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendSticker(msg.chat_id_, msg.id_, 0, 1,nil, DevAli:get(ReLaX..'Ali:Stecker:GpRed'..msg.content_.text_..msg.chat_id_))
 end
-if DevAli:get(ReLaX..'Ali:Text:GpRed'..msg.content_.text_..''..msg.chat_id_..'') then
+if DevAli:get(ReLaX..'Ali:Text:GpRed'..msg.content_.text_..msg.chat_id_) then
 function ReLaXTEAM(extra,result,success)
 if result.username_ then username = '[@'..result.username_..']' else username = 'لا يوجد' end
 local edit_msg = DevAli:get(ReLaX..'Ali:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0
 local user_msgs = DevAli:get(ReLaX..'Ali:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
-local Text = DevAli:get(ReLaX..'Ali:Text:GpRed'..msg.content_.text_..''..msg.chat_id_..'')
+local Text = DevAli:get(ReLaX..'Ali:Text:GpRed'..msg.content_.text_..msg.chat_id_)
 local Text = Text:gsub('#username',(username or 'لا يوجد')) 
 local Text = Text:gsub('#name','['..result.first_name_..']')
 local Text = Text:gsub('#id',msg.sender_user_id_)
@@ -1943,7 +2470,7 @@ end
 --       Spam Send        --
 function NotSpam(msg,Type)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dp) 
-local GetName = '['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..')'
+local GetName = '['..dp.first_name_..'](tg://user?id='..dp.id_..')'
 if Type == "kick" then 
 ChatKick(msg.chat_id_,msg.sender_user_id_) 
 my_ide = msg.sender_user_id_
@@ -1966,7 +2493,7 @@ DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 return false  
 end 
 if Type == "keed" and not DevAli:sismember(ReLaX..'Ali:Tkeed:'..msg.chat_id_, msg.sender_user_id_) then
-https.request("https://api.telegram.org/bot" .. TokenBot .. "/restrictChatMember?chat_id=" ..msg.chat_id_.. "&user_id=" ..msg.sender_user_id_.."") 
+https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_.."") 
 DevAli:sadd(ReLaX..'Ali:Tkeed:'..msg.chat_id_, msg.sender_user_id_)
 my_ide = msg.sender_user_id_
 msgm = msg.id_
@@ -2192,14 +2719,14 @@ return
 end
 function get_welcome(extra,result,success)
 if DevAli:get(ReLaX..'Ali:Groups:Welcomes'..msg.chat_id_) then
-text = DevAli:get(ReLaX..'Ali:Groups:Welcomes'..msg.chat_id_)
+Welcomes = DevAli:get(ReLaX..'Ali:Groups:Welcomes'..msg.chat_id_)
 else
-text = '• نورت حبي \n• [firstname lastname] \n• [@username]'
+Welcomes = '• نورت حبي \n• firstname \n• @username'
 end
-local text = text:gsub('firstname',(result.first_name_ or ''))
-local text = text:gsub('lastname',(result.last_name_ or ''))
-local text = text:gsub('username',(result.username_ or 'ReL3X7'))
-Dev_Ali(msg.chat_id_, msg.id_, 1, text, 1, 'md')
+local Welcomes = Welcomes:gsub('"',"") Welcomes = Welcomes:gsub("'","") Welcomes = Welcomes:gsub(",","") Welcomes = Welcomes:gsub("*","") Welcomes = Welcomes:gsub(";","") Welcomes = Welcomes:gsub("`","") Welcomes = Welcomes:gsub("{","") Welcomes = Welcomes:gsub("}","") 
+local Welcomes = Welcomes:gsub('firstname',('['..result.first_name_..']' or ''))
+local Welcomes = Welcomes:gsub('username',('[@'..result.username_..']' or '[@ReL3X7]'))
+Dev_Ali(msg.chat_id_, msg.id_, 1, Welcomes, 1, 'md')
 end 
 if DevAli:get(ReLaX.."Ali:Lock:Welcome"..msg.chat_id_) then
 getUser(msg.sender_user_id_,get_welcome)
@@ -2212,14 +2739,10 @@ tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = ReLaX,offset_ = 0,limit_
 for i=0,#msg.content_.members_ do    
 BotWelcome = msg.content_.members_[i].id_    
 if BotWelcome and BotWelcome == tonumber(ReLaX) then 
-if DevAli:sismember(ReLaX..'Ali:Groups',msg.chat_id_) then
-BotText = "مفعله في السابق\n⌁︙ارسل ↫ الاوامر واستمتع بالمميزيات"
-else 
-BotText = "معطله يجب رفعي مشرف\n⌁︙بعد ذلك يرجى ارسال امر ↫ تفعيل\n⌁︙سيتم رفع الادمنيه والمنشئ تلقائيا"
-end 
-local AliText = (DevAli:get(ReLaX.."Ali:Text:BotWelcome") or "⌁︙مرحبا انا بوت اسمي "..NameBot.."\n⌁︙حالة المجموعه ↫ "..BotText.."\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉")
-local AliPhoto = (DevAli:get(ReLaX.."Ali:Photo:BotWelcome") or alii.photos_[0].sizes_[1].photo_.persistent_id_)
-if DevAli:get(ReLaX.."Ali:Photo:BotWelcome") or alii.photos_[0] then
+if DevAli:sismember(ReLaX..'Ali:Groups',msg.chat_id_) then BotText = "مفعله في السابق\n⌁︙ارسل ↫ الاوامر واستمتع بالمميزيات" else BotText = "معطله يجب رفعي مشرف\n⌁︙بعد ذلك يرجى ارسال امر ↫ تفعيل\n⌁︙سيتم رفع الادمنيه والمنشئ تلقائيا" end 
+if DevAli:get(ReLaX.."Ali:Text:BotWelcome") then AliText = DevAli:get(ReLaX.."Ali:Text:BotWelcome") else AliText = "⌁︙مرحبا انا بوت اسمي "..NameBot.."\n⌁︙حالة المجموعه ↫ "..BotText.."\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉" end 
+if DevAli:get(ReLaX.."Ali:Photo:BotWelcome") then AliPhoto = DevAli:get(ReLaX.."Ali:Photo:BotWelcome") elseif alii.photos_[0] then AliPhoto = alii.photos_[0].sizes_[1].photo_.persistent_id_ else AliPhoto = nil end 
+if AliPhoto ~= nil then
 sendPhoto(msg.chat_id_,msg.id_,0,1,nil,AliPhoto,AliText)
 else 
 send(msg.chat_id_,msg.id_,AliText)
@@ -2244,14 +2767,14 @@ return false
 end
 if DevAli:get(ReLaX.."Ali:Lock:Welcome"..msg.chat_id_) then
 if DevAli:get(ReLaX..'Ali:Groups:Welcomes'..msg.chat_id_) then
-text = DevAli:get(ReLaX..'Ali:Groups:Welcomes'..msg.chat_id_)
+Welcomes = DevAli:get(ReLaX..'Ali:Groups:Welcomes'..msg.chat_id_)
 else
-text = '• نورت حبي \n• [firstname lastname] \n• [@username]'
+Welcomes = '• نورت حبي \n• firstname \n• @username'
 end
-local text = text:gsub('firstname',(msg.content_.members_[0].first_name_ or ''))
-local text = text:gsub('lastname',(msg.content_.members_[0].last_name_ or ''))
-local text = text:gsub('username',(msg.content_.members_[0].username_ or 'ReL3X7'))
-Dev_Ali(msg.chat_id_, msg.id_, 1, text, 1, 'md')
+local Welcomes = Welcomes:gsub('"',"") Welcomes = Welcomes:gsub("'","") Welcomes = Welcomes:gsub(",","") Welcomes = Welcomes:gsub("*","") Welcomes = Welcomes:gsub(";","") Welcomes = Welcomes:gsub("`","") Welcomes = Welcomes:gsub("{","") Welcomes = Welcomes:gsub("}","") 
+local Welcomes = Welcomes:gsub('firstname',('['..msg.content_.members_[0].first_name_..']' or ''))
+local Welcomes = Welcomes:gsub('username',('[@'..msg.content_.members_[0].username_..']' or '[@ReL3X7]'))
+Dev_Ali(msg.chat_id_, msg.id_, 1, Welcomes, 1, 'md')
 end
 --     Source ReLaX     --
 --        Contact         --
@@ -2568,17 +3091,17 @@ end
 end
 end
 --     Source ReLaX     --
-if DevAli:get(ReLaX.."Ali:Set:Groups:Links"..msg.chat_id_..""..msg.sender_user_id_) then
+if DevAli:get(ReLaX.."Ali:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_) then
 if text == "الغاء" then
 send(msg.chat_id_,msg.id_,"⌁︙تم الغاء حفظ الرابط")       
-DevAli:del(ReLaX.."Ali:Set:Groups:Links"..msg.chat_id_..""..msg.sender_user_id_) 
+DevAli:del(ReLaX.."Ali:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_) 
 return false
 end
 if msg.content_.text_:match("(https://telegram.me/joinchat/%S+)") or msg.content_.text_:match("(https://t.me/joinchat/%S+)") then
 local Link = msg.content_.text_:match("(https://telegram.me/joinchat/%S+)") or msg.content_.text_:match("(https://t.me/joinchat/%S+)")
 DevAli:set(ReLaX.."Ali:Groups:Links"..msg.chat_id_,Link)
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم حفظ الرابط بنجاح', 1, 'md')
-DevAli:del(ReLaX.."Ali:Set:Groups:Links"..msg.chat_id_..""..msg.sender_user_id_) 
+DevAli:del(ReLaX.."Ali:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end
 end
@@ -2586,13 +3109,13 @@ end
 local msg = data.message_
 text = msg.content_.text_
 if text and Constructor(msg) then 
-if DevAli:get('ReLaXTEAM:'..ReLaX.."numadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
+if DevAli:get('ReLaXTEAM:'..ReLaX.."numadd:user"..msg.chat_id_.."" .. msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
 DevAli:del('ReLaXTEAM:'..ReLaX..'id:user'..msg.chat_id_)  
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم الغاء الامر', 1, 'md')
-DevAli:del('ReLaXTEAM:'..ReLaX.."numadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+DevAli:del('ReLaXTEAM:'..ReLaX.."numadd:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
 return false  end 
-DevAli:del('ReLaXTEAM:'..ReLaX.."numadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+DevAli:del('ReLaXTEAM:'..ReLaX.."numadd:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
 local numadded = string.match(text, "(%d+)") 
 local iduserr = DevAli:get('ReLaXTEAM:'..ReLaX..'id:user'..msg.chat_id_)  
 DevAli:incrby(ReLaX..'Ali:UsersMsgs'..msg.chat_id_..':'..iduserr,numadded)
@@ -2601,13 +3124,13 @@ DevAli:del('ReLaXTEAM:'..ReLaX..'id:user'..msg.chat_id_)
 end
 end
 if text and Constructor(msg) then 
-if DevAli:get('ReLaXTEAM:'..ReLaX.."nmadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
+if DevAli:get('ReLaXTEAM:'..ReLaX.."nmadd:user"..msg.chat_id_.."" .. msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
 DevAli:del('ReLaXTEAM:'..ReLaX..'ids:user'..msg.chat_id_)  
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم الغاء الامر', 1, 'md')
-DevAli:del('ReLaXTEAM:'..ReLaX.."nmadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+DevAli:del('ReLaXTEAM:'..ReLaX.."nmadd:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
 return false  end 
-DevAli:del('ReLaXTEAM:'..ReLaX.."nmadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+DevAli:del('ReLaXTEAM:'..ReLaX.."nmadd:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
 local numadded = string.match(text, "(%d+)") 
 local iduserr = DevAli:get('ReLaXTEAM:'..ReLaX..'ids:user'..msg.chat_id_)  
 DevAli:incrby(ReLaX..'Ali:GamesNumber'..msg.chat_id_..iduserr,numadded)  
@@ -2643,13 +3166,14 @@ ReplyStatus(msg,msg.sender_user_id_,"WrongWay","⌁︙ممنوع التكلم ب
 end end
 --     Source ReLaX     --
 if SecondSudo(msg) then
-if text == 'جلب نسخه الكروبات' and ChCheck(msg) or text == 'جلب نسخه احتياطيه' and ChCheck(msg) then
+if text == 'جلب نسخه الكروبات' or text == 'جلب نسخه احتياطيه' or text == 'جلب النسخه الاحتياطيه' then
 local List = DevAli:smembers(ReLaX..'Ali:Groups') 
 local BotName = (DevAli:get(ReLaX.."Ali:NameBot") or 'ريلاكس')
 local GetJson = '{"BotId": '..ReLaX..',"BotName": "'..BotName..'","GroupsList":{'  
 for k,v in pairs(List) do 
 LinkGroups = DevAli:get(ReLaX.."Ali:Groups:Links"..v)
 Welcomes = DevAli:get(ReLaX..'Ali:Groups:Welcomes'..v) or ''
+Welcomes = Welcomes:gsub('"',"") Welcomes = Welcomes:gsub("'","") Welcomes = Welcomes:gsub(",","") Welcomes = Welcomes:gsub("*","") Welcomes = Welcomes:gsub(";","") Welcomes = Welcomes:gsub("`","") Welcomes = Welcomes:gsub("{","") Welcomes = Welcomes:gsub("}","") 
 AliConstructors = DevAli:smembers(ReLaX..'Ali:AliConstructor:'..v)
 Constructors = DevAli:smembers(ReLaX..'Ali:BasicConstructor:'..v)
 BasicConstructors = DevAli:smembers(ReLaX..'Ali:Constructor:'..v)
@@ -2739,7 +3263,7 @@ File:close()
 sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, './'..ReLaX..'.json', '⌁︙يحتوي الملف على ↫ '..#List..' مجموعه',dl_cb, nil)
 io.popen('rm -rf ./'..ReLaX..'.json')
 end
-if text == 'رفع النسخه' and tonumber(msg.reply_to_message_id_) > 0 or text == 'رفع النسخه الاحتياطيه' and tonumber(msg.reply_to_message_id_) > 0 then   
+if text and (text == 'رفع النسخه' or text == 'رفع النسخه الاحتياطيه' or text == 'رفع نسخه الاحتياطيه') and tonumber(msg.reply_to_message_id_) > 0 then   
 function by_reply(extra, result, success)   
 if result.content_.document_ then 
 local ID_FILE = result.content_.document_.document_.persistent_id_ 
@@ -2788,8 +3312,7 @@ return false  end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == false then
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.ID and data.type_.channel_.status_.ID == 'ChatMemberStatusEditor' then
 send(msg.chat_id_, msg.id_,'⌁︙البوت ادمن في القناة \n⌁︙تم تفعيل الاشتراك الاجباري \n⌁︙ايدي القناة ↫ '..data.id_..'\n⌁︙معرف القناة ↫ [@'..data.type_.channel_.username_..']')
-DevAli:set(ReLaX..'DevAli2',data.id_)
-DevAli:set(ReLaX..'DevAli3','@'..data.type_.channel_.username_)
+DevAli:set(ReLaX..'Ali:ChId',data.id_)
 else
 send(msg.chat_id_, msg.id_,'⌁︙عذرا البوت ليس ادمن في القناة')
 end
@@ -2798,13 +3321,13 @@ end
 end,nil)
 end
 --     Source ReLaX     --
-if DevAli:get(ReLaX.."Ali:DevText" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then
+if DevAli:get(ReLaX.."Ali:DevText"..msg.chat_id_..":" .. msg.sender_user_id_) then
 if text and text:match("^الغاء$") then 
-DevAli:del(ReLaX.."Ali:DevText" .. msg.chat_id_ .. ":" .. msg.sender_user_id_)
+DevAli:del(ReLaX.."Ali:DevText"..msg.chat_id_..":" .. msg.sender_user_id_)
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم الغاء الامر', 1, 'md')
 return false 
 end 
-DevAli:del(ReLaX.."Ali:DevText" .. msg.chat_id_ .. ":" .. msg.sender_user_id_)
+DevAli:del(ReLaX.."Ali:DevText"..msg.chat_id_..":" .. msg.sender_user_id_)
 local DevText = msg.content_.text_:match("(.*)")
 DevAli:set(ReLaX.."DevText", DevText)
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ كليشة المطور", 1, "md")
@@ -2837,22 +3360,19 @@ if ChatType == 'sp' or ChatType == 'gp'  then
 if text == 'بوت' or text == 'بوتت' then 
 NameBot = (DevAli:get(ReLaX..'Ali:NameBot') or 'ريلاكس')
 local ReLaXTEAM = {"لتكول بوت اسمي "..NameBot.." 😒🔪","اسمي القميل "..NameBot.." 😚♥️","عندي اسم تره 😒💔","صيحولي "..NameBot.." كافي بوت 😒🔪","انت البوت لك 😒💔"} 
-DevAli2 = math.random(#ReLaXTEAM) 
-Dev_Ali(msg.chat_id_, msg.id_, 1, ReLaXTEAM[DevAli2] , 1, 'html') 
+Dev_Ali(msg.chat_id_, msg.id_, 1, ReLaXTEAM[math.random(#ReLaXTEAM)] , 1, 'html') 
 return false
 end
 if text == 'اسم البوت' or text == 'البوت شنو اسمه' or text == 'شسمه البوت' or text == 'البوت شسمه' then
 NameBot = (DevAli:get(ReLaX..'Ali:NameBot') or 'ريلاكس') 
 local ReLaXTEAM = {"اسمي القميل "..NameBot.." 😚♥️","هلاا يروحيي وياكك "..NameBot.." 😻♥️"} 
-DevAli2 = math.random(#ReLaXTEAM) 
-Dev_Ali(msg.chat_id_, msg.id_, 1, ReLaXTEAM[DevAli2] , 1, 'html') 
+Dev_Ali(msg.chat_id_, msg.id_, 1, ReLaXTEAM[math.random(#ReLaXTEAM)] , 1, 'html') 
 return false
 end
 if text and text == (DevAli:get(ReLaX..'Ali:NameBot') or 'ريلاكس') then 
 NameBot = (DevAli:get(ReLaX..'Ali:NameBot') or 'ريلاكس')
-local namebot = {'😸♥️ هلا كلبي وياك '..NameBot..' تفضل','ترةه مصختهاا احجيي شرايد 😕😒💔','اطلقق واحدد يصيح '..NameBot..' 😻♥️','خبصتت امنةة شتريدد عااد 🤧😒💔'} 
-name = math.random(#namebot) 
-Dev_Ali(msg.chat_id_, msg.id_, 1, namebot[name] , 1, 'html') 
+local ReLaXTEAM = {'😸♥️ هلا كلبي وياك '..NameBot..' تفضل','ترةه مصختهاا احجيي شرايد 😕😒💔','اطلقق واحدد يصيح '..NameBot..' 😻♥️','خبصتت امنةة شتريدد عااد 🤧😒💔'} 
+Dev_Ali(msg.chat_id_, msg.id_, 1, ReLaXTEAM[math.random(#ReLaXTEAM)] , 1, 'html') 
 return false 
 end
 if text =='نقاطي' and ChCheck(msg) then 
@@ -3411,7 +3931,7 @@ end
 DevAli:set(ReLaX..'Ali:Games:Ids'..msg.chat_id_,true)
 end  
 --     Source ReLaX     --
-if DevAli:get(ReLaX.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then  
+if DevAli:get(ReLaX.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_) then  
 if text and text:match("^(%d+)$") then
 local NUM = text:match("^(%d+)$")
 if tonumber(NUM) > 20 then
@@ -3420,14 +3940,14 @@ return false  end
 local GETNUM = DevAli:get(ReLaX.."GAMES:NUM"..msg.chat_id_)
 if tonumber(NUM) == tonumber(GETNUM) then
 DevAli:del(ReLaX..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
-DevAli:del(ReLaX.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
+DevAli:del(ReLaX.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_)   
 DevAli:incrby(ReLaX..'Ali:GamesNumber'..msg.chat_id_..msg.sender_user_id_,5)  
 Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙*التخمين الصحيح هو* ↫ '..NUM..'\n⌁︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, 'md')
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
 DevAli:incrby(ReLaX..'Set:Num'..msg.chat_id_..msg.sender_user_id_,1)
 if tonumber(DevAli:get(ReLaX..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) >= 3 then
 DevAli:del(ReLaX..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
-DevAli:del(ReLaX.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
+DevAli:del(ReLaX.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_)   
 Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙*التخمين الصحيح هو* ↫ '..GETNUM..'\n⌁︙*للاسف لقد خسرت حاول مره اخرى لتخمين الرقم الصحيح*', 1, 'md')
 else
 if tonumber(DevAli:get(ReLaX..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) == 1 then
@@ -3445,7 +3965,7 @@ if not DevAli:get(ReLaX..'Ali:Lock:Games'..msg.chat_id_) then
 Num = math.random(1,20)
 DevAli:set(ReLaX.."GAMES:NUM"..msg.chat_id_,Num) 
 Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙اهلا بك عزيزي في لعبة التخمين ↫ ⤈\n ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙سيتم تخمين عدد ما بين الـ1 والـ20 اذا تعتقد انك تستطيع الفوز جرب واللعب الان .\n⌁︙ملاحظه لديك ثلاث محاولات فقط فكر قبل ارسال تخمينك !', 1, 'md')
-DevAli:setex(ReLaX.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 100, true)  
+DevAli:setex(ReLaX.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_, 100, true)  
 return false  
 end
 end
@@ -3491,19 +4011,24 @@ local Text = "⌁︙تم ادخال المعرف ↫ ["..text.."]\n⌁︙وتم 
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="نعم",callback_data="/YesRolet"},{text="لا",callback_data="/NoRolet"}},{{text="اللاعبين",callback_data="/ListRolet"}}} 
 Msg_id = msg.id_/2097152/0.5
-return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end 
 local Text = "⌁︙تم ادخال المعرف ↫ ["..text.."] وتبقى ↫ "..CountUser.." لاعبين ليكتمل العدد ارسل المعرف الاخر"
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="الغاء",callback_data="/NoRolet"}}} 
 Msg_id = msg.id_/2097152/0.5
-return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end,nil) 
 end
 --     Source ReLaX     --
 if text == 'كت تويت' and ChCheck(msg) then
 if not DevAli:get(ReLaX..'Ali:Lock:Games'..msg.chat_id_) then
-local ReLaXTEAM = {  "آخر مرة زرت مدينة الملاهي؟",  "آخر مرة أكلت أكلتك المفضّلة؟",  "الوضع الحالي؟\n‏1. سهران\n‏2. ضايج\n‏3. أتأمل",  "آخر شيء ضاع منك؟","كلمة أخيرة لشاغل البال؟","طريقتك المعتادة في التخلّص من الطاقة السلبية؟","شهر من أشهر العام له ذكرى جميلة معك؟","كلمة غريبة من لهجتك ومعناها؟🤓","‏- شيء سمعته عالق في ذهنك هاليومين؟","متى تكره الشخص الذي أمامك حتى لو كنت مِن أشد معجبينه؟","‏- أبرز صفة حسنة في صديقك المقرب؟","هل تشعر أن هنالك مَن يُحبك؟","اذا اكتشفت أن أعز أصدقائك يضمر لك السوء، موقفك الصريح؟","أجمل شيء حصل معك خلال هاليوم؟","صِف شعورك وأنت تُحب شخص يُحب غيرك؟👀💔","كلمة لشخص غالي اشتقت إليه؟💕","آخر خبر سعيد، متى وصلك؟","أنا آسف على ....؟","أوصف نفسك بكلمة؟","صريح، مشتاق؟","‏- صريح، هل سبق وخذلت أحدهم ولو عن غير قصد؟","‏- ماذا ستختار من الكلمات لتعبر لنا عن حياتك التي عشتها الى الآن؟💭","‏- فنان/ة تود لو يدعوكَ على مائدة عشاء؟😁❤","‏- تخيّل شيء قد يحدث في المستقبل؟","‏- للشباب | آخر مرة وصلك غزل من فتاة؟🌚","شخص أو صاحب عوضك ونساك مُر الحياة ما اسمه ؟","| اذا شفت حد واعجبك وعندك الجرأه انك تروح وتتعرف عليه ، مقدمة الحديث شو راح تكون ؟.", }  
+local ReLaXTEAM = {
+'آخر مرة زرت مدينة الملاهي؟','آخر مرة أكلت أكلتك المفضّلة؟','الوضع الحالي؟\n‏1. سهران\n‏2. ضايج\n‏3. أتأمل','آخر شيء ضاع منك؟','كلمة أخيرة لشاغل البال؟','طريقتك المعتادة في التخلّص من الطاقة السلبية؟','شهر من أشهر العام له ذكرى جميلة معك؟','كلمة غريبة من لهجتك ومعناها؟🤓','‏- شيء سمعته عالق في ذهنك هاليومين؟','متى تكره الشخص الذي أمامك حتى لو كنت مِن أشد معجبينه؟','‏- أبرز صفة حسنة في صديقك المقرب؟','هل تشعر أن هنالك مَن يُحبك؟','اذا اكتشفت أن أعز أصدقائك يضمر لك السوء، موقفك الصريح؟','أجمل شيء حصل معك خلال هاليوم؟','صِف شعورك وأنت تُحب شخص يُحب غيرك؟👀💔','كلمة لشخص غالي اشتقت إليه؟💕','آخر خبر سعيد، متى وصلك؟','أنا آسف على ....؟','أوصف نفسك بكلمة؟','صريح، مشتاق؟','‏- صريح، هل سبق وخذلت أحدهم ولو عن غير قصد؟','‏- ماذا ستختار من الكلمات لتعبر لنا عن حياتك التي عشتها الى الآن؟💭','‏- فنان/ة تود لو يدعوكَ على مائدة عشاء؟😁❤','‏- تخيّل شيء قد يحدث في المستقبل؟','‏- للشباب | آخر مرة وصلك غزل من فتاة؟🌚','شخص أو صاحب عوضك ونساك مُر الحياة ما اسمه ؟','| اذا شفت حد واعجبك وعندك الجرأه انك تروح وتتعرف عليه ، مقدمة الحديث شو راح تكون ؟.','كم مره تسبح باليوم','نسبة النعاس عندك حاليًا؟','لو فقط مسموح شخص واحد تتابعه فالسناب مين بيكون ؟','يهمك ملابسك تكون ماركة ؟','وش الشيء الي تطلع حرتك فيه و زعلت ؟','عندك أخوان او خوات من الرضاعة؟','عندك معجبين ولا محد درا عنك؟',
+'أطول مدة قضيتها بعيد عن أهلك ؟','لو يجي عيد ميلادك تتوقع يجيك هدية؟','يبان عليك الحزن من " صوتك - ملامحك','وين تشوف نفسك بعد سنتين؟','وش يقولون لك لما تغني ؟','عندك حس فكاهي ولا نفسية؟','كيف تتصرف مع الشخص الفضولي ؟','كيف هي أحوال قلبك؟','حاجة تشوف نفسك مبدع فيها ؟','متى حبيت؟','شيء كل م تذكرته تبتسم ...','العلاقه السريه دايماً تكون حلوه؟','صوت مغني م تحبه','لو يجي عيد ميلادك تتوقع يجيك هدية؟','اذا احد سألك عن شيء م تعرفه تقول م اعرف ولا تتفلسف ؟','مع او ضد : النوم افضل حل لـ مشاكل الحياة؟','مساحة فارغة (..............) اكتب اي شيء تبين','اغرب اسم مر عليك ؟','عمرك كلمت فويس احد غير جنسك؟','اذا غلطت وعرفت انك غلطان تحب تعترف ولا تجحد؟','لو عندك فلوس وش السيارة اللي بتشتريها؟','وش اغبى شيء سويته ؟','شيء من صغرك ماتغير فيك؟','وش نوع الأفلام اللي تحب تتابعه؟','وش نوع الأفلام اللي تحب تتابعه؟','تجامل احد على حساب مصلحتك ؟','تتقبل النصيحة من اي شخص؟','كلمه ماسكه معك الفترة هذي ؟','متى لازم تقول لا ؟','اكثر شيء تحس انه مات ف مجتمعنا؟','تؤمن ان في "حُب من أول نظرة" ولا لا ؟.','تؤمن ان في "حُب من أول نظرة" ولا لا ؟.','هل تعتقد أن هنالك من يراقبك بشغف؟','اشياء اذا سويتها لشخص تدل على انك تحبه كثير ؟','اشياء صعب تتقبلها بسرعه ؟','اقتباس لطيف؟','أكثر جملة أثرت بك في حياتك؟','عندك فوبيا من شيء ؟.',
+'اكثر لونين تحبهم مع بعض؟','أجمل بيت شعر سمعته ...','سبق وراودك شعور أنك لم تعد تعرف نفسك؟','تتوقع فيه احد حاقد عليك ويكرهك ؟','أجمل سنة ميلادية مرت عليك ؟','لو فزعت/ي لصديق/ه وقالك مالك دخل وش بتسوي/ين؟','وش تحس انك تحتاج الفترة هاذي ؟','يومك ضاع على؟','@منشن .. شخص تخاف منه اذا عصب ...','فيلم عالق في ذهنك لا تنساه مِن روعته؟','تختار أن تكون غبي أو قبيح؟','الفلوس او الحب ؟','أجمل بلد في قارة آسيا بنظرك؟','ما الذي يشغل بالك في الفترة الحالية؟','احقر الناس هو من ...','وين نلقى السعاده برايك؟','اشياء تفتخر انك م سويتها ؟','تزعلك الدنيا ويرضيك ؟','وش الحب بنظرك؟','افضل هديه ممكن تناسبك؟','كم في حسابك البنكي ؟','كلمة لشخص أسعدك رغم حزنك في يومٍ من الأيام ؟','عمرك انتقمت من أحد ؟!','ما السيء في هذه الحياة ؟','غنية عندك معاها ذكريات🎵🎻','/','أفضل صفة تحبه بنفسك؟','اكثر وقت تحب تنام فيه ...','أطول مدة نمت فيها كم ساعة؟','أصعب قرار ممكن تتخذه ؟','أفضل صفة تحبه بنفسك؟','اكثر وقت تحب تنام فيه ...','أنت محبوب بين الناس؟ ولاكريه؟','إحساسك في هاللحظة؟','اخر شيء اكلته ؟','تشوف الغيره انانيه او حب؟','اذكر موقف ماتنساه بعمرك؟','اكثر مشاكلك بسبب ؟','اول ماتصحى من النوم مين تكلمه؟','آخر مرة ضحكت من كل قلبك؟','لو الجنسية حسب ملامحك وش بتكون جنسيتك؟','اكثر شيء يرفع ضغطك','اذكر موقف ماتنساه بعمرك؟','لو قالوا لك  تناول صنف واحد فقط من الطعام لمدة شهر .',
+'كيف تشوف الجيل ذا؟','ردة فعلك لو مزح معك شخص م تعرفه ؟','احقر الناس هو من ...','تحب ابوك ولا امك','آخر فيلم مسلسل والتقييم🎥؟','أقبح القبحين في العلاقة: الغدر أو الإهمال🤷🏼؟','كلمة لأقرب شخص لقلبك🤍؟','حط@منشن لشخص وقوله "حركتك مالها داعي"😼!','اذا جاك خبر مفرح اول واحد تعلمه فيه مين💃🏽؟','طبع يمكن يخليك تكره شخص حتى لو كنت تُحبه🙅🏻‍♀️؟','افضل ايام الاسبوع عندك🔖؟','يقولون ان الحياة دروس ، ماهو أقوى درس تعلمته من الحياة🏙؟','تاريخ لن تنساه📅؟','تحب الصيف والا الشتاء❄️☀️؟','شخص تحب تستفزه😈؟','شنو ينادونك وانت صغير (عيارتك)👼🏻؟','عقل يفهمك/ج ولا قلب يحبك/ج❤️؟','اول سفره لك وين رح تكون✈️؟','كم عدد اللي معطيهم بلوك👹؟','نوعية من الأشخاص تتجنبهم في حياتك❌؟','شاركنا صورة او فيديو من تصويرك؟📸','كم من عشره تعطي حظك📩؟','اكثر برنامج تواصل اجتماعي تحبه😎؟','من اي دوله انت🌍؟','اكثر دوله ودك تسافر لها🏞؟','مقولة "نكبر وننسى" هل تؤمن بصحتها🧓🏼؟','تعتقد فيه أحد يراقبك👩🏼‍💻؟','لو بيدك تغير الزمن ، تقدمه ولا ترجعه🕰؟','مشروبك المفضل🍹؟','‏قم بلصق آخر اقتباس نسخته؟💭','كم وزنك/ج طولك/ج؟🌚','كم كان عمرك/ج قبل ٨ سنين😈؟','دوله ندمت انك سافرت لها😁؟','لو قالو لك ٣ أمنيات راح تتحقق عالسريع شنو تكون🧞‍♀️؟','‏- نسبة احتياجك للعزلة من 10📊؟','شخص تحبه حظرك بدون سبب واضح، ردة فعلك🧐؟','مبدأ في الحياة تعتمد عليه دائما🕯؟'
+}  
 Dev_Ali(msg.chat_id_, msg.id_, 1, ''..ReLaXTEAM[math.random(#ReLaXTEAM)]..'' , 1, 'md')  
 return false
 end
@@ -3551,7 +4076,6 @@ end
 --     Source ReLaX     --
 if text == 'رفع المشرفين' and ChCheck(msg) or text == 'رفع الادمنيه' and ChCheck(msg) then  
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 200},function(arg,alii) 
-DevAli:del(ReLaX..'Ali:AliConstructor:'..msg.chat_id_)
 local num = 0
 local admins = alii.members_  
 for i=0 , #admins do   
@@ -3573,9 +4097,9 @@ DevAli:sadd(ReLaX..'Ali:AliConstructor:'..msg.chat_id_,Manager_id)
 end  
 end  
 if num == 0 then
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙لا يوجد ادمنيه ليتم رفعهم\n⌁︙تم رفع منشئ المجموعه", 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙لا يوجد ادمنيه ليتم رفعهم\n⌁︙تم رفع مالك المجموعه", 1, 'md')
 else
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم رفع '..num..' من الادمنيه \n⌁︙تم رفع منشئ المجموعه', 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم رفع '..num..' من الادمنيه \n⌁︙تم رفع مالك المجموعه', 1, 'md')
 end
 end,nil) 
 end
@@ -3618,7 +4142,7 @@ end
 end
 --     Source ReLaX     --
 if text == "تعيين قناة الاشتراك" or text == "تغيير قناة الاشتراك" or text == "تعيين الاشتراك الاجباري" or text == "وضع قناة الاشتراك" then
-if not SecondSudo(msg) then
+if not Sudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط ', 1, 'md')
 else
 DevAli:setex(ReLaX..'DevAli4'..msg.sender_user_id_,360,true)
@@ -3627,12 +4151,13 @@ end
 return false  
 end
 if text == "تفعيل الاشتراك الاجباري" then  
-if not SecondSudo(msg) then
+if not Sudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط ', 1, 'md')
 else
-if DevAli:get(ReLaX..'DevAli2') then
-local DevCh = DevAli:get(ReLaX..'DevAli3')
-send(msg.chat_id_, msg.id_,"⌁︙الاشتراك الاجباري مفعل \n⌁︙على القناة ↫ ["..DevCh.."]")
+if DevAli:get(ReLaX..'Ali:ChId') then
+local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..DevAli:get(ReLaX.."Ali:ChId"))
+local GetInfo = JSON.decode(Check)
+send(msg.chat_id_, msg.id_,"⌁︙الاشتراك الاجباري مفعل \n⌁︙على القناة ↫ [@"..GetInfo.result.username.."]")
 else
 DevAli:setex(ReLaX..'DevAli4'..msg.sender_user_id_,360,true)
 send(msg.chat_id_, msg.id_,"⌁︙لاتوجد قناة لتفعيل الاشتراك\n⌁︙ارسل لي معرف قناة الاشتراك الان")
@@ -3641,28 +4166,29 @@ end
 return false  
 end
 if text == "تعطيل الاشتراك الاجباري" then  
-if not SecondSudo(msg) then
+if not Sudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط ', 1, 'md')
 else
-DevAli:del(ReLaX..'DevAli2') DevAli:del(ReLaX..'DevAli3')
+DevAli:del(ReLaX..'Ali:ChId')
 local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تعطيل الاشتراك الاجباري'
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 end
 return false  
 end
 if text == "حذف قناة الاشتراك" or text == "حذف قناه الاشتراك" then
-if not SecondSudo(msg) then
+if not Sudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط ', 1, 'md')
 else
-DevAli:del(ReLaX..'DevAli2') DevAli:del(ReLaX..'DevAli3')
+DevAli:del(ReLaX..'Ali:ChId')
 Dev_Ali(msg.chat_id_, msg.id_, 1,"⌁︙تم حذف قناة الاشتراك الاجباري", 1, 'md') 
 end
 end
 if SecondSudo(msg) then
 if text == 'جلب قناة الاشتراك' or text == 'قناة الاشتراك' or text == 'الاشتراك الاجباري' or text == 'قناة الاشتراك الاجباري' then
-if DevAli:get(ReLaX..'DevAli3') then
-local DevCh = DevAli:get(ReLaX..'DevAli3')
-send(msg.chat_id_, msg.id_, "⌁︙قناة الاشتراك ↫ ["..DevCh.."]")
+if DevAli:get(ReLaX..'Ali:ChId') then
+local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..DevAli:get(ReLaX.."Ali:ChId"))
+local GetInfo = JSON.decode(Check)
+send(msg.chat_id_, msg.id_, "⌁︙قناة الاشتراك ↫ [@"..GetInfo.result.username.."]")
 else
 send(msg.chat_id_, msg.id_, "⌁︙لاتوجد قناة في الاشتراك الاجباري")
 end
@@ -3702,11 +4228,11 @@ Welcome To Source
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙[Source Channel](https://t.me/ReL3X7)
 
-⌁︙[Exp Source](https://t.me/St3R7)
+⌁︙[Exp Source](https://t.me/Exp_Dev)
 
 ⌁︙[Developer](https://t.me/AAAPA)
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-⌁︙[Tws ReLaX](https://t.me/N5zbot)
+⌁︙[Tws ReLaX](https://t.me/IQA_bot)
 ]]
 Dev_Ali(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
@@ -3717,13 +4243,13 @@ if DevAli:get(ReLaX.."Ali:Kick:Me"..msg.chat_id_) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙عذرا هذه الخاصيه معطله ', 1, 'md')
 return false
 end
-DevAli:set(ReLaX..'yes'..msg.sender_user_id_..'', 'delyes')
-DevAli:set(ReLaX..'no'..msg.sender_user_id_..'', 'delno')
+DevAli:set(ReLaX..'yes'..msg.sender_user_id_, 'delyes')
+DevAli:set(ReLaX..'no'..msg.sender_user_id_, 'delno')
 local Text = '⌁︙هل انت متأكد من المغادره'
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="نعم",callback_data="/delyes"},{text="لا",callback_data="/delno"}}} 
 Msg_id = msg.id_/2097152/0.5
-return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 --     Source ReLaX     --
 if text == 'تعطيل اطردني' and Manager(msg) and ChCheck(msg) then
@@ -3742,13 +4268,13 @@ if DevAli:get(ReLaX.."Ali:Del:Me"..msg.chat_id_) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙عذرا هذه الخاصيه معطله ', 1, 'md')
 return false
 end
-DevAli:set(ReLaX..'yesdel'..msg.sender_user_id_..'', 'delyes')
-DevAli:set(ReLaX..'nodel'..msg.sender_user_id_..'', 'delno')
+DevAli:set(ReLaX..'yesdel'..msg.sender_user_id_, 'delyes')
+DevAli:set(ReLaX..'nodel'..msg.sender_user_id_, 'delno')
 local Text = '⌁︙هل انت متأكد من تنزيلك'
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="نعم",callback_data="/yesdel"},{text="لا",callback_data="/nodel"}}} 
 Msg_id = msg.id_/2097152/0.5
-return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 --     Source ReLaX     --
 if text == 'تعطيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
@@ -3762,40 +4288,54 @@ local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 end
 --     Source ReLaX     --
+if text and (text == 'تفعيل التاك' or text == 'تفعيل التاك للكل' or text == 'تفعيل تاك للكل') and Admin(msg) and ChCheck(msg) then 
+local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تفعيل امر تاك للكل'
+alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
+DevAli:del(ReLaX..'Ali:Lock:TagAll'..msg.chat_id_)
+end
+if text and (text == 'تعطيل التاك' or text == 'تعطيل التاك للكل' or text == 'تعطيل تاك للكل') and Admin(msg) and ChCheck(msg) then 
+local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تعطيل امر تاك للكل'
+alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
+DevAli:set(ReLaX..'Ali:Lock:TagAll'..msg.chat_id_,true)
+end
 if Admin(msg) then
 if text == "تاك للكل" and ChCheck(msg) then
+if not DevAli:get(ReLaX..'Ali:Lock:TagAll'..msg.chat_id_) then
 function TagAll(dp1,dp2)
 local text = "⌁︙وينكم يالربع \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
 i = 0
 for k, v in pairs(dp2.members_) do
 i = i + 1
 if DevAli:get(ReLaX..'Save:UserName'..v.user_id_) then
-text = text..""..i.."~ : [@"..DevAli:get(ReLaX..'Save:UserName'..v.user_id_).."]\n"
+text = text..i.."~ : [@"..DevAli:get(ReLaX..'Save:UserName'..v.user_id_).."]\n"
 else
-text = text..""..i.."~ : "..v.user_id_.."\n"
+text = text..i.."~ : "..v.user_id_.."\n"
 end
 end 
 Dev_Ali(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 tdcli_function({ID = "GetChannelMembers",channel_id_ = getChatId(msg.chat_id_).ID, offset_ = 0,limit_ = 200000},TagAll,nil)
 end
+end
 --     Source ReLaX     --
 if text and text:match("^كللهم (.*)$") and ChCheck(msg) then
 local txt = {string.match(text, "^(كللهم) (.*)$")}
+if not DevAli:get(ReLaX..'Ali:Lock:TagAll'..msg.chat_id_) then
 function TagAll(dp1,dp2)
 local text = "⌁︙"..txt[2].." \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
 i = 0
 for k, v in pairs(dp2.members_) do
 i = i + 1
 if DevAli:get(ReLaX..'Save:UserName'..v.user_id_) then
-text = text..""..i.."~ : [@"..DevAli:get(ReLaX..'Save:UserName'..v.user_id_).."]\n"
+text = text..i.."~ : [@"..DevAli:get(ReLaX..'Save:UserName'..v.user_id_).."]\n"
 else
-text = text..""..i.."~ : "..v.user_id_.."\n"
+text = text..i.."~ : "..v.user_id_.."\n"
 end
 end 
 Dev_Ali(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 tdcli_function({ID = "GetChannelMembers",channel_id_ = getChatId(msg.chat_id_).ID, offset_ = 0,limit_ = 200000},TagAll,nil)
+end
 end
 end
 --     Source ReLaX     --
@@ -3840,15 +4380,17 @@ if text == 'مسح سحكاتي' or text == 'مسح تعديلاتي' or text ==
 if text == 'مسح جهاتي' or text == 'مسح اضافاتي' or text == 'حذف جهاتي' or text == 'حذف اضافاتي' then DevAli:del(ReLaX..'Ali:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_) Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم حذف جميع جهاتك المضافه' , 1, 'md') end
 --     Source ReLaX     --
 if text == "المطور" then 
-local DevCh1 = DevAli:get(ReLaX.."DevAli3")
+local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..DevAli:get(ReLaX.."Ali:ChId"))
+local GetInfo = JSON.decode(Check)
+local DevCh1 = GetInfo.result.username
 local DevText = DevAli:get(ReLaX.."DevText")
-if DevCh1 then DevCh = '\n⌁︙*Dev Ch* ↬ ['..DevCh1..']' else DevCh = '' end
+if DevAli:get(ReLaX.."Ali:ChId") then DevCh = '\n⌁︙*Dev Ch* ↬ [@'..DevCh1..']' else DevCh = '' end
 tdcli_function({ID="GetUser",user_id_=DevId},function(arg,dp) 
 if dp.username_ ~= false then DevUser = '@'..dp.username_ else DevUser = dp.first_name_ end
 if DevText then
 Dev_Ali(msg.chat_id_, msg.id_, 1, DevText, 1, "md")
 else
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙*Dev User* ↬ ['..DevUser..']\n⌁︙*Dev Id* ↬ '..DevId..''..DevCh, 1, "md")
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙*Dev User* ↬ ['..DevUser..']\n⌁︙*Dev Id* ↬ '..DevId..DevCh, 1, "md")
 end
 end,nil)
 end 
@@ -3877,7 +4419,7 @@ end
 local ReLaXTEAM = "صارر ستاذيي 🏃🏻‍♂️♥️" 
 Dev_Ali(msg.chat_id_, msg.id_, 1,ReLaXTEAM, 1, 'md') 
 local ReLaXTEAM = { "لكك جرجف @"..username.." احترم اسيادكك لا اكتلكك وازربب على كبركك،💩🖐🏿","هشش لكك فاشل @"..username.." لتضل تمسلت لا اخربط تضاريس وجهك جنه ابط عبده، 😖👌🏿","حبيبي @"..username.." راح احاول احترمكك هالمره بلكي تبطل حيونه، 🤔🔪","دمشي لك @"..username.." ينبوع الفشل مو زين ملفيك ونحجي وياك هي منبوذ 😏🖕🏿","ها الغليض التفس ابو راس المربع @"..username.." متعلملك جم حجايه وجاي تطكطكهن علينه دبطل😒🔪",}
-Dev_Ali(msg.chat_id_, result.id_, 1,''..ReLaXTEAM[math.random(#ReLaXTEAM)]..'', 1, 'html') 
+Dev_Ali(msg.chat_id_, result.id_, 1,''..ReLaXTEAM[math.random(#ReLaXTEAM)], 1, 'html') 
 else  
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙العضو غير موجود في المجموعه', 1, 'md') 
 end 
@@ -3908,7 +4450,7 @@ end
 local ReLaXTEAM = "صارر ستاذيي 🏃🏻‍♂️♥️" 
 Dev_Ali(msg.chat_id_, msg.id_, 1,ReLaXTEAM, 1, 'md') 
 local ReLaXTEAM = {"لكك جرجف احترم اسيادكك لا اكتلكك وازربب على كبركك،💩🖐🏿","هشش فاشل لتضل تمسلت لا اخربط تضاريس وجهك جنه ابط عبده، 😖👌🏿","دمشي لك ينبوع الفشل مو زين ملفيك ونحجي وياك هي منبوذ 😏🖕🏿","ها الغليض التفس ابو راس المربع متعلملك جم حجايه وجاي تطكطكهن علينه دبطل😒🔪","حبيبي راح احاول احترمكك هالمره بلكي تبطل حيونه، 🤔🔪"} 
-Dev_Ali(msg.chat_id_, result.id_, 1,''..ReLaXTEAM[math.random(#ReLaXTEAM)]..'', 1, 'md') 
+Dev_Ali(msg.chat_id_, result.id_, 1,''..ReLaXTEAM[math.random(#ReLaXTEAM)], 1, 'md') 
 end 
 if tonumber(msg.reply_to_message_id_) == 0 then
 else 
@@ -3930,7 +4472,7 @@ end
 local ReLaXTEAM = "صارر ستاذيي 🏃🏻‍♂️♥️" 
 Dev_Ali(msg.chat_id_, msg.id_, 1,ReLaXTEAM, 1, 'md') 
 local ReLaXTEAM = {"مواححح افيش عافيههه😍🔥💗","امممووااهحح شهلعسل🥺🍯💘","مواححح،ءوفف اذوب🤤💗"} 
-Dev_Ali(msg.chat_id_, result.id_, 1,''..ReLaXTEAM[math.random(#ReLaXTEAM)]..'', 1, 'md') 
+Dev_Ali(msg.chat_id_, result.id_, 1,''..ReLaXTEAM[math.random(#ReLaXTEAM)], 1, 'md') 
 end 
 if tonumber(msg.reply_to_message_id_) == 0 then
 else 
@@ -3952,7 +4494,7 @@ end
 local ReLaXTEAM = "صارر ستاذيي 🏃🏻‍♂️♥️" 
 Dev_Ali(msg.chat_id_, msg.id_, 1,ReLaXTEAM, 1, 'md') 
 local ReLaXTEAM = {"تتعال ححب محتاجيك🙂🍭","تعال يولل استاذكك ايريدككك😒🔪","يمعوود تعاال يريدوكك🤕♥️","تعال لكك ديصيحوك😐🖤"} 
-Dev_Ali(msg.chat_id_, result.id_, 1,''..ReLaXTEAM[math.random(#ReLaXTEAM)]..'', 1, 'md') 
+Dev_Ali(msg.chat_id_, result.id_, 1,''..ReLaXTEAM[math.random(#ReLaXTEAM)], 1, 'md') 
 end 
 if tonumber(msg.reply_to_message_id_) == 0 then
 else 
@@ -3977,7 +4519,7 @@ end
 local ReLaXTEAM = "صارر ستاذيي 🏃🏻‍♂️♥️" 
 Dev_Ali(msg.chat_id_, msg.id_, 1,ReLaXTEAM, 1, 'md') 
 local ReLaXTEAM = { "تتعال ححب @"..username.." محتاجيك🙂🍭","تعال يولل @"..username.." استاذكك ايريدككك😒🔪","يمعوود @"..username.." تعاال يريدوكك🤕♥️","تعال لكك @"..username.." ديصيحوك😐🖤",}
-Dev_Ali(msg.chat_id_, result.id_, 1,''..ReLaXTEAM[math.random(#ReLaXTEAM)]..'', 1, 'html') 
+Dev_Ali(msg.chat_id_, result.id_, 1,''..ReLaXTEAM[math.random(#ReLaXTEAM)], 1, 'html') 
 else  
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙العضو غير موجود في المجموعه', 1, 'md') 
 end 
@@ -4017,7 +4559,7 @@ if DevAli:sismember(ReLaX..'Ali:Cleaner:'..msg.chat_id_, result.sender_user_id_)
 cleaner = 'المنظفين • ' else cleaner = ''
 end
 if RankChecking(result.sender_user_id_,msg.chat_id_) ~= false then
-ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من ↫ ⤈\n~ ( "..secondsudo..''..sudobot..''..managerall..''..adminall..''..vpall..''..basicconstructor..''..constructor..''..manager..''..admins..''..vipmem..''..cleaner.." ) ~")  
+ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من ↫ ⤈\n~ ( "..secondsudo..sudobot..managerall..adminall..vpall..basicconstructor..constructor..manager..admins..vipmem..cleaner.." ) ~")  
 else 
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙لم تتم ترقيته مسبقا")  
 end
@@ -4111,7 +4653,7 @@ if DevAli:sismember(ReLaX..'Ali:Cleaner:'..msg.chat_id_, result.id_) then
 cleaner = 'المنظفين • ' else cleaner = ''
 end
 if RankChecking(result.id_,msg.chat_id_) ~= false then
-ReplyStatus(msg,result.id_,"Reply","⌁︙تم تنزيله من ↫ ⤈\n~ ( "..secondsudo..''..sudobot..''..managerall..''..adminall..''..vpall..''..basicconstructor..''..constructor..''..manager..''..admins..''..vipmem..''..cleaner.." ) ~")  
+ReplyStatus(msg,result.id_,"Reply","⌁︙تم تنزيله من ↫ ⤈\n~ ( "..secondsudo..sudobot..managerall..adminall..vpall..basicconstructor..constructor..manager..admins..vipmem..cleaner.." ) ~")  
 else 
 ReplyStatus(msg,result.id_,"Reply","⌁︙لم تتم ترقيته مسبقا")  
 end 
@@ -4183,8 +4725,7 @@ function sudo_reply(extra, result, success)
 DevAli:sadd(ReLaX..'Ali:SecondSudo:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المطورين الثانويين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),sudo_reply)
 end end 
 if text and (text:match('^اضف مطور ثانوي @(.*)') or text:match('^رفع مطور ثانوي @(.*)')) and ChCheck(msg) then
@@ -4210,8 +4751,7 @@ function prom_reply(extra, result, success)
 DevAli:srem(ReLaX..'Ali:SecondSudo:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المطورين الثانويين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and (text:match('^حذف مطور ثانوي @(.*)') or text:match('^تنزيل مطور ثانوي @(.*)')) and ChCheck(msg) then
@@ -4238,8 +4778,7 @@ function sudo_reply(extra, result, success)
 DevAli:sadd(ReLaX..'Ali:SudoBot:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المطورين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),sudo_reply)
 end end 
 if text and (text:match('^اضف مطور @(.*)') or text:match('^رفع مطور @(.*)')) and ChCheck(msg) then
@@ -4265,8 +4804,7 @@ function prom_reply(extra, result, success)
 DevAli:srem(ReLaX..'Ali:SudoBot:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المطورين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and (text:match('^حذف مطور @(.*)') or text:match('^تنزيل مطور @(.*)')) and ChCheck(msg) then
@@ -4293,8 +4831,7 @@ function raf_reply(extra, result, success)
 DevAli:sadd(ReLaX..'Ali:ManagerAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المدراء العامين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),raf_reply)
 end end
 if text and text:match('^رفع مدير عام @(.*)') and ChCheck(msg) then
@@ -4320,8 +4857,7 @@ function prom_reply(extra, result, success)
 DevAli:srem(ReLaX..'Ali:ManagerAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المدراء العامين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^تنزيل مدير عام @(.*)') and ChCheck(msg) then
@@ -4348,8 +4884,7 @@ function raf_reply(extra, result, success)
 DevAli:sadd(ReLaX..'Ali:AdminAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة الادمنيه العامين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),raf_reply)
 end end
 if text and text:match('^رفع ادمن عام @(.*)') and ChCheck(msg) then
@@ -4375,8 +4910,7 @@ function prom_reply(extra, result, success)
 DevAli:srem(ReLaX..'Ali:AdminAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة الادمنيه العامين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^تنزيل ادمن عام @(.*)') and ChCheck(msg) then
@@ -4403,8 +4937,7 @@ function raf_reply(extra, result, success)
 DevAli:sadd(ReLaX..'Ali:VipAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المميزين العام")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),raf_reply)
 end end
 if text and text:match('^رفع مميز عام @(.*)') and ChCheck(msg) then
@@ -4430,8 +4963,7 @@ function prom_reply(extra, result, success)
 DevAli:srem(ReLaX..'Ali:VipAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المميزين العام")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^تنزيل مميز عام @(.*)') and ChCheck(msg) then
@@ -4451,16 +4983,96 @@ DevAli:srem(ReLaX..'Ali:VipAll:',user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله من قائمة المميزين العام")  
 end end
 --     Source ReLaX     --
---  Set BasicConstructor  --
+--   Set AliConstructor   --
 if ChatType == 'sp' or ChatType == 'gp'  then
+if SudoBot(msg) then
+if text ==('رفع مالك') and ChCheck(msg) then
+function raf_reply(extra, result, success)
+DevAli:sadd(ReLaX..'Ali:AliConstructor:'..msg.chat_id_,result.sender_user_id_)
+ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه مالك")  
+end 
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
+getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),raf_reply)
+end end
+if text and text:match('^رفع مالك @(.*)') and ChCheck(msg) then
+local username = text:match('^رفع مالك @(.*)')
+function promreply(extra,result,success)
+if result.id_ then
+DevAli:sadd(ReLaX..'Ali:AliConstructor:'..msg.chat_id_,result.id_)
+ReplyStatus(msg,result.id_,"Reply","⌁︙تم رفعه مالك")  
+else 
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md')
+end end 
+resolve_username(username,promreply)
+end
+if text and text:match('^رفع مالك (%d+)') and ChCheck(msg) then
+local user = text:match('رفع مالك (%d+)')
+DevAli:sadd(ReLaX..'Ali:AliConstructor:'..msg.chat_id_,user)
+ReplyStatus(msg,user,"Reply","⌁︙تم رفعه مالك")  
+end
+--     Source ReLaX     --
+--   Rem AliConstructor   --
+if text ==('تنزيل مالك') and ChCheck(msg) then
+function prom_reply(extra, result, success)
+tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
+local admins = data.members_
+for i=0 , #admins do
+if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
+if tonumber(result.sender_user_id_) == tonumber(admins[i].user_id_) then  
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙لا يمكن تنزيل المالك الاساسي', 1, 'md')
+else
+DevAli:srem(ReLaX..'Ali:AliConstructor:'..msg.chat_id_,result.sender_user_id_)
+ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من المالكين")  
+end end end
+end,nil)
+end 
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
+getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
+end 
+end
+if text and text:match('^تنزيل مالك @(.*)') and ChCheck(msg) then
+local username = text:match('^تنزيل مالك @(.*)')
+function promreply(extra,result,success)
+if result.id_ then
+tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
+local admins = data.members_
+for i=0 , #admins do
+if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
+if tonumber(result.id_) == tonumber(admins[i].user_id_) then  
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙لا يمكن تنزيل المالك الاساسي', 1, 'md')
+else
+DevAli:srem(ReLaX..'Ali:AliConstructor:'..msg.chat_id_,result.id_)
+ReplyStatus(msg,result.id_,"Reply","⌁︙تم تنزيله من المالكين")  
+end end end
+end,nil)
+else 
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md')
+end end 
+resolve_username(username,promreply)
+end
+if text and text:match('^تنزيل مالك (%d+)') and ChCheck(msg) then
+local user = text:match('تنزيل مالك (%d+)')
+tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
+local admins = data.members_
+for i=0 , #admins do
+if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
+if tonumber(user) == tonumber(admins[i].user_id_) then  
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙لا يمكن تنزيل المالك الاساسي', 1, 'md')
+else
+DevAli:srem(ReLaX..'Ali:AliConstructor:'..msg.chat_id_,user)
+ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله من المالكين")  
+end end end
+end,nil)
+end end
+--     Source ReLaX     --
+--  Set BasicConstructor  --
 if AliConstructor(msg) then
 if text ==('رفع منشئ اساسي') and ChCheck(msg) then
 function raf_reply(extra, result, success)
 DevAli:sadd(ReLaX..'Ali:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه منشئ اساسي")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),raf_reply)
 end end
 if text and text:match('^رفع منشئ اساسي @(.*)') and ChCheck(msg) then
@@ -4486,8 +5098,7 @@ function prom_reply(extra, result, success)
 DevAli:srem(ReLaX..'Ali:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله منشئ اساسي")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^تنزيل منشئ اساسي @(.*)') and ChCheck(msg) then
@@ -4507,7 +5118,7 @@ DevAli:srem(ReLaX..'Ali:BasicConstructor:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌁︙تم تنزيله منشئ اساسي")  
 end end
 if text ==('رفع منشئ اساسي') and not AliConstructor(msg) then
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙هذا الامر لمنشئ المجموعه والمطورين فقط', 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙هذا الامر للمالكين والمطورين فقط', 1, 'md')
 end
 --     Source ReLaX     --
 --    Set  Constructor    --
@@ -4517,8 +5128,7 @@ function raf_reply(extra, result, success)
 DevAli:sadd(ReLaX..'Ali:Constructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المنشئين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),raf_reply)
 end end
 if text and text:match('^رفع منشئ @(.*)') and ChCheck(msg) then
@@ -4544,8 +5154,7 @@ function prom_reply(extra, result, success)
 DevAli:srem(ReLaX..'Ali:Constructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المنشئين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^تنزيل منشئ @(.*)') and ChCheck(msg) then
@@ -4573,8 +5182,7 @@ function prom_reply(extra, result, success)
 DevAli:sadd(ReLaX..'Ali:Managers:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المدراء")  
 end  
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^رفع مدير @(.*)') and ChCheck(msg) then
@@ -4600,8 +5208,7 @@ function prom_reply(extra, result, success)
 DevAli:srem(ReLaX..'Ali:Managers:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المدراء")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^تنزيل مدير @(.*)') and ChCheck(msg) then
@@ -4627,8 +5234,7 @@ function prom_reply(extra, result, success)
 DevAli:sadd(ReLaX..'Ali:Cleaner:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المنظفين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^رفع منظف @(.*)') and ChCheck(msg) then
@@ -4654,8 +5260,7 @@ function prom_reply(extra, result, success)
 DevAli:srem(ReLaX..'Ali:Cleaner:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المنظفين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^تنزيل منظف @(.*)') and ChCheck(msg) then
@@ -4686,8 +5291,7 @@ end
 DevAli:sadd(ReLaX..'Ali:Admins:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة الادمنيه")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^رفع ادمن @(.*)') and ChCheck(msg) then
@@ -4721,8 +5325,7 @@ function prom_reply(extra, result, success)
 DevAli:srem(ReLaX..'Ali:Admins:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة الادمنيه")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^تنزيل ادمن @(.*)') and ChCheck(msg) then
@@ -4753,8 +5356,7 @@ end
 DevAli:sadd(ReLaX..'Ali:VipMem:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه في قائمة المميزين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^رفع مميز @(.*)') and ChCheck(msg) then
@@ -4788,8 +5390,7 @@ function prom_reply(extra, result, success)
 DevAli:srem(ReLaX..'Ali:VipMem:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من قائمة المميزين")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
 end end
 if text and text:match('^تنزيل مميز @(.*)') and ChCheck(msg) then
@@ -4815,7 +5416,7 @@ function promote_by_reply(extra, result, success)
 local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChatMember?chat_id='..msg.chat_id_..'&user_id='..ReLaX)
 local GetInfo = JSON.decode(Check)
 if GetInfo.result.can_promote_members == true then 
-HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
+HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/promoteChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه مشرف في المجموعه")  
 else
 Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
@@ -4828,7 +5429,7 @@ function promote_by_reply(extra, result, success)
 local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChatMember?chat_id='..msg.chat_id_..'&user_id='..ReLaX)
 local GetInfo = JSON.decode(Check)
 if GetInfo.result.can_promote_members == true then 
-HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
+HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/promoteChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تنزيله من مشرفين المجموعه")  
 else
 Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
@@ -4841,7 +5442,7 @@ function promote_by_reply(extra, result, success)
 local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChatMember?chat_id='..msg.chat_id_..'&user_id='..ReLaX)
 local GetInfo = JSON.decode(Check)
 if GetInfo.result.can_promote_members == true then 
-HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
+HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/promoteChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفعه مشرف في جميع الصلاحيات")  
 else
 Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
@@ -4855,18 +5456,43 @@ function ReplySet(extra, result, success)
 local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChatMember?chat_id='..msg.chat_id_..'&user_id='..ReLaX)
 local GetInfo = JSON.decode(Check)
 if GetInfo.result.can_promote_members == true then 
-https.request("https://api.telegram.org/bot"..TokenBot.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
+https.request("https://api.telegram.org/bot"..TokenBot.."/promoteChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم اضافة ↫ "..Ali.." كلقب له")  
-https.request("https://api.telegram.org/bot"..TokenBot.."/setChatAdministratorCustomTitle?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&custom_title="..Ali)
+https.request("https://api.telegram.org/bot"..TokenBot.."/setChatAdministratorCustomTitle?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&custom_title="..Ali)
 else
 Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
 end
 end
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),ReplySet)
 end
 end
+end
+if text == 'لقبه' then
+function ReplyGet(extra, result, success)
+if GetCustomTitle(msg.sender_user_id_,msg.chat_id_) == false then
+send(msg.chat_id_, msg.id_,'⌁︙ليس لديه لقب هنا') 
+else
+send(msg.chat_id_, msg.id_,'⌁︙لقبه ↫ '..GetCustomTitle(result.sender_user_id_,msg.chat_id_)) 
+end
+end
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
+getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),ReplyGet)
+end
+end
+if text == 'لقبي' then
+if GetCustomTitle(msg.sender_user_id_,msg.chat_id_) == false then
+send(msg.chat_id_, msg.id_,'⌁︙ليس لديك لقب هنا') 
+else
+send(msg.chat_id_, msg.id_,'⌁︙لقبك ↫ '..GetCustomTitle(msg.sender_user_id_,msg.chat_id_)) 
+end
+end
+if text == 'نبذتي' or text == 'بايو' then
+send(msg.chat_id_, msg.id_,'['..GetBio(msg.sender_user_id_)..']')
+end
+if text == "راسلني" then
+ReLaXTEAM = {"ها هلاو","انطق","كول حبي","تفضل"};
+send(msg.sender_user_id_, 0,ReLaXTEAM[math.random(#ReLaXTEAM)])
 end
 --     Source ReLaX     --
 if text == "صلاحيتي" or text == "صلاحياتي" and ChCheck(msg) then 
@@ -4877,8 +5503,7 @@ if text ==('صلاحيته') or text ==('صلاحياته') and ChCheck(msg) the
 function ValidityReply(extra, result, success)
 Validity(msg,result.sender_user_id_)
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),ValidityReply)
 end end
 if text and (text:match('^صلاحيته @(.*)') or text:match('^صلاحياته @(.*)')) and ChCheck(msg) then
@@ -4962,8 +5587,7 @@ ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم طرده من الم�
 end,nil)
 end
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),KickReply)
 end end
 if text and text:match('^طرد @(.*)') and ChCheck(msg) then
@@ -5046,8 +5670,7 @@ ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم حظره من الم�
 end,nil) 
 end 
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),BanReply)
 end end
 if text and (text:match('^حضر @(.*)') or text:match('^حظر @(.*)')) and ChCheck(msg) then
@@ -5112,8 +5735,7 @@ DevAli:srem(ReLaX..'Ali:Ban:'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.sender_user_id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم الغاء حظره من المجموعه")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),UnBanReply)
 end end
 if text and (text:match('^الغاء الحظر @(.*)') or text:match('^الغاء حظر @(.*)')) and ChCheck(msg) then
@@ -5155,8 +5777,7 @@ ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم كتمه من الم�
 end 
 end
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),MuteReply)
 end end
 if text and text:match('^كتم @(.*)') and ChCheck(msg) then
@@ -5210,8 +5831,7 @@ DevAli:srem(ReLaX..'Ali:Muted:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم الغاء كتمه من المجموعه")  
 end
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),UnMuteReply)
 end end
 if text and (text:match('^الغاء الكتم @(.*)') or text:match('^الغاء كتم @(.*)')) and ChCheck(msg) then
@@ -5256,8 +5876,7 @@ DevAli:sadd(ReLaX..'Ali:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم تقيده من المجموعه")  
 end
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),TkeedReply)
 end end
 if text and (text:match('^تقييد @(.*)') or text:match('^تقيد @(.*)')) and ChCheck(msg) then
@@ -5302,8 +5921,7 @@ HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?cha
 DevAli:srem(ReLaX..'Ali:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم الغاء تقيده من المجموعه")  
 end
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),UnTkeedReply)
 end end
 if text and (text:match('^الغاء تقييد @(.*)') or text:match('^الغاء تقيد @(.*)')) and ChCheck(msg) then
@@ -5339,12 +5957,15 @@ if SudoId(result.sender_user_id_) == true then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
 return false 
 end
+if DevAli:sismember(ReLaX..'Ali:SecondSudo:',result.sender_user_id_) and not Sudo(msg) then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع حظر المطور الثانوي*", 1, 'md')
+return false 
+end
 ChatKick(result.chat_id_, result.sender_user_id_)
 DevAli:sadd(ReLaX..'Ali:BanAll:', result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم حظره عام من المجموعات")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),BanAllReply)
 end end
 if text and (text:match('^حضر عام @(.*)') or text:match('^حظر عام @(.*)')) then
@@ -5356,6 +5977,10 @@ return false
 end
 if SudoId(result.id_) == true then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
+return false 
+end
+if DevAli:sismember(ReLaX..'Ali:SecondSudo:',result.id_) and not Sudo(msg) then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع حظر المطور الثانوي*", 1, 'md')
 return false 
 end
 if result.id_ then
@@ -5373,8 +5998,12 @@ if tonumber(user) == tonumber(ReLaX) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع حظر البوت عام*", 1, 'md')
 return false 
 end
-if SudoId(user) == true then
+if SudoId(tonumber(user)) == true then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
+return false 
+end
+if DevAli:sismember(ReLaX..'Ali:SecondSudo:',user) and not Sudo(msg) then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع حظر المطور الثانوي*", 1, 'md')
 return false 
 end
 ChatKick(msg.chat_id_, user)
@@ -5393,11 +6022,14 @@ if SudoId(result.sender_user_id_) == true then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
 return false 
 end
+if DevAli:sismember(ReLaX..'Ali:SecondSudo:',result.sender_user_id_) and not Sudo(msg) then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع كتم المطور الثانوي*", 1, 'md')
+return false 
+end
 DevAli:sadd(ReLaX..'Ali:MuteAll:', result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم كتمه عام من المجموعات")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),MuteAllReply)
 end end
 if text and text:match('^كتم عام @(.*)') then
@@ -5409,6 +6041,10 @@ return false
 end
 if SudoId(result.id_) == true then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
+return false 
+end
+if DevAli:sismember(ReLaX..'Ali:SecondSudo:',result.id_) and not Sudo(msg) then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع كتم المطور الثانوي*", 1, 'md')
 return false 
 end
 if result.id_ then
@@ -5425,8 +6061,12 @@ if tonumber(user) == tonumber(ReLaX) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع كتم البوت عام*", 1, 'md')
 return false 
 end
-if SudoId(user) == true then
+if SudoId(tonumber(user)) == true then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
+return false 
+end
+if DevAli:sismember(ReLaX..'Ali:SecondSudo:',user) and not Sudo(msg) then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙*لاتستطيع كتم المطور الثانوي*", 1, 'md')
 return false 
 end
 DevAli:sadd(ReLaX..'Ali:MuteAll:', user)
@@ -5440,8 +6080,7 @@ DevAli:srem(ReLaX..'Ali:BanAll:', result.sender_user_id_)
 DevAli:srem(ReLaX..'Ali:MuteAll:', result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم الغاء (الحظر • الكتم) عام من المجموعات")  
 end 
-if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
-else
+if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),UnAllReply)
 end end
 if text and (text:match('^الغاء عام @(.*)') or text:match('^الغاء العام @(.*)')) then
@@ -5481,11 +6120,11 @@ if dp.first_name_ ~= false then
 DevAli:del(ReLaX.."Ali:EditDev"..msg.sender_user_id_)
 DevAli:set(ReLaX.."Ali:NewDev"..msg.sender_user_id_,dp.id_)
 if dp.username_ ~= false then DevUser = '\n⌁︙المعرف ↫ [@'..dp.username_..']' else DevUser = '' end
-local Text = '⌁︙الايدي ↫ '..dp.id_..DevUser..'\n⌁︙الاسم ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..')\n⌁︙تم حفظ المعلومات بنجاح\n⌁︙استخدم الازرار للتاكيد ↫ ⤈'
+local Text = '⌁︙الايدي ↫ '..dp.id_..DevUser..'\n⌁︙الاسم ↫ ['..dp.first_name_..'](tg://user?id='..dp.id_..')\n⌁︙تم حفظ المعلومات بنجاح\n⌁︙استخدم الازرار للتاكيد ↫ ⤈'
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="نعم",callback_data="/setyes"},{text="لا",callback_data="/setno"}}} 
 Msg_id = msg.id_/2097152/0.5
-return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 else
 send(msg.chat_id_, msg.id_,"⌁︙المعلومات خاطئه قم بالتاكد واعد المحاوله")
 DevAli:del(ReLaX.."Ali:EditDev"..msg.sender_user_id_)
@@ -5571,7 +6210,7 @@ if text and text:match("^اضف رسائل (%d+)$") and msg.reply_to_message_id_
 if Constructor(msg) then
 TXT = text:match("^اضف رسائل (%d+)$")
 DevAli:set('ReLaXTEAM:'..ReLaX..'id:user'..msg.chat_id_,TXT)  
-DevAli:setex('ReLaXTEAM:'..ReLaX.."numadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 300, true)  
+DevAli:setex('ReLaXTEAM:'..ReLaX.."numadd:user"..msg.chat_id_.."" .. msg.sender_user_id_, 300, true)  
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل عدد الرسائل الان \n⌁︙ارسل الغاء لالغاء الامر ", 1, "md")
 Dev_Ali(msg.chat_id_, msg.id_, 1,numd, 1, 'md') 
 else 
@@ -5592,7 +6231,7 @@ if text and text:match("^اضف نقاط (%d+)$") and msg.reply_to_message_id_ =
 if Constructor(msg) then
 TXT = text:match("^اضف نقاط (%d+)$")
 DevAli:set('ReLaXTEAM:'..ReLaX..'ids:user'..msg.chat_id_,TXT)  
-DevAli:setex('ReLaXTEAM:'..ReLaX.."nmadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 300, true)  
+DevAli:setex('ReLaXTEAM:'..ReLaX.."nmadd:user"..msg.chat_id_.."" .. msg.sender_user_id_, 300, true)  
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل عدد النقاط الان \n⌁︙ارسل الغاء لالغاء الامر ", 1, "md")
 Dev_Ali(msg.chat_id_, msg.id_, 1,numd, 1, 'md') 
 else 
@@ -5641,9 +6280,9 @@ text = "⌁︙قائمة المميزين ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ 
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then 
 text = "⌁︙*لا يوجد مميزين*"
@@ -5659,9 +6298,9 @@ text = "⌁︙قائمة الادمنيه ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ 
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then
 text = "⌁︙*لا يوجد ادمنيه*"
@@ -5676,9 +6315,9 @@ text = "⌁︙قائمة المدراء ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ �
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then 
 text = "⌁︙*لا يوجد مدراء*"
@@ -5691,9 +6330,9 @@ text = "⌁︙قائمة المنظفين ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ 
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then 
 text = "⌁︙*لا يوجد منظفين*"
@@ -5708,9 +6347,9 @@ text = "⌁︙قائمة المنشئين ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ 
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then 
 text = "⌁︙*لا يوجد منشئين*"
@@ -5719,15 +6358,30 @@ Dev_Ali(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end end 
 --     Source ReLaX     --
 if AliConstructor(msg) then
+if text == "المالكين" and ChCheck(msg) then 
+local List = DevAli:smembers(ReLaX..'Ali:AliConstructor:'..msg.chat_id_)
+text = "⌁︙قائمة المالكين ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
+for k,v in pairs(List) do
+local username = DevAli:get(ReLaX..'Save:UserName'..v)
+if username then
+text = text..k.."~ : [@"..username.."]\n"
+else
+text = text..k.."~ : `"..v.."`\n"
+end end
+if #List == 0 then 
+text = "⌁︙*لا يوجد مالكين*"
+end
+Dev_Ali(msg.chat_id_, msg.id_, 1, text, 1, "md")
+end 
 if text == "المنشئين الاساسيين" and ChCheck(msg) or text == "منشئين اساسيين" and ChCheck(msg) or text == "المنشئين الاساسين" and ChCheck(msg) then 
 local List = DevAli:smembers(ReLaX..'Ali:BasicConstructor:'..msg.chat_id_)
 text = "⌁︙قائمة المنشئين الاساسيين ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then 
 text = "⌁︙*لا يوجد منشئين اساسيين*"
@@ -5747,7 +6401,7 @@ Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙حساب المنشئ محذوف", 1, "
 return false  
 end
 local UserName = (dp.username_ or "ReL3X7")
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙منشئ المجموعه ↫ ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md")  
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙مالك المجموعه ↫ ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md")  
 end,nil)   
 end
 end
@@ -5761,9 +6415,9 @@ text = "⌁︙قائمة المكتومين ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ �
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then 
 text = "⌁︙*لا يوجد مكتومين*"
@@ -5777,9 +6431,9 @@ text = "⌁︙قائمة المقيدين ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ 
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then
 text = "⌁︙*لا يوجد مقيدين*"
@@ -5793,9 +6447,9 @@ text = "⌁︙قائمة المحظورين ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ �
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then 
 text = "⌁︙*لا يوجد محظورين*"
@@ -5821,9 +6475,9 @@ text = "⌁︙قائمة مطاية المجموعه 😹💔 ↫ ⤈ \n┉ ≈ 
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then
 text = "⌁︙*لا يوجد مطايه كلها اوادم* 😹💔"
@@ -5837,9 +6491,9 @@ text = "⌁︙قائمة المطورين الثانويين ↫ ⤈ \n┉ ≈ �
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then
 text = "⌁︙*عذرا لم يتم رفع اي مطورين ثانويين*"
@@ -5856,9 +6510,9 @@ text = "⌁︙قائمة المحظورين عام ↫ ⤈ \n┉ ≈ ┉ ≈ ┉
 for k,v in pairs(BanAll) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 else
 text = ""
@@ -5868,9 +6522,9 @@ text = text.."⌁︙قائمة المكتومين عام ↫ ⤈ \n┉ ≈ ┉ �
 for k,v in pairs(MuteAll) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 else
 text = text
@@ -5890,9 +6544,9 @@ for k,v in pairs(List) do
 local sudouser = DevAli:get(ReLaX..'Ali:Sudos'..v) 
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."] ↬ Gps : "..(sudouser or 0).."\n"
+text = text..k.."~ : [@"..username.."] ↬ Gps : "..(sudouser or 0).."\n"
 else
-text = text..""..k.."~ : `"..v.."` ↬ Gps : "..(sudouser or 0).."\n"
+text = text..k.."~ : `"..v.."` ↬ Gps : "..(sudouser or 0).."\n"
 end end
 if #List == 0 then
 text = "⌁︙*عذرا لم يتم رفع اي مطورين*"
@@ -5906,9 +6560,9 @@ text = "⌁︙قائمة المدراء العامين ↫ ⤈ \n┉ ≈ ┉ ≈
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then 
 text = "⌁︙*لا يوجد مدراء عامين*"
@@ -5922,9 +6576,9 @@ text = "⌁︙قائمة المميزين العام ↫ ⤈ \n┉ ≈ ┉ ≈ �
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then 
 text = "⌁︙*لا يوجد مميزين عام*"
@@ -5939,9 +6593,9 @@ text = "⌁︙قائمة الادمنيه العامين ↫ ⤈ \n┉ ≈ ┉ �
 for k,v in pairs(List) do
 local username = DevAli:get(ReLaX..'Save:UserName'..v)
 if username then
-text = text..""..k.."~ : [@"..username.."]\n"
+text = text..k.."~ : [@"..username.."]\n"
 else
-text = text..""..k.."~ : `"..v.."`\n"
+text = text..k.."~ : `"..v.."`\n"
 end end
 if #List == 0 then
 text = "⌁︙*لا يوجد ادمنيه عامين*"
@@ -5951,7 +6605,6 @@ end
 --     Source ReLaX     --
 if text ==("رفع المنشئ") and ChCheck(msg) or text ==("رفع المالك") and ChCheck(msg) then 
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
-DevAli:del(ReLaX..'Ali:AliConstructor:'..msg.chat_id_)
 local admins = data.members_
 for i=0 , #admins do
 if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
@@ -5964,7 +6617,7 @@ Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙حساب المنشئ محذوف", 1, "
 return false  
 end
 local UserName = (dp.username_ or "ReL3X7")
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم رفع منشئ المجموعه ↫ ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md") 
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم رفع مالك المجموعه ↫ ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md") 
 DevAli:sadd(ReLaX.."Ali:AliConstructor:"..msg.chat_id_,dp.id_)
 end,nil)   
 end,nil)   
@@ -6100,10 +6753,10 @@ if data.first_name_ == false then
 Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙الحساب محذوف', 1, 'md')
 return false  end
 if data.username_ == false then
-Text = '⌁︙اسمه ↫ ['..CatchName(data.first_name_,20)..'](tg://user?id='..result.sender_user_id_..')\n⌁︙ايديه ↫ ❨ `'..result.sender_user_id_..'` ❩\n⌁︙رتبته ↫ '..IdRank(result.sender_user_id_, msg.chat_id_)..''..sudobot..'\n⌁︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌁︙تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⌁︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked
+Text = '⌁︙اسمه ↫ ['..data.first_name_..'](tg://user?id='..result.sender_user_id_..')\n⌁︙ايديه ↫ ❨ `'..result.sender_user_id_..'` ❩\n⌁︙رتبته ↫ '..IdRank(result.sender_user_id_, msg.chat_id_)..sudobot..'\n⌁︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌁︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌁︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked
 SendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
 else
-Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙معرفه ↫ [@'..data.username_..']\n⌁︙ايديه ↫ ❨ `'..result.sender_user_id_..'` ❩\n⌁︙رتبته ↫ '..IdRank(result.sender_user_id_, msg.chat_id_)..''..sudobot..'\n⌁︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌁︙تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⌁︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙معرفه ↫ [@'..data.username_..']\n⌁︙ايديه ↫ ❨ `'..result.sender_user_id_..'` ❩\n⌁︙رتبته ↫ '..IdRank(result.sender_user_id_, msg.chat_id_)..sudobot..'\n⌁︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌁︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌁︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
 end
 end,nil)
 end 
@@ -6161,7 +6814,7 @@ end
 if data.first_name_ == false then
 Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙الحساب محذوف', 1, 'md')
 return false  end
-Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙معرفه ↫ [@'..data.username_..']\n⌁︙ايديه ↫ ❨ `'..res.id_..'` ❩\n⌁︙رتبته ↫ '..IdRank(res.id_, msg.chat_id_)..''..sudobot..'\n⌁︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌁︙تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⌁︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙معرفه ↫ [@'..data.username_..']\n⌁︙ايديه ↫ ❨ `'..res.id_..'` ❩\n⌁︙رتبته ↫ '..IdRank(res.id_, msg.chat_id_)..sudobot..'\n⌁︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌁︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌁︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
 end,nil)
 end 
 end,nil)
@@ -6208,10 +6861,10 @@ if data.first_name_ == false then
 Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙الحساب محذوف', 1, 'md')
 return false  end
 if data.username_ == false then
-Text = '⌁︙اسمه ↫ ['..CatchName(data.first_name_,20)..'](tg://user?id='..iduser..')\n⌁︙ايديه ↫ ❨ `'..iduser..'` ❩\n⌁︙رتبته ↫ '..IdRank(data.id_, msg.chat_id_)..''..sudobot..'\n⌁︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌁︙تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⌁︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked
+Text = '⌁︙اسمه ↫ ['..data.first_name_..'](tg://user?id='..iduser..')\n⌁︙ايديه ↫ ❨ `'..iduser..'` ❩\n⌁︙رتبته ↫ '..IdRank(data.id_, msg.chat_id_)..sudobot..'\n⌁︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌁︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌁︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked
 SendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
 else
-Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙معرفه ↫ [@'..data.username_..']\n⌁︙ايديه ↫ ❨ `'..iduser..'` ❩\n⌁︙رتبته ↫ '..IdRank(data.id_, msg.chat_id_)..''..sudobot..'\n⌁︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌁︙تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⌁︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙معرفه ↫ [@'..data.username_..']\n⌁︙ايديه ↫ ❨ `'..iduser..'` ❩\n⌁︙رتبته ↫ '..IdRank(data.id_, msg.chat_id_)..sudobot..'\n⌁︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌁︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌁︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
 end
 end,nil)
 return false 
@@ -6224,7 +6877,7 @@ if DevAli:sismember(ReLaX..'Ali:Ban:'..msg.chat_id_,result.sender_user_id_) then
 if DevAli:sismember(ReLaX..'Ali:BanAll:',result.sender_user_id_) then banall = 'محظور عام' else banall = 'غير محظور عام' end
 if DevAli:sismember(ReLaX..'Ali:MuteAll:',result.sender_user_id_) then muteall = 'مكتوم عام' else muteall = 'غير مكتوم عام' end
 if DevAli:sismember(ReLaX..'Ali:Tkeed:',result.sender_user_id_) then tkeed = 'مقيد' else tkeed = 'غير مقيد' end
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙الحظر العام ↫ '..banall..'\n⌁︙الكتم العام ↫ '..muteall..'\n⌁︙الحظر ↫ '..banned..'\n⌁︙الكتم ↫ '..muted..'\n⌁︙التقيد ↫ '..tkeed..'', 1, 'md')  
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙الحظر العام ↫ '..banall..'\n⌁︙الكتم العام ↫ '..muteall..'\n⌁︙الحظر ↫ '..banned..'\n⌁︙الكتم ↫ '..muted..'\n⌁︙التقيد ↫ '..tkeed, 1, 'md')  
 end
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),kshf_by_reply) 
 end
@@ -6237,7 +6890,7 @@ if DevAli:sismember(ReLaX..'Ali:Ban:'..msg.chat_id_,result.id_) then banned = '�
 if DevAli:sismember(ReLaX..'Ali:BanAll:',result.id_) then banall = 'محظور عام' else banall = 'غير محظور عام' end
 if DevAli:sismember(ReLaX..'Ali:MuteAll:',result.id_) then muteall = 'مكتوم عام' else muteall = 'غير مكتوم عام' end
 if DevAli:sismember(ReLaX..'Ali:Tkeed:',result.id_) then tkeed = 'مقيد' else tkeed = 'غير مقيد' end
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙الحظر العام ↫ '..banall..'\n⌁︙الكتم العام ↫ '..muteall..'\n⌁︙الحظر ↫ '..banned..'\n⌁︙الكتم ↫ '..muted..'\n⌁︙التقيد ↫ '..tkeed..'', 1, 'md')  
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙الحظر العام ↫ '..banall..'\n⌁︙الكتم العام ↫ '..muteall..'\n⌁︙الحظر ↫ '..banned..'\n⌁︙الكتم ↫ '..muted..'\n⌁︙التقيد ↫ '..tkeed, 1, 'md')  
 else
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙*المعرف غير صحيح*', 1, 'md')  
 end
@@ -6250,9 +6903,14 @@ if tonumber(result.sender_user_id_) == tonumber(ReLaX) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙انا البوت وليس لدي قيود', 1, 'md')  
 return false  
 end 
-ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفع قيوده")  
-HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/restrictChatMember?chat_id=" ..msg.chat_id_.. "&user_id=" ..result.sender_user_id_.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
-DevAli:srem(ReLaX..'Ali:Tkeed:'..msg.chat_id_,result.sender_user_id_) DevAli:srem(ReLaX..'Ali:Ban:'..msg.chat_id_,result.sender_user_id_) DevAli:srem(ReLaX..'Ali:Muted:'..msg.chat_id_,result.sender_user_id_)   
+ReplyStatus(msg,result.sender_user_id_,"Reply","⌁︙تم رفع قيوده") 
+if SecondSudo(msg) then
+HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
+DevAli:srem(ReLaX..'Ali:Tkeed:'..msg.chat_id_,result.sender_user_id_) DevAli:srem(ReLaX..'Ali:Ban:'..msg.chat_id_,result.sender_user_id_) DevAli:srem(ReLaX..'Ali:Muted:'..msg.chat_id_,result.sender_user_id_) DevAli:srem(ReLaX..'Ali:BanAll:',result.sender_user_id_) DevAli:srem(ReLaX..'Ali:MuteAll:',result.sender_user_id_)
+else
+HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
+DevAli:srem(ReLaX..'Ali:Tkeed:'..msg.chat_id_,result.sender_user_id_) DevAli:srem(ReLaX..'Ali:Ban:'..msg.chat_id_,result.sender_user_id_) DevAli:srem(ReLaX..'Ali:Muted:'..msg.chat_id_,result.sender_user_id_) 
+end
 end
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),unbanreply) 
 end
@@ -6267,9 +6925,14 @@ if data and data.code_ and data.code_ == 6 then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙لم استطع استخراج المعلومات', 1, 'md') 
 return false  
 end
-ReplyStatus(msg,user,"Reply","⌁︙تم رفع قيوده")  
-HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/restrictChatMember?chat_id=" ..msg.chat_id_.. "&user_id=" ..user.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
-DevAli:srem(ReLaX..'Ali:Tkeed:'..msg.chat_id_,user) DevAli:srem(ReLaX..'Ali:Ban:'..msg.chat_id_,user) DevAli:srem(ReLaX..'Ali:Muted:'..msg.chat_id_,user)   
+ReplyStatus(msg,user,"Reply","⌁︙تم رفع قيوده") 
+if SecondSudo(msg) then
+HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id=" ..user.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
+DevAli:srem(ReLaX..'Ali:Tkeed:'..msg.chat_id_,user) DevAli:srem(ReLaX..'Ali:Ban:'..msg.chat_id_,user) DevAli:srem(ReLaX..'Ali:Muted:'..msg.chat_id_,user) DevAli:srem(ReLaX..'Ali:BanAll:',user) DevAli:srem(ReLaX..'Ali:MuteAll:',user)
+else
+HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id=" ..user.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
+DevAli:srem(ReLaX..'Ali:Tkeed:'..msg.chat_id_,user) DevAli:srem(ReLaX..'Ali:Ban:'..msg.chat_id_,user) DevAli:srem(ReLaX..'Ali:Muted:'..msg.chat_id_,user) 
+end  
 end,nil)  
 end
 if text and text:match('^رفع القيود @(.*)') and Admin(msg) and ChCheck(msg) then  
@@ -6292,9 +6955,14 @@ if data and data.code_ and data.code_ == 6 then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙لم استطع استخراج المعلومات', 1, 'md') 
 return false  
 end
-ReplyStatus(msg,result.id_,"Reply","⌁︙تم رفع قيوده")  
-HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/restrictChatMember?chat_id=" ..msg.chat_id_.. "&user_id=" ..result.id_.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
-DevAli:srem(ReLaX..'Ali:Tkeed:'..msg.chat_id_,result.id_) DevAli:srem(ReLaX..'Ali:Ban:'..msg.chat_id_,result.id_) DevAli:srem(ReLaX..'Ali:Muted:'..msg.chat_id_,result.id_)   
+ReplyStatus(msg,result.id_,"Reply","⌁︙تم رفع قيوده") 
+if SecondSudo(msg) then
+HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.id_.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
+DevAli:srem(ReLaX..'Ali:Tkeed:'..msg.chat_id_,result.id_) DevAli:srem(ReLaX..'Ali:Ban:'..msg.chat_id_,result.id_) DevAli:srem(ReLaX..'Ali:Muted:'..msg.chat_id_,result.id_) DevAli:srem(ReLaX..'Ali:BanAll:',result.id_) DevAli:srem(ReLaX..'Ali:MuteAll:',result.id_)
+else
+HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.id_.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
+DevAli:srem(ReLaX..'Ali:Tkeed:'..msg.chat_id_,result.id_) DevAli:srem(ReLaX..'Ali:Ban:'..msg.chat_id_,result.id_) DevAli:srem(ReLaX..'Ali:Muted:'..msg.chat_id_,result.id_) 
+end
 end,nil)   
 end  
 resolve_username(username,unbanusername) 
@@ -6570,6 +7238,14 @@ if ChatType == 'sp' or ChatType == 'gp'  then
 if Admin(msg) then
 if text and text:match("^قفل (.*)$") then
 local LockText = {string.match(text, "^(قفل) (.*)$")}
+if LockText[2] == "الاباحي" then
+if not DevAli:get(ReLaX..'Ali:Lock:NightClub'..msg.chat_id_) then
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الاباحي")  
+DevAli:set(ReLaX..'Ali:Lock:NightClub'..msg.chat_id_,true)
+else
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙الاباحي بالفعل مقفل في المجموعه', 1, 'md')
+end
+end
 if LockText[2] == "التعديل" then
 if not DevAli:get(ReLaX..'Ali:Lock:EditMsgs'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل التعديل")  
@@ -6722,7 +7398,7 @@ end
 --     Source ReLaX     --
 if text == 'ضع رابط' or text == 'وضع رابط' or text == 'ضع الرابط' or text == 'وضع الرابط' then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙ارسل رابط المجموعه او رابط قناة المجموعه', 1, 'md')
-DevAli:setex(ReLaX.."Ali:Set:Groups:Links"..msg.chat_id_..""..msg.sender_user_id_,300,true) 
+DevAli:setex(ReLaX.."Ali:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_,300,true) 
 end
 if text == 'انشاء رابط' or text == 'انشاء الرابط' then
 local LinkGp = json:decode(https.request('https://api.telegram.org/bot'..TokenBot..'/exportChatInviteLink?chat_id='..msg.chat_id_))
@@ -6736,7 +7412,7 @@ Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙ليست لدي صلاحية دعوة �
 end
 else
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙ارسل رابط المجموعه او رابط قناة المجموعه', 1, 'md')
-DevAli:setex(ReLaX.."Ali:Set:Groups:Links"..msg.chat_id_..""..msg.sender_user_id_,300,true) 
+DevAli:setex(ReLaX.."Ali:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_,300,true) 
 end
 end
 end
@@ -6759,7 +7435,8 @@ DevAli:del(ReLaX..'Ali:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_)
 return false  
 end 
 DevAli:del(ReLaX..'Ali:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_)
-DevAli:set(ReLaX..'Ali:Groups:Welcomes'..msg.chat_id_,text)
+Welcomes = text:gsub('"',"") Welcomes = text:gsub("'","") Welcomes = text:gsub(",","") Welcomes = text:gsub("*","") Welcomes = text:gsub(";","") Welcomes = text:gsub("`","") Welcomes = text:gsub("{","") Welcomes = text:gsub("}","") 
+DevAli:set(ReLaX..'Ali:Groups:Welcomes'..msg.chat_id_,Welcomes)
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم حفظ كليشة الترحيب', 1, 'md')
 return false   
 end
@@ -6772,9 +7449,9 @@ ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم حذف الترحيب"
 DevAli:del(ReLaX..'Ali:Groups:Welcomes'..msg.chat_id_)
 end
 if text and text:match("^جلب الترحيب$") and ChCheck(msg) or text and text:match("^جلب ترحيب$") and ChCheck(msg) or text and text:match("^الترحيب$") and ChCheck(msg) then
-local wel = DevAli:get(ReLaX..'Ali:Groups:Welcomes'..msg.chat_id_)
-if wel then
-Dev_Ali(msg.chat_id_, msg.id_, 1, wel, 1, 'md')
+local Welcomes = DevAli:get(ReLaX..'Ali:Groups:Welcomes'..msg.chat_id_)
+if Welcomes then
+Dev_Ali(msg.chat_id_, msg.id_, 1, Welcomes, 1, 'md')
 else
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙لم يتم وضع الترحيب \n⌁︙ارسل ↫ ضع ترحيب للحفظ ', 1, 'md')
 end
@@ -6843,22 +7520,11 @@ if text and text == "المشتركين" and ChCheck(msg) or text and text == "�
 local users = DevAli:scard(ReLaX.."Ali:Users")
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙عدد المشتركين ↫ ❨ '..users..' ❩', 1, 'md')
 end
+if text and text == "المجموعات" and ChCheck(msg) or text and text == "↫ المجموعات ⌁" then
+local gps = DevAli:scard(ReLaX.."Ali:Groups")
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙عدد المجموعات ↫ ❨ '..gps..' ❩', 1, 'md')
 end
---     Source ReLaX     --
-if text and text == 'المجموعات' and ChCheck(msg) or text and text == '↫ المجموعات ⌁' then
-if not SudoBot(msg) then
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطورين فقط ', 1, 'md')
-else
-local List = DevAli:smembers(ReLaX.."Ali:Groups")
-local t = '⌁︙مجموعات البوت ↫ ⤈ \n'
-for k,v in pairs(List) do
-t = t..k.."~ : `"..v.."`\n" 
 end
-if #List == 0 then
-t = '⌁︙لا يوجد مجموعات مفعله'
-end
-Dev_Ali(msg.chat_id_, msg.id_, 1,t, 1, 'md')
-end end
 --     Source ReLaX     --
 if text and text:match('^تنظيف (%d+)$') and ChCheck(msg) then  
 if not DevAli:get(ReLaX..'Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then  
@@ -6880,8 +7546,7 @@ if text == "تنظيف المشتركين" and SecondSudo(msg) and ChCheck(msg) 
 local pv = DevAli:smembers(ReLaX.."Ali:Users")
 local sendok = 0
 for i = 1, #pv do
-tdcli_function({ID='GetChat',chat_id_ = pv[i]
-},function(arg,dataq)
+tdcli_function({ID='GetChat',chat_id_ = pv[i]},function(arg,dataq)
 tdcli_function ({ ID = "SendChatAction",  
 chat_id_ = pv[i], action_ = {  ID = "SendMessageTypingAction", progress_ = 100} 
 },function(arg,data) 
@@ -6909,8 +7574,7 @@ local group = DevAli:smembers(ReLaX.."Ali:Groups")
 local w = 0
 local q = 0
 for i = 1, #group do
-tdcli_function({ID='GetChat',chat_id_ = group[i]
-},function(arg,data)
+tdcli_function({ID='GetChat',chat_id_ = group[i]},function(arg,data)
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusMember" then
 DevAli:srem(ReLaX.."Ali:Groups",group[i]) 
 changeChatMemberStatus(group[i], ReLaX, "Left")
@@ -6944,7 +7608,7 @@ ReLaXgp1 = ''
 else
 ReLaXgp1 = '\n⌁︙تم حذف ↫ { '..w..' } مجموعه بسبب تنزيل البوت الى عضو'
 end
-Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙عدد الكروبات الان ↫ { '..#group..' }'..ReLaXgp1..''..ReLaXgp2..'\n⌁︙العدد الحقيقي الان  ↫ ( '..ReLaXgp3..' ) \n ', 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1,'⌁︙عدد الكروبات الان ↫ { '..#group..' }'..ReLaXgp1..ReLaXgp2..'\n⌁︙العدد الحقيقي الان  ↫ ( '..ReLaXgp3..' ) \n ', 1, 'md')
 end end
 end,nil)
 end
@@ -6952,33 +7616,54 @@ return false
 end 
 end
 --     Source ReLaX     --
-if text == "تفعيل امسح" and Constructor(msg) and ChCheck(msg) then
-local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تفعيل امسح بنجاح'
+if text and (text == "تفعيل امسح" or text == "تفعيل المسح التلقائي" or text == "تفعيل الحذف التلقائي") and Constructor(msg) and ChCheck(msg) then
+local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تفعيل امسح مع ميزة الحذف التلقائي للميديا'
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 DevAli:set(ReLaX..'Ali:Lock:Clean'..msg.chat_id_,true)  
 end
-if text == "تعطيل امسح" and Constructor(msg) and ChCheck(msg) then
-local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تعطيل امسح بنجاح'
+if text and (text == "تعطيل امسح" or text == "تعطيل المسح التلقائي" or text == "تعطيل الحذف التلقائي") and Constructor(msg) and ChCheck(msg) then
+local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تعطيل امسح مع ميزة الحذف التلقائي للميديا'
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 DevAli:del(ReLaX..'Ali:Lock:Clean'..msg.chat_id_) 
 end
-if Cleaner(msg) then
-if DevAli:get(ReLaX..'Ali:Lock:Clean'..msg.chat_id_) then 
-if text == "الميديا" and ChCheck(msg) or text == "عدد الميديا" and ChCheck(msg) then 
-local M = DevAli:scard(ReLaX.."Ali:cleaner"..msg.chat_id_)
-if M ~= 0 then
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙عدد الميديا ↫ "..M, 1, 'md') 
+if text and (text:match("^تعين عدد المسح (%d+)$") or text:match("^تعيين عدد المسح (%d+)$") or text:match("^تعين عدد الحذف (%d+)$") or text:match("^تعيين عدد الحذف (%d+)$")) and Constructor(msg) then   
+local Num = text:match("تعين عدد المسح (%d+)$") or text:match("تعيين عدد المسح (%d+)$") or text:match("تعين عدد الحذف (%d+)$") or text:match("تعيين عدد الحذف (%d+)$")
+if tonumber(Num) < 50 or tonumber(Num) > 200 then
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙قم بتحديد عدد اكبر من 50 واصغر من 200 للحذف التلقائي', 1, 'md')
 else
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙لاتوجد ميديا هنا", 1, 'md') 
-end end
-if text == "امسح" and ChCheck(msg) or text == "تنظيف ميديا" and ChCheck(msg) or text == "تنظيف الميديا" and ChCheck(msg) then
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم وضع ↫ *'..Num..'* من الميديا للحذف التلقائي', 1, 'md')
+DevAli:set(ReLaX..'Ali:CleanNum'..msg.chat_id_,Num) 
+end end 
+if msg and DevAli:get(ReLaX..'Ali:Lock:Clean'..msg.chat_id_) then
+if DevAli:get(ReLaX..'Ali:CleanNum'..msg.chat_id_) then CleanNum = DevAli:get(ReLaX..'Ali:CleanNum'..msg.chat_id_) else CleanNum = 200 end
+if DevAli:scard(ReLaX.."Ali:cleaner"..msg.chat_id_) >= tonumber(CleanNum) then 
 local List = DevAli:smembers(ReLaX.."Ali:cleaner"..msg.chat_id_)
 local Del = 0
 for k,v in pairs(List) do
 Del = (Del + 1)
 local Message = v
 DeleteMessage(msg.chat_id_,{[0]=Message})
-Message = Message - 1048576 
+end
+SendText(msg.chat_id_,"⌁︙تم حذف "..Del.." من الميديا تلقائيا",0,'md') 
+DevAli:del(ReLaX.."Ali:cleaner"..msg.chat_id_)
+end 
+end 
+if Cleaner(msg) then
+if DevAli:get(ReLaX..'Ali:Lock:Clean'..msg.chat_id_) then 
+if text == "الميديا" and ChCheck(msg) or text == "عدد الميديا" and ChCheck(msg) then 
+local M = DevAli:scard(ReLaX.."Ali:cleaner"..msg.chat_id_)
+if M ~= 0 then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙عدد الميديا ↫ "..M.."\n⌁︙الحذف التلقائي ↫ "..(DevAli:get(ReLaX..'Ali:CleanNum'..msg.chat_id_) or 200), 1, 'md') 
+else
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙لاتوجد ميديا هنا", 1, 'md') 
+end end
+if text == "امسح" and ChCheck(msg) or text == "احذف" and ChCheck(msg) or text == "تنظيف ميديا" and ChCheck(msg) or text == "تنظيف الميديا" and ChCheck(msg) then
+local List = DevAli:smembers(ReLaX.."Ali:cleaner"..msg.chat_id_)
+local Del = 0
+for k,v in pairs(List) do
+Del = (Del + 1)
+local Message = v
+DeleteMessage(msg.chat_id_,{[0]=Message})
 end
 if Del ~= 0 then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حذف "..Del.." من الميديا", 1, 'md') 
@@ -7015,6 +7700,14 @@ if ChatType == 'sp' or ChatType == 'gp'  then
 if Admin(msg) then
 if text and text:match("^فتح (.*)$") then
 local UnLockText = {string.match(text, "^(فتح) (.*)$")}
+if UnLockText[2] == "الاباحي" then
+if DevAli:get(ReLaX..'Ali:Lock:NightClub'..msg.chat_id_) then
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الاباحي")  
+DevAli:del(ReLaX..'Ali:Lock:NightClub'..msg.chat_id_)
+else
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙الاباحي بالفعل مفتوح في المجموعه', 1, 'md')
+end
+end
 if UnLockText[2] == "التعديل" then
 if DevAli:get(ReLaX..'Ali:Lock:EditMsgs'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح التعديل")  
@@ -7498,7 +8191,7 @@ if not Constructor(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمنشئين فقط', 1, 'md')
 else
 DevAli:set(ReLaX..'Ali:Lock:Fshar'..msg.chat_id_,true) DevAli:set(ReLaX..'Ali:Lock:Taf'..msg.chat_id_,true) DevAli:set(ReLaX..'Ali:Lock:Kfr'..msg.chat_id_,true) DevAli:hdel(ReLaX.."Ali:Spam:Group:User"..msg.chat_id_ ,"Spam:User") 
-UnLockList ={'Ali:Lock:EditMsgs','Ali:Lock:Text','Ali:Lock:Arabic','Ali:Lock:English','Ali:Lock:Join','Ali:Lock:Bots','Ali:Lock:Farsi','Ali:Lock:FarsiBan','Ali:Lock:TagServr','Ali:Lock:Inline','Ali:Lock:Photo','Ali:Lock:Spam','Ali:Lock:Videos','Ali:Lock:Gifs','Ali:Lock:Music','Ali:Lock:Voice','Ali:Lock:Links','Ali:Lock:Location','Ali:Lock:Tags','Ali:Lock:Stickers','Ali:Lock:Markdown','Ali:Lock:Forwards','Ali:Lock:Document','Ali:Lock:Contact','Ali:Lock:Hashtak','Ali:Lock:WebLinks'}
+UnLockList ={'Ali:Lock:NightClub','Ali:Lock:EditMsgs','Ali:Lock:Text','Ali:Lock:Arabic','Ali:Lock:English','Ali:Lock:Join','Ali:Lock:Bots','Ali:Lock:Farsi','Ali:Lock:FarsiBan','Ali:Lock:TagServr','Ali:Lock:Inline','Ali:Lock:Photo','Ali:Lock:Spam','Ali:Lock:Videos','Ali:Lock:Gifs','Ali:Lock:Music','Ali:Lock:Voice','Ali:Lock:Links','Ali:Lock:Location','Ali:Lock:Tags','Ali:Lock:Stickers','Ali:Lock:Markdown','Ali:Lock:Forwards','Ali:Lock:Document','Ali:Lock:Contact','Ali:Lock:Hashtak','Ali:Lock:WebLinks'}
 for i,UnLock in pairs(UnLockList) do
 DevAli:del(ReLaX..UnLock..msg.chat_id_)
 end
@@ -7671,6 +8364,18 @@ if txts[2] == 'المدراء العامين' or txts[2] == 'المدراء ال
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم حذف المدراء العامين")  
 DevAli:del(ReLaX..'Ali:ManagerAll:')
 end
+if txts[2] == 'المالكين' or txtss[2] == 'المالكين' then
+DevAli:del(ReLaX..'Ali:AliConstructor:'..msg.chat_id_)
+tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,dp) 
+local admins = dp.members_
+for i=0 , #admins do
+if dp.members_[i].status_.ID == "ChatMemberStatusCreator" then
+DevAli:sadd(ReLaX.."Ali:AliConstructor:"..msg.chat_id_,admins[i].user_id_)
+end 
+end  
+end,nil)
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم حذف المالكين")  
+end
 end
 if AliConstructor(msg) then
 if txts[2] == 'المنشئين الاساسيين' or txtss[2] == 'المنشئين الاساسيين' then
@@ -7697,6 +8402,10 @@ if txts[2] == 'الادمنيه' or txtss[2] == 'الادمنيه' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم حذف الادمنيه")  
 DevAli:del(ReLaX..'Ali:Admins:'..msg.chat_id_)
 end
+end
+if txts[2] == 'قوانين' or txtss[2] == 'قوانين' then
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم حذف القوانين")  
+DevAli:del(ReLaX..'Ali:rules'..msg.chat_id_)
 end
 if txts[2] == 'المطايه' or txtss[2] == 'المطايه' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم حذف المطايه")  
@@ -7758,7 +8467,7 @@ end end
 --     Source ReLaX     --
 if text and text:match("^حذف جميع الرتب$") and ChCheck(msg) or text and text:match("^مسح جميع الرتب$") and ChCheck(msg) or text and text:match("^تنزيل جميع الرتب$") and ChCheck(msg) then
 if not AliConstructor(msg) then
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙لمنشئ المجموعه فقط', 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمالكين فقط', 1, 'md')
 else
 local basicconstructor = DevAli:smembers(ReLaX..'Ali:BasicConstructor:'..msg.chat_id_)
 local constructor = DevAli:smembers(ReLaX..'Ali:Constructor:'..msg.chat_id_)
@@ -7779,7 +8488,7 @@ DevAli:del(ReLaX..'Ali:Managers:'..msg.chat_id_)
 DevAli:del(ReLaX..'Ali:Admins:'..msg.chat_id_)
 DevAli:del(ReLaX..'Ali:VipMem:'..msg.chat_id_)
 DevAli:del(ReLaX..'User:Donky:'..msg.chat_id_)
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حذف جميع الرتب التاليه ↫ ❨ "..basicconstructort..''..constructort..''..Managerst..''..adminst..''..vipmemt..''..donkyt.." ❩ بنجاح \n ✓", 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حذف جميع الرتب التاليه ↫ ❨ "..basicconstructort..constructort..Managerst..adminst..vipmemt..donkyt.." ❩ بنجاح \n ✓", 1, 'md')
 else
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙لاتوجد رتب هنا", 1, 'md')
 end 
@@ -7824,6 +8533,7 @@ if DevAli:get(ReLaX..'Ali:Lock:Music'..msg.chat_id_) then mute_music = 'مقفل
 if DevAli:get(ReLaX..'Ali:Lock:Inline'..msg.chat_id_) then mute_in = 'مقفله' else mute_in = 'مفتوحه' end
 if DevAli:get(ReLaX..'Ali:Lock:Voice'..msg.chat_id_) then mute_voice = 'مقفله' else mute_voice = 'مفتوحه' end
 if DevAli:get(ReLaX..'Ali:Lock:EditMsgs'..msg.chat_id_) then mute_edit = 'مقفله' else mute_edit = 'مفتوحه' end
+if DevAli:get(ReLaX..'Ali:Lock:NightClub'..msg.chat_id_) then mute_nightclub = 'مقفل' else mute_nightclub = 'مفتوح' end
 if DevAli:get(ReLaX..'Ali:Lock:Links'..msg.chat_id_) then mute_links = 'مقفله' else mute_links = 'مفتوحه' end
 if DevAli:get(ReLaX..'Ali:Lock:Pin'..msg.chat_id_) then lock_pin = 'مقفله' else lock_pin = 'مفتوحه' end
 if DevAli:get(ReLaX..'Ali:Lock:Stickers'..msg.chat_id_) then lock_sticker = 'مقفله' else lock_sticker = 'مفتوحه' end
@@ -7865,6 +8575,7 @@ local TXTE = "⌁︙اعدادات المجموعه ↫ ⤈\n┉ ≈ ┉ ≈ ┉
 .."⌁︙الماركداون ↫ "..markdown.."\n"
 .."⌁︙الهاشتاك ↫ "..lock_htag.."\n"
 .."⌁︙التعديل ↫ "..mute_edit.."\n"
+.."⌁︙الاباحي ↫ "..mute_nightclub.."\n"
 .."⌁︙التثبيت ↫ "..lock_pin.."\n"
 .."⌁︙الاشعارات ↫ "..lock_tgservice.."\n"
 .."⌁︙الكلايش ↫ "..lock_spam.."\n"
@@ -7891,23 +8602,22 @@ Dev_Ali(msg.chat_id_,0, 1, txt[2], 1, 'md')
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 if text == "تفعيل انطق" and Manager(msg) and ChCheck(msg) then
-local ReLaXTeam = '↯︙اهلا عزيزي ↫ '..AliRank(msg)..' \n↯︙تم تفعيل ميزة انطق'
-Alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTeam, 14, string.len(msg.sender_user_id_))
+local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تفعيل ميزة انطق'
+alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 DevAli:del(ReLaX..'Ali:Antk:Ali'..msg.chat_id_) 
 end
 if text == "تعطيل انطق" and Manager(msg) and ChCheck(msg) then
-local ReLaXTeam = '↯︙اهلا عزيزي ↫ '..AliRank(msg)..' \n↯︙تم تعطيل ميزة انطق'
-Alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTeam, 14, string.len(msg.sender_user_id_))
+local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تعطيل ميزة انطق'
+alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 DevAli:set(ReLaX..'Ali:Antk:Ali'..msg.chat_id_,true)  
 end
 if text and text:match("^انطق (.*)$") and not DevAli:get(ReLaX..'Ali:Antk:Ali'..msg.chat_id_) then
-local UrlAntk = https.request('https://apiabs.ml/Antk.php?abs='..URL.escape(text:match("^انطق (.*)$")))
+local UrlAntk = https.request('https://apiali.ml/Antk.php?ali='..URL.escape(text:match("^انطق (.*)$")))
 Antk = JSON.decode(UrlAntk)
 if UrlAntk.ok ~= false then
 download_to_file("https://translate"..Antk.result.google..Antk.result.code.."UTF-8"..Antk.result.utf..Antk.result.translate.."&tl=ar-IN",Antk.result.translate..'.mp3') 
 sendAudio(msg.chat_id_, msg.id_, 0, 1,nil, './'..Antk.result.translate..'.mp3')  
-os.execute('rm -rf ./'..Antk.result.translate..'.mp3')
-
+os.execute('rm -rf ./'..Antk.result.translate..'.mp3') 
 end
 end
 --     Source ReLaX     --
@@ -7932,6 +8642,17 @@ local rules = DevAli:get(ReLaX..'Ali:rules'..msg.chat_id_)
 Dev_Ali(msg.chat_id_, msg.id_, 1, rules, 1, nil)
 end
 --     Source ReLaX     --
+if text == 'رقمي' then
+tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(extra,result,success)
+if result.phone_number_  then
+MyNumber = "⌁︙رقمك ↫ +"..result.phone_number_
+else
+MyNumber = "⌁︙رقمك موضوع لجهات اتصالك فقط"
+end
+send(msg.chat_id_, msg.id_,MyNumber)
+end,nil)
+end
+--     Source ReLaX     --
 if text == "تفعيل الزخرفه" and Manager(msg) and ChCheck(msg) then
 local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تفعيل الزخرفه بنجاح'
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
@@ -7942,10 +8663,10 @@ local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 DevAli:set(ReLaX..'Ali:Zrf:Ali'..msg.chat_id_,true)  
 end
-if DevAli:get(ReLaX..'Zrf:Ali'..msg.chat_id_..''..msg.sender_user_id_) then 
+if DevAli:get(ReLaX..'Zrf:Ali'..msg.chat_id_..msg.sender_user_id_) then 
 if text and text == 'الغاء' then 
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم الغاء امر الزخرفه', 1, 'md')
-DevAli:del(ReLaX..'Zrf:Ali'..msg.chat_id_..''..msg.sender_user_id_)
+DevAli:del(ReLaX..'Zrf:Ali'..msg.chat_id_..msg.sender_user_id_)
 return false  
 end 
 UrlZrf = https.request('https://apiali.ml/zrf.php?ali='..URL.escape(text)) 
@@ -7957,12 +8678,12 @@ i = i + 1
 t = t..i.."~ `"..v.."` \n"
 end
 Dev_Ali(msg.chat_id_, msg.id_, 1, t, 1, 'md')
-DevAli:del(ReLaX..'Zrf:Ali'..msg.chat_id_..''..msg.sender_user_id_)
+DevAli:del(ReLaX..'Zrf:Ali'..msg.chat_id_..msg.sender_user_id_)
 return false   
 end
 if not DevAli:get(ReLaX..'Ali:Zrf:Ali'..msg.chat_id_) then
 if text == 'زخرفه' and ChCheck(msg) or text == 'الزخرفه' and ChCheck(msg) then  
-DevAli:setex(ReLaX.."Zrf:Ali"..msg.chat_id_..""..msg.sender_user_id_,300,true)
+DevAli:setex(ReLaX.."Zrf:Ali"..msg.chat_id_..msg.sender_user_id_,300,true)
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙ارسل لي الكلمه لزخرفتها \nيمكنك الزخرفة باللغه { en } ~ { ar } ', 1, 'md')
 end
 end
@@ -8148,7 +8869,7 @@ keyboard.inline_keyboard = {
 {{text = '⌁ ReLaX TeAM .',url="t.me/ReL3X7"}},
 }
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice='..URL.escape(Audios.info)..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id='..msg.chat_id_..'&voice='..URL.escape(Audios.info)..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 end
 end
@@ -8203,6 +8924,17 @@ if text == 'تعطيل اوامر التحشيش' and Manager(msg) and ChCheck(m
 local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تعطيل اوامر التحشيش'
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 DevAli:set(ReLaX..'Ali:Lock:Stupid'..msg.chat_id_,true)
+end
+--     Source ReLaX     --
+if text and (text == 'تعطيل التحقق' or text == 'قفل التحقق' or text == 'تعطيل تنبيه الدخول') and Manager(msg) and ChCheck(msg) then 
+local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تعطيل التحقق بنجاح'
+alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
+DevAli:del(ReLaX..'Ali:Lock:Robot'..msg.chat_id_)
+end
+if text and (text == 'تفعيل التحقق' or text == 'فتح التحقق' or text == 'تفعيل تنبيه الدخول') and Manager(msg) and ChCheck(msg) then 
+local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تفعيل التحقق بنجاح'
+alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
+DevAli:set(ReLaX..'Ali:Lock:Robot'..msg.chat_id_,true)
 end
 --     Source ReLaX     --
 if text == 'تفعيل ردود المدير' and Manager(msg) and ChCheck(msg) then 
@@ -8353,9 +9085,9 @@ if DevAli:sismember(ReLaX.."Ali:Lock:Pinpin",msg.chat_id_) and not BasicConstruc
 Dev_Ali(msg.chat_id_,msg.id_, 1, "⌁︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
 return false  
 end
-local pin_id = DevAli:get(ReLaX..'Ali:PinnedMsg'..msg.chat_id_)
-if pin_id then
-pin(msg.chat_id_,pin_id,0)
+local PinId = DevAli:get(ReLaX..'Ali:PinnedMsg'..msg.chat_id_)
+if PinId then
+Pin(msg.chat_id_,PinId,0)
 local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم اعادة تثبيت الرساله'
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 end end
@@ -8466,7 +9198,7 @@ Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم وضع عدد الاعضاء ↫ *
 end
 --     Source ReLaX     --
 if text == 'تفعيل البوت الخدمي' then 
-if not SecondSudo(msg) then
+if not Sudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط', 1, 'md')
 else 
 local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تفعيل البوت الخدمي'
@@ -8475,7 +9207,7 @@ DevAli:del(ReLaX..'Ali:Lock:FreeBot'..ReLaX)
 end 
 end
 if text == 'تعطيل البوت الخدمي' then 
-if not SecondSudo(msg) then
+if not Sudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط', 1, 'md')
 else 
 local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙تم تعطيل البوت الخدمي'
@@ -8527,7 +9259,6 @@ return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,dp) 
-DevAli:del(ReLaX..'Ali:AliConstructor:'..msg.chat_id_)
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,alii) 
 local admins = alii.members_
 for i=0 , #admins do
@@ -8653,64 +9384,63 @@ local NameChat = NameChat:gsub("}","")
 local LinkGp = json:decode(https.request('https://api.telegram.org/bot'..TokenBot..'/exportChatInviteLink?chat_id='..msg.chat_id_))
 if LinkGp.ok == true then 
 LinkGroup = LinkGp.result
+LinkGroup = "⌁︙رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩"
 else
-LinkGroup = 'لا يوجد'
+LinkGroup = '⌁︙ليست لدي صلاحية الدعوه لهذه المجموعه !'
 end
 if not Sudo(msg) then
-SendText(DevId,"⌁︙هناك من بحاجه الى مساعده ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙الشخص ↫ "..Name.."\n⌁︙اسم المجموعه ↫ ["..NameChat.."]\n⌁︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n⌁︙رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙الوقت ↫ "..os.date("%I:%M%p").."\n⌁︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
+SendText(DevId,"⌁︙هناك من بحاجه الى مساعده ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙الشخص ↫ "..Name.."\n⌁︙اسم المجموعه ↫ ["..NameChat.."]\n⌁︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n"..LinkGroup.."\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙الوقت ↫ "..os.date("%I:%M%p").."\n⌁︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end
 end,nil)
 end,nil)
 end
 --     Source ReLaX     --
 if text == 'جلب نسخه السورس' then
-if not SecondSudo(msg) then
+if not Sudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط ', 1, 'md')
 else
-sendDocument(DevId, 0, 0, 1, nil, './ReLaX.lua', dl_cb, nil)
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙عزيزي المطور تم ارسال نسخة ملف السورس الى الخاص', 1, 'md')
+sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, './ReLaX.lua', '⌁︙نسخة ملف سورس ريلاكس',dl_cb, nil)
 end end
 --     Source ReLaX     --
 if text == 'روابط الكروبات' or text == 'روابط المجموعات' then
-if not SecondSudo(msg) then
+if not Sudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط ', 1, 'md')
 else
 local List = DevAli:smembers(ReLaX.."Ali:Groups")
 if #List == 0 then
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙لا يوجد مجموعات مفعله', 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙لا توجد مجموعات مفعله', 1, 'md')
 else
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙جاري ارسال نسخه تحتوي على '..#List..' مجموعه', 1, 'md')
-local text = "⌁︙Source ReLaX\n⌁︙File Bot Groups\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙جاري ارسال نسخه تحتوي على ↫ '..#List..' مجموعه', 1, 'md')
+local Text = "⌁︙Source ReLaX\n⌁︙File Bot Groups\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
 for k,v in pairs(List) do
 local GroupsManagers = DevAli:scard(ReLaX.."Ali:Managers:"..v) or 0
 local GroupsAdmins = DevAli:scard(ReLaX.."Ali:Admins:"..v) or 0
 local Groupslink = DevAli:get(ReLaX.."Ali:Groups:Links" ..v)
-text = text..k.." ↬ ⤈ \n⌁︙Group ID ↬ "..v.."\n⌁︙Group Link ↬ "..(Groupslink or "Not Found").."\n⌁︙Group Managers ↬ "..GroupsManagers.."\n⌁︙Group Admins ↬ "..GroupsAdmins.."\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
+Text = Text..k.." ↬ ⤈ \n⌁︙Group ID ↬ "..v.."\n⌁︙Group Link ↬ "..(Groupslink or "Not Found").."\n⌁︙Group Managers ↬ "..GroupsManagers.."\n⌁︙Group Admins ↬ "..GroupsAdmins.."\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
 end
 local File = io.open('GroupsBot.txt', 'w')
-File:write(text)
+File:write(Text)
 File:close()
-local alii = 'https://api.telegram.org/bot' .. TokenBot .. '/sendDocument'
-local curl = 'curl "' .. alii .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "document=@' .. 'GroupsBot.txt' .. '"'
-io.popen(curl)
+sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, './GroupsBot.txt',dl_cb, nil)
+io.popen('rm -rf ./GroupsBot.txt')
 end
 end
 end
 --     Source ReLaX     --
-if text == "اذاعه بالخاص" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه خاص ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
+if text == "اذاعه خاص" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه خاص ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if DevAli:get(ReLaX.."Ali:Send:Bot"..ReLaX) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"⌁︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
-DevAli:setex(ReLaX.."Ali:Send:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
+DevAli:setex(ReLaX.."Ali:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
 local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙ارسل لي سواء ↫ ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌁︙للخروج ارسل ↫ ( الغاء ) \n ✓'
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 return false
 end 
-if DevAli:get(ReLaX.."Ali:Send:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
+if DevAli:get(ReLaX.."Ali:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_) then 
 if text == 'الغاء' then   
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
-DevAli:del(ReLaX.."Ali:Send:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+DevAli:del(ReLaX.."Ali:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false
 end 
 List = DevAli:smembers(ReLaX..'Ali:Users') 
@@ -8761,7 +9491,7 @@ sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)
 end 
 end
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم اذاعة "..AliText.." بنجاح \n⌁︙‏الى ↫ ❨ "..#List.." ❩ مشترك \n ✓", 1, 'md')
-DevAli:del(ReLaX.."Ali:Send:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+DevAli:del(ReLaX.."Ali:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source ReLaX     --
 if text == "اذاعه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه عام ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
@@ -8769,15 +9499,15 @@ if DevAli:get(ReLaX.."Ali:Send:Bot"..ReLaX) and not SecondSudo(msg) then
 send(msg.chat_id_, msg.id_,"⌁︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
-DevAli:setex(ReLaX.."Ali:Send:Gp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
+DevAli:setex(ReLaX.."Ali:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
 local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙ارسل لي سواء ↫ ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌁︙للخروج ارسل ↫ ( الغاء ) \n ✓'
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 return false
 end 
-if DevAli:get(ReLaX.."Ali:Send:Gp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
+if DevAli:get(ReLaX.."Ali:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_) then 
 if text == 'الغاء' then   
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
-DevAli:del(ReLaX.."Ali:Send:Gp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+DevAli:del(ReLaX.."Ali:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false
 end 
 List = DevAli:smembers(ReLaX..'Ali:Groups') 
@@ -8828,7 +9558,7 @@ sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)
 end 
 end
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم اذاعة "..AliText.." بنجاح \n⌁︙‏في ↫ ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
-DevAli:del(ReLaX.."Ali:Send:Gp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+DevAli:del(ReLaX.."Ali:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source ReLaX     --
 if text == "اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه عام بالتوجيه ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
@@ -8836,15 +9566,15 @@ if DevAli:get(ReLaX.."Ali:Send:Bot"..ReLaX) and not SecondSudo(msg) then
 send(msg.chat_id_, msg.id_,"⌁︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
-DevAli:setex(ReLaX.."Ali:Send:FwdGp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
+DevAli:setex(ReLaX.."Ali:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
 local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙ارسل الرساله الان لتوجيها \n⌁︙للخروج ارسل ↫ ( الغاء ) \n ✓'
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 return false
 end 
-if DevAli:get(ReLaX.."Ali:Send:FwdGp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
+if DevAli:get(ReLaX.."Ali:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_) then 
 if text == 'الغاء' then   
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
-DevAli:del(ReLaX.."Ali:Send:FwdGp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+DevAli:del(ReLaX.."Ali:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false  
 end 
 local List = DevAli:smembers(ReLaX..'Ali:Groups')   
@@ -8852,7 +9582,7 @@ for k,v in pairs(List) do
 tdcli_function({ID="ForwardMessages", chat_id_ = v, from_chat_id_ = msg.chat_id_, message_ids_ = {[0] = msg.id_}, disable_notification_ = 0, from_background_ = 1},function(a,t) end,nil) 
 end   
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم اذاعة رسالتك بالتوجيه \n⌁︙‏في ↫ ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
-DevAli:del(ReLaX.."Ali:Send:FwdGp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+DevAli:del(ReLaX.."Ali:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source ReLaX     --
 if text == "اذاعه خاص بالتوجيه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه خاص بالتوجيه ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
@@ -8860,15 +9590,15 @@ if DevAli:get(ReLaX.."Ali:Send:Bot"..ReLaX) and not SecondSudo(msg) then
 send(msg.chat_id_, msg.id_,"⌁︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
-DevAli:setex(ReLaX.."Ali:Send:FwdPv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
+DevAli:setex(ReLaX.."Ali:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
 local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙ارسل الرساله الان لتوجيها \n⌁︙للخروج ارسل ↫ ( الغاء ) \n ✓'
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 return false
 end 
-if DevAli:get(ReLaX.."Ali:Send:FwdPv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
+if DevAli:get(ReLaX.."Ali:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_) then 
 if text == 'الغاء' then   
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
-DevAli:del(ReLaX.."Ali:Send:FwdPv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+DevAli:del(ReLaX.."Ali:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false  
 end 
 local List = DevAli:smembers(ReLaX..'Ali:Users')   
@@ -8876,7 +9606,7 @@ for k,v in pairs(List) do
 tdcli_function({ID="ForwardMessages", chat_id_ = v, from_chat_id_ = msg.chat_id_, message_ids_ = {[0] = msg.id_}, disable_notification_ = 0, from_background_ = 1},function(a,t) end,nil) 
 end   
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم اذاعة رسالتك بالتوجيه \n⌁︙‏الى ↫ ❨ "..#List.." ❩ مشترك \n ✓", 1, 'md')
-DevAli:del(ReLaX.."Ali:Send:FwdPv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+DevAli:del(ReLaX.."Ali:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source ReLaX     --
 if text == "اذاعه بالتثبيت" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه بالتثبيت ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
@@ -8884,15 +9614,15 @@ if DevAli:get(ReLaX.."Ali:Send:Bot"..ReLaX) and not SecondSudo(msg) then
 send(msg.chat_id_, msg.id_,"⌁︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
-DevAli:setex(ReLaX.."Ali:Send:Gp:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
+DevAli:setex(ReLaX.."Ali:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
 local ReLaXTEAM = '⌁︙اهلا عزيزي ↫ '..AliRank(msg)..' \n⌁︙ارسل لي سواء ↫ ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌁︙للخروج ارسل ↫ ( الغاء ) \n ✓'
 alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(msg.sender_user_id_))
 return false
 end 
-if DevAli:get(ReLaX.."Ali:Send:Gp:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
+if DevAli:get(ReLaX.."Ali:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_) then 
 if text == "الغاء" then   
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
-DevAli:del(ReLaX.."Ali:Send:Gp:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+DevAli:del(ReLaX.."Ali:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false
 end 
 local List = DevAli:smembers(ReLaX.."Ali:Groups") 
@@ -8951,33 +9681,113 @@ DevAli:set(ReLaX..'Ali:PinnedMsgs'..v,msg.content_.sticker_.sticker_.persistent_
 end 
 end
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم اذاعة "..AliText.." بالتثبيت \n⌁︙‏في ↫ ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
-DevAli:del(ReLaX.."Ali:Send:Gp:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+DevAli:del(ReLaX.."Ali:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false
 end
 --     Source ReLaX     --
+if text == 'حذف رد من متعدد' and Manager(msg) and ChCheck(msg) or text == 'مسح رد من متعدد' and Manager(msg) and ChCheck(msg) then
+local List = DevAli:smembers(ReLaX..'Ali:Manager:GpRedod'..msg.chat_id_)
+if #List == 0 then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙لا توجد ردود متعدده مضافه" ,  1, "md")
+return false
+end
+DevAli:set(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'DelGpRedRedod')
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙حسنا ارسل كلمة الرد اولا" ,  1, "md")
+return false
+end
+if text and text:match("^(.*)$") then
+local DelGpRedRedod = DevAli:get(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+if DelGpRedRedod == 'DelGpRedRedod' then
+if text == "الغاء" then 
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم الغاء الامر" ,  1, "md")
+DevAli:del(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+return false
+end
+if not DevAli:sismember(ReLaX..'Ali:Manager:GpRedod'..msg.chat_id_,text) then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙لايوجد رد متعدد لهذه الكلمه ↫ "..text ,  1, "md")
+return false
+end
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙قم بارسال الرد المتعدد الذي تريد حذفه من الكلمه ↫ "..text ,  1, "md")
+DevAli:set(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'DelGpRedRedods')
+DevAli:set(ReLaX..'Ali:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_,text)
+return false
+end end
+if text == 'حذف رد متعدد' and Manager(msg) and ChCheck(msg) or text == 'مسح رد متعدد' and Manager(msg) and ChCheck(msg) then
+local List = DevAli:smembers(ReLaX..'Ali:Manager:GpRedod'..msg.chat_id_)
+if #List == 0 then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙لا توجد ردود متعدده مضافه" ,  1, "md")
+return false
+end
+DevAli:set(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'DelGpRedod')
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙حسنا ارسل الكلمه لحذفها" ,  1, "md")
+return false
+end
+if text == 'اضف رد متعدد' and Manager(msg) and ChCheck(msg) then
+DevAli:set(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'SetGpRedod')
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙حسنا ارسل الكلمه الان" ,  1, "md")
+return false
+end
+if text and text:match("^(.*)$") then
+local SetGpRedod = DevAli:get(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+if SetGpRedod == 'SetGpRedod' then
+if text == "الغاء" then 
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم الغاء الامر" ,  1, "md")
+DevAli:del(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+return false
+end
+if DevAli:sismember(ReLaX..'Ali:Manager:GpRedod'..msg.chat_id_,text) then
+local Ali = "⌁︙لاتستطيع اضافة رد بالتاكيد مضاف في القائمه قم بحذفه اولا !"
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="حذف الرد ↫ "..text,callback_data="/DelRed:"..msg.sender_user_id_..text}}} 
+Msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Ali).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+DevAli:del(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+return false
+end
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الامر ارسل الرد الاول\n⌁︙للخروج ارسل ↫ ( الغاء )" ,  1, "md")
+DevAli:set(ReLaX..'Ali:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'SaveGpRedod')
+DevAli:set(ReLaX..'Ali:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_,text)
+DevAli:sadd(ReLaX..'Ali:Manager:GpRedod'..msg.chat_id_,text)
+return false
+end end
+--     Source ReLaX     --
 if text == 'حذف رد' and Manager(msg) and ChCheck(msg) or text == 'مسح رد' and  Manager(msg) and ChCheck(msg) then
-DevAli:set(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_,'DelGpRed')
+local List = DevAli:smembers(ReLaX..'Ali:Manager:GpRed'..msg.chat_id_)
+if #List == 0 then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙لا توجد ردود مضافه" ,  1, "md")
+return false
+end
+DevAli:set(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..msg.chat_id_,'DelGpRed')
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙حسنا ارسل الكلمه لحذفها " ,  1, "md")
 return false
 end
 if text == 'اضف رد' and Manager(msg) and ChCheck(msg) then
-DevAli:set(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_,'SetGpRed')
+DevAli:set(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..msg.chat_id_,'SetGpRed')
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙حسنا ارسل الكلمه الان " ,  1, "md")
 return false
 end
 if text and text:match("^(.*)$") then
-local SetGpRed = DevAli:get(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_..'')
+local SetGpRed = DevAli:get(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
 if SetGpRed == 'SetGpRed' then
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل لي الرد سواء كان ↫ ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌁︙يمكنك اضافة الى النص ↫ ⤈\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n `#username` ↬ معرف المستخدم\n `#msgs` ↬ عدد الرسائل\n `#name` ↬ اسم المستخدم\n `#id` ↬ ايدي المستخدم\n `#stast` ↬ رتبة المستخدم\n `#edit` ↬ عدد السحكات\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙للخروج ارسل ↫ ( الغاء )\n ✓" ,  1, "md")
-DevAli:set(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_..'','SaveGpRed')
-DevAli:set(ReLaX..'Ali:Add:GpText'..msg.sender_user_id_..''..msg.chat_id_..'',text)
-DevAli:sadd(ReLaX..'Ali:Manager:GpRed'..msg.chat_id_..'',text)
-DevAli:set(ReLaX..'DelManagerRep'..msg.chat_id_..'',text)
+if text == "الغاء" then 
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم الغاء الامر" ,  1, "md")
+DevAli:del(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
 return false
 end
-end
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل لي الرد سواء كان ↫ ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌁︙يمكنك اضافة الى النص ↫ ⤈\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n `#username` ↬ معرف المستخدم\n `#msgs` ↬ عدد الرسائل\n `#name` ↬ اسم المستخدم\n `#id` ↬ ايدي المستخدم\n `#stast` ↬ رتبة المستخدم\n `#edit` ↬ عدد السحكات\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙للخروج ارسل ↫ ( الغاء )\n ✓" ,  1, "md")
+DevAli:set(ReLaX..'Ali:Add:GpRed'..msg.sender_user_id_..msg.chat_id_,'SaveGpRed')
+DevAli:set(ReLaX..'Ali:Add:GpText'..msg.sender_user_id_..msg.chat_id_,text)
+DevAli:sadd(ReLaX..'Ali:Manager:GpRed'..msg.chat_id_,text)
+DevAli:set(ReLaX..'DelManagerRep'..msg.chat_id_,text)
+return false
+end end
 --     Source ReLaX     --
 if text == 'حذف رد عام' and SecondSudo(msg) or text == '↫ حذف رد عام ⌁' and SecondSudo(msg) or text == 'مسح رد عام' and SecondSudo(msg) then
+local List = DevAli:smembers(ReLaX.."Ali:Sudo:AllRed")
+if #List == 0 then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙لا توجد ردود مضافه" ,  1, "md")
+return false
+end
 DevAli:set(ReLaX.."Ali:Add:AllRed"..msg.sender_user_id_,'DelAllRed')
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙حسنا ارسل الكلمه لحذفها " ,  1, "md")
 return false
@@ -8990,6 +9800,11 @@ end
 if text and text:match("^(.*)$") then
 local SetAllRed = DevAli:get(ReLaX.."Ali:Add:AllRed"..msg.sender_user_id_)
 if SetAllRed == 'SetAllRed' then
+if text == "الغاء" then 
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم الغاء الامر" ,  1, "md")
+DevAli:del(ReLaX..'Ali:Add:AllRed'..msg.sender_user_id_)
+return false
+end
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل لي الرد سواء كان ↫ ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌁︙يمكنك اضافة الى النص ↫ ⤈\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n `#username` ↬ معرف المستخدم\n `#msgs` ↬ عدد الرسائل\n `#name` ↬ اسم المستخدم\n `#id` ↬ ايدي المستخدم\n `#stast` ↬ رتبة المستخدم\n `#edit` ↬ عدد السحكات\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙للخروج ارسل ↫ ( الغاء )\n ✓" ,  1, "md")
 DevAli:set(ReLaX.."Ali:Add:AllRed"..msg.sender_user_id_,'SaveAllRed')
 DevAli:set(ReLaX.."Ali:Add:AllText"..msg.sender_user_id_, text)
@@ -8998,8 +9813,33 @@ DevAli:set(ReLaX.."DelSudoRep",text)
 return false 
 end end
 --     Source ReLaX     --
+if text == 'الردود المتعدده' and Manager(msg) and ChCheck(msg) then
+local redod = DevAli:smembers(ReLaX..'Ali:Manager:GpRedod'..msg.chat_id_)
+MsgRep = '⌁︙قائمة الردود المتعدده ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n'
+for k,v in pairs(redod) do
+MsgRep = MsgRep..k..'~ (`'..v..'`) • {*العدد ↫ '..#DevAli:smembers(ReLaX..'Ali:Text:GpTexts'..v..msg.chat_id_)..'*}\n' 
+end
+if #redod == 0 then
+MsgRep = '⌁︙لا توجد ردود متعدده مضافه'
+end
+send(msg.chat_id_,msg.id_,MsgRep)
+end
+if text == 'حذف الردود المتعدده' and Manager(msg) and ChCheck(msg) or text == 'مسح الردود المتعدده' and Manager(msg) and ChCheck(msg) then
+local redod = DevAli:smembers(ReLaX..'Ali:Manager:GpRedod'..msg.chat_id_)
+if #redod == 0 then
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙لا توجد ردود متعدده مضافه" ,  1, "md")
+else
+for k,v in pairs(redod) do
+DevAli:del(ReLaX..'Ali:Text:GpTexts'..v..msg.chat_id_)
+DevAli:del(ReLaX..'Ali:Manager:GpRedod'..msg.chat_id_)
+end
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم حذف الردود المتعدده")  
+return false
+end
+end
+--     Source ReLaX     --
 if text == 'الردود' and Manager(msg) and ChCheck(msg) or text == 'ردود المدير' and Manager(msg) and ChCheck(msg) then
-local redod = DevAli:smembers(ReLaX..'Ali:Manager:GpRed'..msg.chat_id_..'')
+local redod = DevAli:smembers(ReLaX..'Ali:Manager:GpRed'..msg.chat_id_)
 MsgRep = '⌁︙ردود المدير ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n'
 for k,v in pairs(redod) do
 if DevAli:get(ReLaX.."Ali:Gif:GpRed"..v..msg.chat_id_) then
@@ -9019,16 +9859,15 @@ dp = 'ملف 📁'
 elseif DevAli:get(ReLaX.."Ali:Audio:GpRed"..v..msg.chat_id_) then
 dp = 'اغنيه 🎶'
 end
-MsgRep = MsgRep..''..k..'~ (`'..v..'`) ↫ {*'..dp..'*}\n' 
+MsgRep = MsgRep..k..'~ (`'..v..'`) ↫ {*'..dp..'*}\n' 
 end
 if #redod == 0 then
 MsgRep = '⌁︙لا توجد ردود مضافه'
 end
 send(msg.chat_id_,msg.id_,MsgRep)
 end
---     Source ReLaX     --
 if text == 'حذف الردود' and Manager(msg) and ChCheck(msg) or text == 'مسح الردود' and Manager(msg) and ChCheck(msg) or text == 'حذف ردود المدير' and Manager(msg) and ChCheck(msg) or text == 'مسح ردود المدير' and Manager(msg) and ChCheck(msg) then
-local redod = DevAli:smembers(ReLaX..'Ali:Manager:GpRed'..msg.chat_id_..'')
+local redod = DevAli:smembers(ReLaX..'Ali:Manager:GpRed'..msg.chat_id_)
 if #redod == 0 then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙لا توجد ردود مضافه" ,  1, "md")
 else
@@ -9069,14 +9908,13 @@ dp = 'ملف 📁'
 elseif DevAli:get(ReLaX.."Ali:Audio:AllRed"..v) then
 dp = 'اغنيه 🎶'
 end
-MsgRep = MsgRep..''..k..'~ (`'..v..'`) ↫ {*'..dp..'*}\n' 
+MsgRep = MsgRep..k..'~ (`'..v..'`) ↫ {*'..dp..'*}\n' 
 end
 if #redod == 0 then
 MsgRep = '⌁︙لا توجد ردود مضافه'
 end
 send(msg.chat_id_,msg.id_,MsgRep)
 end
---     Source ReLaX     --
 if text == "حذف ردود المطور" and SecondSudo(msg) or text == "حذف ردود العام" and SecondSudo(msg) or text == "مسح ردود المطور" and SecondSudo(msg) then
 local redod = DevAli:smembers(ReLaX.."Ali:Sudo:AllRed")
 if #redod == 0 then
@@ -9104,7 +9942,7 @@ if not SecondSudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط ', 1, 'md')
 else
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل لي اسم البوت الان" ,  1, "md") 
-DevAli:set(ReLaX..'Ali:NameBot'..msg.sender_user_id_..'', 'msg')
+DevAli:set(ReLaX..'Ali:NameBot'..msg.sender_user_id_, 'msg')
 return false 
 end
 end
@@ -9131,18 +9969,15 @@ return false end
 if text and text:match("^(.*)$") then
 local ReLaXTEAM =  DevAli:get(ReLaX..'Ali:Help0'..msg.sender_user_id_)
 if ReLaXTEAM == 'msg' then
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
 DevAli:del(ReLaX..'Ali:Help0'..msg.sender_user_id_)
 DevAli:set(ReLaX..'Ali:Help', text)
-Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده " ,  1, "md")
 return false end
 end
 if text == "الاوامر" or text == "اوامر" or text == "مساعده" then
-if not Admin(msg) then
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙هذا الامر يخص الرتب الاعلى فقط\n⌁︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
-else
 local Help = DevAli:get(ReLaX..'Ali:Help')
-local text =  [[
+local Text = [[
 ⌁︙اهلا بك في قائمة الاوامر ↫ ⤈ 
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙م1 ↫ اوامر الحمايه
@@ -9154,8 +9989,10 @@ local text =  [[
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙[Source Channel](https://t.me/ReL3X7)
 ]] 
-Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
-end
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..msg.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..msg.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..msg.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..msg.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..msg.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..msg.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..msg.sender_user_id_}}}
+Msg_id = msg.id_/2097152/0.5
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Help or Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 if text == "تعيين امر م1" and SecondSudo(msg) or text == "تعيين امر م١" and SecondSudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل كليشة (م1) الان " ,  1, "md")
@@ -9164,10 +10001,10 @@ return false end
 if text and text:match("^(.*)$") then
 local ReLaXTEAM =  DevAli:get(ReLaX..'Ali:Help01'..msg.sender_user_id_)
 if ReLaXTEAM == 'msg' then 
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
 DevAli:del(ReLaX..'Ali:Help01'..msg.sender_user_id_)
 DevAli:set(ReLaX..'Ali:Help1', text)
-Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده " ,  1, "md")
 return false end
 end
 if text == "م1" or text == "م١" or text == "اوامر1" or text == "اوامر١" then
@@ -9175,7 +10012,7 @@ if not Admin(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙هذا الامر يخص الرتب الاعلى فقط\n⌁︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
 else
 local Help = DevAli:get(ReLaX..'Ali:Help1')
-local text =  [[
+local Text = [[
 ⌁︙اوامر حماية المجموعه ↫ ⤈
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙قفل • فتح ↫ الروابط
@@ -9196,6 +10033,7 @@ local text =  [[
 ⌁︙قفل • فتح ↫ التكرار
 ⌁︙قفل • فتح ↫ الهاشتاك
 ⌁︙قفل • فتح ↫ التعديل
+⌁︙قفل • فتح ↫ الاباحي
 ⌁︙قفل • فتح ↫ التثبيت
 ⌁︙قفل • فتح ↫ الاشعارات
 ⌁︙قفل • فتح ↫ الكلايش
@@ -9223,7 +10061,7 @@ local text =  [[
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙[Source Channel](https://t.me/ReL3X7)
 ]]
-Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
 if text == "تعيين امر م2" and SecondSudo(msg) or text == "تعيين امر م٢" and SecondSudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل كليشة (م2) الان " ,  1, "md")
@@ -9232,10 +10070,10 @@ return false end
 if text and text:match("^(.*)$") then
 local ReLaXTEAM =  DevAli:get(ReLaX..'Ali:Help21'..msg.sender_user_id_)
 if ReLaXTEAM == 'msg' then
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
 DevAli:del(ReLaX..'Ali:Help21'..msg.sender_user_id_)
 DevAli:set(ReLaX..'Ali:Help2', text)
-Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده " ,  1, "md")
 return false end
 end
 if text == "م2" or text == "م٢" or text == "اوامر2" or text == "اوامر٢" then
@@ -9243,7 +10081,7 @@ if not Admin(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙هذا الامر يخص الرتب الاعلى فقط\n⌁︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
 else
 local Help = DevAli:get(ReLaX..'Ali:Help2')
-local text =  [[
+local Text = [[
 ⌁︙اوامر الادمنيه ↫ ⤈
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙الاعدادت
@@ -9280,6 +10118,7 @@ local text =  [[
 ⌁︙تفعيل • تعطيل ↫ الرابط
 ⌁︙تفعيل • تعطيل ↫ الالعاب
 ⌁︙تفعيل • تعطيل ↫ الترحيب
+⌁︙تفعيل • تعطيل ↫ التاك للكل
 ⌁︙تفعيل • تعطيل ↫ كشف الاعدادات
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙طرد المحذوفين
@@ -9298,7 +10137,7 @@ local text =  [[
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙[Source Channel](https://t.me/ReL3X7)
 ]]
-Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
 if text == "تعيين امر م3" and SecondSudo(msg) or text == "تعيين امر م٣" and SecondSudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل كليشة (م3) الان " ,  1, "md")
@@ -9307,10 +10146,10 @@ return false end
 if text and text:match("^(.*)$") then
 local ReLaXTEAM =  DevAli:get(ReLaX..'Ali:Help31'..msg.sender_user_id_)
 if ReLaXTEAM == 'msg' then
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
 DevAli:del(ReLaX..'Ali:Help31'..msg.sender_user_id_)
 DevAli:set(ReLaX..'Ali:Help3', text)
-Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده " ,  1, "md")
 return false end
 end
 if text == "م3" or text == "م٣" or text == "اوامر3" or text == "اوامر٣" then
@@ -9318,7 +10157,7 @@ if not Admin(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙هذا الامر يخص الرتب الاعلى فقط\n⌁︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
 else
 local Help = DevAli:get(ReLaX..'Ali:Help3')
-local text =  [[
+local Text = [[
 ⌁︙اوامر المدراء ↫ ⤈
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙فحص البوت
@@ -9326,6 +10165,10 @@ local text =  [[
 ⌁︙اضف • حذف ↫ رد
 ⌁︙ردود المدير
 ⌁︙حذف ردود المدير
+⌁︙اضف • حذف ↫ رد متعدد
+⌁︙حذف رد من متعدد
+⌁︙الردود المتعدده
+⌁︙حذف الردود المتعدده
 ⌁︙حذف قوائم المنع
 ⌁︙منع ↫ بالرد على ( ملصق • صوره • متحركه )
 ⌁︙حذف قائمه منع + ↫ ⤈
@@ -9352,14 +10195,14 @@ local text =  [[
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙تفعيل • تعطيل + الامر ↫ ⤈
 ⌁︙اطردني • الايدي بالصوره • الابراج
-⌁︙معاني الاسماء • اوامر النسب
+⌁︙معاني الاسماء • اوامر النسب • انطق
 ⌁︙الايدي • تحويل الصيغ • اوامر التحشيش
-⌁︙ردود المدير • ردود المطور
+⌁︙ردود المدير • ردود المطور • التحقق
 ⌁︙ضافني • حساب العمر • الزخرفه
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙[Source Channel](https://t.me/ReL3X7)
 ]]
-Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
 if text == "تعيين امر م4" and SecondSudo(msg) or text == "تعيين امر م٤" and SecondSudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل كليشة (م4) الان " ,  1, "md")
@@ -9368,10 +10211,10 @@ return false end
 if text and text:match("^(.*)$") then
 local ReLaXTEAM =  DevAli:get(ReLaX..'Ali:Help41'..msg.sender_user_id_)
 if ReLaXTEAM == 'msg' then
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده" ,  1, "md")
+Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
 DevAli:del(ReLaX..'Ali:Help41'..msg.sender_user_id_)
 DevAli:set(ReLaX..'Ali:Help4', text)
-Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده" ,  1, "md")
 return false end
 end
 if text == "م٤" or text == "م4" or text == "اوامر4" or text == "اوامر٤" then
@@ -9379,11 +10222,13 @@ if not Admin(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙هذا الامر يخص الرتب الاعلى فقط\n⌁︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
 else
 local Help = DevAli:get(ReLaX..'Ali:Help4')
-local text =  [[
+local Text = [[
 ⌁︙اوامر المنشئين ↫ ⤈
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙تنزيل الكل
 ⌁︙الميديا • امسح
+⌁︙تعين عدد الحذف
+⌁︙ترتيب الاوامر
 ⌁︙اضف • حذف ↫ امر
 ⌁︙حذف الاوامر المضافه
 ⌁︙الاوامر المضافه
@@ -9407,7 +10252,7 @@ local text =  [[
 ⌁︙رفع بكل الصلاحيات
 ⌁︙حذف القوائم
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-⌁︙اوامر منشئ المجموعه ↫ ⤈
+⌁︙اوامر المالكين ↫ ⤈
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙رفع • تنزيل ↫ منشئ اساسي
 ⌁︙حذف المنشئين الاساسيين 
@@ -9416,7 +10261,7 @@ local text =  [[
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙[Source Channel](https://t.me/ReL3X7)
 ]]
-Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
 if text == "تعيين امر م5" and SecondSudo(msg) or text == "تعيين امر م٥" and SecondSudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل كليشة (م5) الان " ,  1, "md")
@@ -9425,10 +10270,10 @@ return false end
 if text and text:match("^(.*)$") then
 local ReLaXTEAM =  DevAli:get(ReLaX..'Ali:Help51'..msg.sender_user_id_)
 if ReLaXTEAM == 'msg' then
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
 DevAli:del(ReLaX..'Ali:Help51'..msg.sender_user_id_)
 DevAli:set(ReLaX..'Ali:Help5', text)
-Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده " ,  1, "md")
 return false end
 end
 if text == "م٥" or text == "م5" or text == "اوامر5" or text == "اوامر٥" then
@@ -9436,7 +10281,7 @@ if not SudoBot(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙هذا الامر للمطورين فقط', 1, 'md')
 else
 local Help = DevAli:get(ReLaX..'Ali:Help5')
-local text =  [[
+local Text = [[
 ⌁︙اوامر المطورين ↫ ⤈
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙الكروبات
@@ -9447,6 +10292,8 @@ local text =  [[
 ⌁︙اسم البوت + غادر
 ⌁︙اسم البوت + تعطيل
 ⌁︙كشف + -ايدي المجموعه
+⌁︙رفع مالك • تنزيل مالك
+⌁︙المالكين • حذف المالكين
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙رفع • تنزيل ↫ مدير عام
 ⌁︙حذف • المدراء العامين 
@@ -9500,7 +10347,7 @@ local text =  [[
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙[Source Channel](https://t.me/ReL3X7)
 ]]
-Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
 if text == "تعيين امر م6" and SecondSudo(msg) or text == "تعيين امر م٦" and SecondSudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل كليشة (م6) الان " ,  1, "md")
@@ -9509,20 +10356,21 @@ return false end
 if text and text:match("^(.*)$") then
 local ReLaXTEAM =  DevAli:get(ReLaX..'Ali:Help61'..msg.sender_user_id_)
 if ReLaXTEAM == 'msg' then
-Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده" ,  1, "md")
+Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
 DevAli:del(ReLaX..'Ali:Help61'..msg.sender_user_id_)
 DevAli:set(ReLaX..'Ali:Help6', text)
-Dev_Ali(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حفظ الكليشه الجديده" ,  1, "md")
 return false end
 end
 if text == "م٦" or text == "م6" or text == "اوامر6" or text == "اوامر٦" then
 local Help = DevAli:get(ReLaX..'Ali:Help6')
-local text =  [[
+local Text = [[
 ⌁︙اوامر الاعضاء ↫ ⤈
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-⌁︙السورس • موقعي • رتبتي • معلوماتي
+⌁︙السورس • موقعي • رتبتي • معلوماتي 
+⌁︙رقمي • لقبي • نبذتي • صلاحياتي • غنيلي
 ⌁︙رسائلي • حذف رسائلي • اسمي • معرفي 
-⌁︙ايدي •ايديي • جهاتي • غنيلي • الالعاب 
+⌁︙ايدي •ايديي • جهاتي • راسلني • الالعاب 
 ⌁︙نقاطي • بيع نقاطي • القوانين • زخرفه 
 ⌁︙رابط الحذف • نزلني • اطردني • المطور 
 ⌁︙منو ضافني • مشاهدات المنشور • الرابط 
@@ -9530,30 +10378,31 @@ local text =  [[
 ⌁︙نسبه الحب • نسبه الكره • نسبه الغباء 
 ⌁︙نسبه الرجوله • نسبه الانوثه • التفاعل
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-⌁︙صلاحياتي
+⌁︙لقبه + بالرد
 ⌁︙كول + الكلمه
 ⌁︙زخرفه + اسمك
 ⌁︙برج + نوع البرج
 ⌁︙معنى اسم + الاسم
-⌁︙احسب + تاريخ ميلادك
 ⌁︙بوسه • بوسها ↫ بالرد
-⌁︙رفع مطي • تنزيل مطي •المطايه
+⌁︙احسب + تاريخ ميلادك
+⌁︙رفع مطي • تنزيل مطي • المطايه
 ⌁︙هينه • هينها ↫ بالرد • بالمعرف
 ⌁︙صيحه • صيحها ↫ بالرد • بالمعرف
 ⌁︙صلاحياته ↫ بالرد • بالمعرف • بالايدي
 ⌁︙ايدي • كشف  ↫ بالرد • بالمعرف • بالايدي
 ⌁︙تحويل + بالرد ↫ صوره • ملصق • صوت • بصمه
+⌁︙انطق + الكلام تدعم جميع اللغات مع الترجمه للعربي
 ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
 ⌁︙[Source Channel](https://t.me/ReL3X7)
 ]]
-Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end
 --     Source ReLaX     --
 if SecondSudo(msg) then
 if text == "تحديث السورس" or text == "تحديث سورس" then 
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙جاري تحديث سورس ريلاكس', 1, 'md') 
 os.execute('rm -rf ReLaX.lua') 
-os.execute('wget https://raw.githubusercontent.com/ReLaXTEM/ReLaX/master/ReLaX.lua') 
+os.execute('wget https://raw.githubusercontent.com/ReLaXTEAM/ReLaX/master/ReLaX.lua') 
 dofile('ReLaX.lua') 
 io.popen("rm -rf ../.telegram-cli/*")
 print("\27[31;47m\n          ( تم تحديث السورس )          \n\27[0;34;49m\n") 
@@ -9565,6 +10414,14 @@ io.popen("rm -rf ../.telegram-cli/*")
 print("\27[31;47m\n        ( تم تحديث ملفات البوت )        \n\27[0;34;49m\n") 
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم تحديث ملفات البوت", 1, "md")
 end 
+if DevAli:get(ReLaX.."DevAli2") then
+DevAli:set(ReLaX.."Ali:ChId",DevAli:get(ReLaX.."DevAli2"))
+DevAli:del(ReLaX.."DevAli2")
+end
+if DevAli:get(ReLaX.."Ali:textch:user") then
+DevAli:set(ReLaX.."Ali:ChText",DevAli:get(ReLaX.."Ali:textch:user"))
+DevAli:del(ReLaX.."Ali:textch:user")
+end
 --     Source ReLaX     --
 if text == 'الملفات' then
 Files = '\n⌁︙الملفات المفعله في البوت ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n'
@@ -9581,7 +10438,7 @@ end
 send(msg.chat_id_, msg.id_,Files)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/ReLaXTEM/ReLaXFiles/master/getfile.json")
+local Get_Files, res = https.request("https://raw.githubusercontent.com/ReLaXTEAM/ReLaXFiles/master/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
@@ -9613,7 +10470,7 @@ end
 if text and text:match("^(تعطيل ملف) (.*)(.lua)$") then
 local FileGet = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
 local FileName = FileGet[2]..'.lua'
-local GetJson, Res = https.request("https://raw.githubusercontent.com/ReLaXTEM/ReLaXFiles/master/ReLaXFiles/"..FileName)
+local GetJson, Res = https.request("https://raw.githubusercontent.com/ReLaXTEAM/ReLaXFiles/master/ReLaXFiles/"..FileName)
 if Res == 200 then
 os.execute("rm -fr Files/"..FileName)
 send(msg.chat_id_, msg.id_,"\n⌁︙الملف ↫ *"..FileName.."*\n⌁︙تم تعطيله وحذفه من البوت بنجاح") 
@@ -9625,7 +10482,7 @@ end
 if text and text:match("^(تفعيل ملف) (.*)(.lua)$") then
 local FileGet = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
 local FileName = FileGet[2]..'.lua'
-local GetJson, Res = https.request("https://raw.githubusercontent.com/ReLaXTEM/ReLaXFiles/master/ReLaXFiles/"..FileName)
+local GetJson, Res = https.request("https://raw.githubusercontent.com/ReLaXTEAM/ReLaXFiles/master/ReLaXFiles/"..FileName)
 if Res == 200 then
 local ChekAuto = io.open("Files/"..FileName,'w+')
 ChekAuto:write(GetJson)
@@ -9692,7 +10549,7 @@ if not SecondSudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط ', 1, 'md')
 else
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙ارسل كليشة المطور الان ", 1, "md")
-DevAli:setex(ReLaX.."Ali:DevText" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 300, true)
+DevAli:setex(ReLaX.."Ali:DevText"..msg.chat_id_..":" .. msg.sender_user_id_, 300, true)
 end end
 if text and text:match("^مسح كليشه المطور$") or text and text:match("^حذف كليشه المطور$") then
 if not SecondSudo(msg) then
@@ -9702,18 +10559,18 @@ Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حذف كليشة المطور", 1
 DevAli:del(ReLaX.."DevText")
 end end
 --     Source ReLaX     --
-if DevAli:get(ReLaX.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
+if DevAli:get(ReLaX.."textch:user"..msg.chat_id_.."" .. msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم الغاء الامر", 1, "md") 
-DevAli:del(ReLaX.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+DevAli:del(ReLaX.."textch:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
 return false  end 
-DevAli:del(ReLaX.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+DevAli:del(ReLaX.."textch:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
 local texxt = string.match(text, "(.*)") 
-DevAli:set(ReLaX..'Ali:textch:user',texxt)
+DevAli:set(ReLaX..'Ali:ChText',texxt)
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙تم تغيير كليشة الاشتراك الاجباري', 1, 'md')
 end
 if text and text:match("^تغير كليشه الاشتراك$") and SecondSudo(msg) or text and text:match("^تغيير كليشه الاشتراك$") and SecondSudo(msg) then  
-DevAli:setex(ReLaX.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 300, true)  
+DevAli:setex(ReLaX.."textch:user"..msg.chat_id_.."" .. msg.sender_user_id_, 300, true)  
 local text = '⌁︙حسنا ارسل كليشة الاشتراك الجديده'  
 Dev_Ali(msg.chat_id_, msg.id_, 1,text, 1, 'md') 
 end
@@ -9721,7 +10578,7 @@ if text == "حذف كليشه الاشتراك الاجباري" or text == "ح�
 if not SecondSudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط ', 1, 'md')
 else
-DevAli:del(ReLaX..'Ali:textch:user')
+DevAli:del(ReLaX..'Ali:ChText')
 textt = "⌁︙تم حذف كليشة الاشتراك الاجباري"
 Dev_Ali(msg.chat_id_, msg.id_, 1,textt, 1, 'md') 
 end end
@@ -9729,19 +10586,29 @@ if text == 'كليشه الاشتراك' or text == 'جلب كليشه الاش�
 if not SecondSudo(msg) then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط ', 1, 'md')
 else
-local chtext = DevAli:get(ReLaX.."Ali:textch:user")
+local chtext = DevAli:get(ReLaX.."Ali:ChText")
 if chtext then
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙كليشة الاشتراك ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n['..chtext..']', 1, 'md')
 else
-local DevAli6 = DevAli:get(ReLaX.."DevAli3")
-if DevAli6 then
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙عليك الاشتراك في قناة البوت \n⌁︙قناة البوت ↫ '..DevAli6, 1, "html")
+if DevAli:get(ReLaX.."Ali:ChId") then
+local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..DevAli:get(ReLaX.."Ali:ChId"))
+local GetInfo = JSON.decode(Check)
+if GetInfo.result.username then
+User = "https://t.me/"..GetInfo.result.username
+else
+User = GetInfo.result.invite_link
+end
+Text = "⌁︙عذرا لاتستطيع استخدام البوت !\n⌁︙عليك الاشتراك في القناة اولا :"
+keyboard = {} 
+keyboard.inline_keyboard = {{{text=GetInfo.result.title,url=User}}} 
+Msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 else
 Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙لم يتم تعيين قناة الاشتراك الاجباري \n⌁︙ارسل ↫ تعيين قناة الاشتراك للتعيين ', 1, 'md')
 end end end end
 --     Source ReLaX     --
 if text == 'القناة' or text == 'قناة السورس' or text == 'قناه السورس' or text == 'قنات السورس' then 
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙Channel ↬ @ReL3X7', 1, 'html')    
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙Channel ↬ [@ReL3X7]', 1, 'md')    
 end 
 --     Source ReLaX     --
 if Sudo(msg) then 
@@ -9781,7 +10648,7 @@ elseif result.content_.ID == "MessageVideo" then Media = 'الفيديو'
 elseif result.content_.ID == "MessageAnimation" then Media = 'المتحركه'
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,dp) 
-local aliname = '⌁︙العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..')'
+local aliname = '⌁︙العضو ↫ ['..dp.first_name_..'](tg://user?id='..dp.id_..')'
 local aliid = '⌁︙ايديه ↫ `'..dp.id_..'`'
 local alitext = '⌁︙قام بالتعديل على '..Media
 local alitxt = '┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙تعالو يامشرفين اكو مخرب'
@@ -9789,6 +10656,7 @@ tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100"
 local admins = alii.members_  
 text = '\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n'
 for i=0 , #admins do 
+if not alii.members_[i].bot_info_ then
 tdcli_function ({ID = "GetUser",user_id_ = admins[i].user_id_},function(arg,data) 
 if data.first_name_ ~= false then
 text = text.."~ [@"..data.username_.."]\n"
@@ -9797,6 +10665,7 @@ if #admins == i then
 SendText(msg.chat_id_, aliname..'\n'..aliid..'\n'..alitext..text..alitxt,0,'md') 
 end
 end,nil)
+end
 end
 end,nil)
 end,nil)
@@ -9873,7 +10742,7 @@ end
 end 
 ------------------------------------------------
 -- This Source Was Developed By (Ali) @AAAPA.--
---    This Is The Source Channel @ReL3X7 .    --
---                 - ReLaX -                  --
---         -- https://t.me/ReL3X7 --          --
+--   This Is The Source Channel @ReL3X7 .   --
+--                - ReLaX -                 --
+--        -- https://t.me/ReL3X7 --         --
 ------------------------------------------------ 
