@@ -1468,11 +1468,9 @@ DevAli:del(ReLaX.."List:Cmd:Group:New"..msg.chat_id_)
 end
 Dev_Ali(msg.chat_id_, msg.id_, 1, "⌁︙تم حذف الاوامر المضافه في المجموعه", 1, 'html')
 end
-if text == "ترتيب الاوامر" then
+if text == "ترتيب الاوامر" and Constructor(msg) then
 DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":ا","ايدي")
 DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"ا")
-DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":تك","تنزيل الكل")
-DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"تك")
 DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":م","رفع مميز")
 DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"م")
 DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":اد","رفع ادمن")
@@ -1483,11 +1481,38 @@ DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":من","رفع منشئ")
 DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"من")
 DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":اس","رفع منشئ اساسي")
 DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"اس")
+DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":مط","رفع مطور")
+DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"مط")
+DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":ثانوي","رفع مطور ثانوي")
+DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"ثانوي")
+DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":تك","تنزيل الكل")
+DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"تك")
 DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":تعط","تعطيل الايدي بالصوره")
 DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"تعط")
 DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":تفع","تفعيل الايدي بالصوره")
 DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"تفع")
-send(msg.chat_id_, msg.id_,"⌁︙تم ترتيب الاوامر بالشكل التالي ↫ ⤈\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙ايدي ↫ ا\n⌁︙تنزيل الكل ↫ تك\n⌁︙رفع مميز ↫ م\n⌁︙رفع ادمن ↫ اد \n⌁︙رفع مدير ↫ مد \n⌁︙رفع منشئ ↫ من \n⌁︙رفع منشئ اساسي ↫ اس  \n⌁︙تفعيل الايدي بالصوره ↫ تفع\n⌁︙تعطيل الايدي بالصوره ↫ تعط\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉")  
+DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":ر","الرابط")
+DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"ر")
+DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":رر","ردود المدير")
+DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"رر")
+DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":،،","مسح المكتومين")
+DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"،،")
+DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":رد","اضف رد")
+DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"رد")
+DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":سح","مسح سحكاتي")
+DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"سح")
+DevAli:set(ReLaX.."Set:Cmd:Group:New1"..msg.chat_id_..":رس","مسح رسائلي")
+DevAli:sadd(ReLaX.."List:Cmd:Group:New"..msg.chat_id_,"رس")
+    send(msg.chat_id_, msg.id_,"⌁︙تم ترتيب الاوامر بالشكل التالي ~\n- ايدي - ا .\n- رفع مميز - م .\n-رفع ادمن - اد .\n- رفع مدير - مد . \n- رفع منشى - من . \n- رفع منشئ الاساسي - اس  .\n- رفع مطور - مط .\n-رفع مطور ثانوي - ثانوي .\n- تنزيل الكل - تك .\n- تعطيل الايدي بالصوره - تعط .\n- تفعيل الايدي بالصوره - تفع .\n- الرابط - ر .\n- ردود المدير - رر .\n- مسح المكتومين - ،، .\n- اضف رد - رد .\n- مسح سحكاتي - سح .\n- مسح رسائلي - رس .")  
+    end
+    if text == "الساعه" then
+local ramsesj20 = "\n الساعه الان : "..os.date("%I:%M%p")
+send(msg.chat_id_, msg.id_,ramsesj20)
+end
+
+if text == "التاريخ" then
+local ramsesj20 =  "\n التاريخ : "..os.date("%Y/%m/%d")
+send(msg.chat_id_, msg.id_,ramsesj20)
 end
 if text == "اضف امر" or text == "اضافة امر" or text == "اضافه امر" and ChCheck(msg) then
 DevAli:set(ReLaX.."Set:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_,"true") 
