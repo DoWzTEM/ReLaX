@@ -1599,25 +1599,25 @@ end
 end
 
 if text and text:match("رفع (.*)") and tonumber(msg.reply_to_message_id_) > 0 then 
-local DEV_ABBAS = text:match("رفع (.*)")
-if DevAli:sismember(ReLaX.."Coomds"..msg.chat_id_,DEV_ABBAS) then
+local DEV_ALII = text:match("رفع (.*)")
+if DevAli:sismember(ReLaX.."Coomds"..msg.chat_id_,DEV_ALII) then
 function by_reply(extra, result, success)   
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-local mrali = DevAli:get(ReLaX.."Comd:New:rt:Ali:"..DEV_ABBAS..msg.chat_id_)
+local mrali = DevAli:get(ReLaX.."Comd:New:rt:Ali:"..DEV_ALII..msg.chat_id_)
 if mrali == "مميز" and VipMem(msg) then
-Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
-DevAli:set(ReLaX.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS) 
+Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم رفعه ❨ '..DEV_ALII..' ❩ بنجاح', 1, 'md')
+DevAli:set(ReLaX.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ALII) 
 DevAli:sadd(ReLaX..'Ali:VipMem:'..msg.chat_id_, result.sender_user_id_)
 elseif mrali == "ادمن" and Admin(msg) then 
-Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
-DevAli:set(ReLaX.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS)
+Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم رفعه ❨ '..DEV_ALII..' ❩ بنجاح', 1, 'md')
+DevAli:set(ReLaX.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ALII)
 DevAli:sadd(ReLaX..'Ali:Admins:'..msg.chat_id_, result.sender_user_id_)
 elseif mrali == "مدير" and Manager(msg) then
-Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
-DevAli:set(ReLaX.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS)  
+Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم رفعه ❨ '..DEV_ALII..' ❩ بنجاح', 1, 'md')
+DevAli:set(ReLaX.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ALII)  
 DevAli:sadd(ReLaX..'Ali:Managers:'..msg.chat_id_, result.sender_user_id_)
 elseif mrali == "عضو" then
-Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم رفعه ❨ '..DEV_ALII..' ❩ بنجاح', 1, 'md')
 end
 end,nil)   
 end   
@@ -1625,25 +1625,25 @@ tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonu
 end
 end
 if text and text:match("تنزيل (.*)") and tonumber(msg.reply_to_message_id_) > 0 then 
-local DEV_ABBAS = text:match("تنزيل (.*)")
-if DevAli:sismember(ReLaX.."Coomds"..msg.chat_id_,DEV_ABBAS) then
+local DEV_ALII = text:match("تنزيل (.*)")
+if DevAli:sismember(ReLaX.."Coomds"..msg.chat_id_,DEV_ALII) then
 function by_reply(extra, result, success)   
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-local mrali = DevAli:get(ReLaX.."Comd:New:rt:Ali:"..DEV_ABBAS..msg.chat_id_)
+local mrali = DevAli:get(ReLaX.."Comd:New:rt:Ali:"..DEV_ALII..msg.chat_id_)
 if mrali == "مميز" and VipMem(msg) then
-Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم تنزيله ❨ '..DEV_ALII..' ❩ بنجاح', 1, 'md')
 DevAli:srem(ReLaX..'Ali:VipMem:'..msg.chat_id_, result.sender_user_id_)
 DevAli:del(ReLaX.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif mrali == "ادمن" and Admin(msg) then 
-Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم تنزيله ❨ '..DEV_ALII..' ❩ بنجاح', 1, 'md')
 DevAli:srem(ReLaX..'Ali:Admins:'..msg.chat_id_, result.sender_user_id_)
 DevAli:del(ReLaX.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif mrali == "مدير" and Manager(msg) then
-Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم تنزيله ❨ '..DEV_ALII..' ❩ بنجاح', 1, 'md')
 DevAli:srem(ReLaX..'Ali:Managers:'..msg.chat_id_, result.sender_user_id_)
 DevAli:del(ReLaX.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif mrali == "عضو" then
-Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'ReL3X7')..')'..' ❩\n♪︙تم تنزيله ❨ '..DEV_ALII..' ❩ بنجاح', 1, 'md')
 end
 end,nil)   
 end   
