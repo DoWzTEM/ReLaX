@@ -4226,7 +4226,7 @@ keyboard.inline_keyboard = {
 {{text = '♪ Source Channel',url="https://t.me/ReL3X7"}},
 {{text = '♪ Exp Source',url="t.me/St3R7"}},
 {{text = '♪ Developer',url="t.me/AAAPA"}},
-{{text = '♪ Tws David',url="https://t.me/N5zbot"}},
+{{text = '♪ Tws ReLaX',url="https://t.me/N5zbot"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
