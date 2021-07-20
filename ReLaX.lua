@@ -4219,7 +4219,7 @@ end
 if text == "السورس" or text == "سورس" then 
 Text = [[
 Welcome To Source
-♪︙[ReLaX TEAM](https://t.me/L9L9L)
+♪︙[ReLaX TEAM](https://t.me/ReL3X7)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
