@@ -1908,7 +1908,7 @@ keyboard.inline_keyboard = {
 {{text="🔵 Color Game 🔴",url='https://t.me/T4TTTTBOT?game=color'}},
 {{text="🚀 Rocket Game 🚀",url='https://t.me/T4TTTTBOT?game=rocket'},{text="🏹 لعبة السهام 🏹",url='https://t.me/T4TTTTBOT?game=arrow'}},
 {{text="لعبة النينجا",url='https://t.me/gamee?game=GravityNinja21'},{text="لعبة الكرتي",url='https://t.me/gamee?game=KarateKid2'}},
-{{text = '♪ ReLaX Team .', url="t.me/L9L9L"}},
+{{text = '♪ ReLaX Team .', url="t.me/zvzzzz"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
