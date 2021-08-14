@@ -1324,7 +1324,7 @@ local Text = [[
 ♪︙تغير المطور الاساسي
 ♪︙حذف معلومات الترحيب
 ♪︙تغير معلومات الترحيب
-♪︙غادر + -ايدي المجموعه
+♪︙غادر + -ايدي ا��مجموعه
 ♪︙تعيين عدد الاعضاء + العدد
 ♪︙حظر عام • الغاء العام
 ♪︙كتم عام • الغاء العام
@@ -1885,6 +1885,35 @@ alimoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ReLaXTEAM, 14, string.len(m
 DevAli:set(ReLaX..'Ali:Texting:Pv',true) 
 end
 end
+--     Source ReLaX     --
+if text == "الالعاب الترفيهيه" or text == "الالعاب الاحترافيه" or text == "الالعاب المتطوره" then
+if not DevAli:get(ReLaX..'Ali:Lock:Gamesinline'..msg.chat_id_) then
+Text =[[
+*♪︙قائمه الالعاب الترفيهيه اضغط للعب*
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text="♟ Chess Game ♟",url='https://t.me/T4TTTTBOT?game=chess'}},
+{{text="لعبة فلابي بيرد 🐥",url='https://t.me/awesomebot?game=FlappyBird'},{text="تحدي الرياضيات",url='https://t.me/gamebot?game=MathBattle'}},
+{{text="سباق الدراجات 🏍",url='https://t.me/gamee?game=MotoFX'},{text="🦖 Dragon Game 🦖",url='https://t.me/T4TTTTBOT?game=dragon'}},
+{{text="سباق سيارات 🏎",url='https://t.me/gamee?game=F1Racer'},{text="متشابه 👾",url='https://t.me/gamee?game=DiamondRows'}},
+{{text="كرة قدم ⚽",url='https://t.me/gamee?game=FootballStar'}},
+{{text="ورق🤹‍♂",url='https://t.me/gamee?game=Hexonix'},{text="Hexonix❌",url='https://t.me/gamee?game=Hexonix'}},
+{{text="MotoFx🏍️",url='https://t.me/gamee?game=MotoFx'}},
+{{text="لعبة 2048 🎰",url='https://t.me/awesomebot?game=g2048'},{text="Squares🏁",url='https://t.me/gamee?game=Squares'}},
+{{text="Atomic 1▶️",url='https://t.me/gamee?game=AtomicDrop1'},{text="Corsairs",url='https://t.me/gamebot?game=Corsairs'}},
+{{text="LumberJack",url='https://t.me/gamebot?game=LumberJack'}},
+{{text="LittlePlane",url='https://t.me/gamee?game=LittlePlane'},{text="RollerDisco",url='https://t.me/gamee?game=RollerDisco'}},
+{{text="🦖 لعبة التنين 🦖",url='https://t.me/T4TTTTBOT?game=dragon'},{text="🐍 لعبة الافعى 🐍",url='https://t.me/T4TTTTBOT?game=snake'}},
+{{text="🔵 Color Game 🔴",url='https://t.me/T4TTTTBOT?game=color'}},
+{{text="🚀 Rocket Game 🚀",url='https://t.me/T4TTTTBOT?game=rocket'},{text="🏹 لعبة السهام 🏹",url='https://t.me/T4TTTTBOT?game=arrow'}},
+{{text="لعبة النينجا",url='https://t.me/gamee?game=GravityNinja21'},{text="لعبة الكرتي",url='https://t.me/gamee?game=KarateKid2'}},
+{{text = '♪ ReLaX Team .', url="t.me/L9L9L"}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return false
+end end
 --     Source ReLaX     --
 function getUser(user_id, cb)
 tdcli_function ({
@@ -5513,6 +5542,18 @@ end
 if text and (text:match('^صلاحيته (%d+)') or text:match('^صلاحياته (%d+)')) and ChCheck(msg) then
 local ValidityId = text:match('صلاحيته (%d+)') or text:match('صلاحياته (%d+)')
 Validity(msg,ValidityId)  
+end
+--     Source ReLaX     --
+if text and text:match('^الحساب (%d+)$') then
+local id = text:match('^الحساب (%d+)$')
+local text = 'اضغط لمشاهده الحساب'
+tdcli_function ({ID="SendMessage", chat_id_=msg.chat_id_, reply_to_message_id_=msg.id_, disable_notification_=0, from_background_=1, reply_markup_=nil, input_message_content_={ID="InputMessageText", text_=text, disable_web_page_preview_=1, clear_draft_=0, entities_={[0] = {ID="MessageEntityMentionName", offset_=0, length_=19, user_id_=id}}}}, dl_cb, nil)
+end
+local function oChat(chat_id,cb)
+tdcli_function ({
+ID = "OpenChat",
+chat_id_ = chat_id
+}, cb, nil)
 end
 --     Source ReLaX     --
 if Admin(msg) then
