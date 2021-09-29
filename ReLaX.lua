@@ -8717,13 +8717,13 @@ Dev_Ali(msg.chat_id_, msg.id_, 1, t, 1, 'md')
 DevAli:del(ReLaX..'Zrf:Ali'..msg.chat_id_..msg.sender_user_id_)
 return false   
 end
-if not DevAbs:get(DevProx..'Abs:Zrf:Abs'..msg.chat_id_) then
+if not DevAli:get(ReLaX..'Abs:Zrf:Abs'..msg.chat_id_) then
 if text == 'زخرفه' and ChCheck(msg) or text == 'الزخرفه' and ChCheck(msg) then  
-DevAbs:setex(DevProx.."Zrf:Abs"..msg.chat_id_..msg.sender_user_id_,300,true)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙ارسل لي الكلمه لزخرفتها \nيمكنك الزخرفة باللغه { en } ~ { ar } ', 1, 'md')
+DevAli:setex(ReLaX.."Zrf:Abs"..msg.chat_id_..msg.sender_user_id_,300,true)
+Dev_Ali(msg.chat_id_, msg.id_, 1, '⌁︙ارسل لي الكلمه لزخرفتها \nيمكنك الزخرفة باللغه { en } ~ { ar } ', 1, 'md')
 end
 end
-if not DevAbs:get(DevProx..'Abs:Zrf:Abs'..msg.chat_id_) then
+if not DevAli:get(ReLaX..'Abs:Zrf:Abs'..msg.chat_id_) then
 if text and text:match("^زخرفه (.*)$") and SourceCh(msg) or text and text:match("^زخرف (.*)$") and SourceCh(msg) then 
 local TextZrf = text:match("^زخرفه (.*)$") or text:match("^زخرف (.*)$") 
 UrlZrf = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(TextZrf)) 
